@@ -1,13 +1,16 @@
+{% extends 'base.html' %}
 
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Login</title>
-            {% load static %}
-            <link rel="stylesheet" href="{% static 'accounts/style.css' %}" type="text/css">
-        </head>
-        <body>
-        Welcome! Please Login.
-        </body>
-</html>
+{% block body %}
+<div class="container">
+    <h1>Leave-of-Absence Management System</h1>
+    <p>
+        Please enter your login details below.
+    </p>
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}
