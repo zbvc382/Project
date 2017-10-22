@@ -1,5 +1,12 @@
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {% block body %}
-            <h1>Home Page</h1>
+{% block body %}
+    <div class="container">
+        <h1>Home Page</h1>
+        <p>Welcome back {{ user }}!</p>
+        <p>Name: {{ user.userprofile.full_name }}</p>
+        <p>E-Mail: {{ user.userprofile.email }}</p>
+        <p>Phone: {{ user.userprofile.phone_number }}</p>
+        <p>Department: {{ user.userprofile.department }}</p>
+        </div>
     {% endblock %}

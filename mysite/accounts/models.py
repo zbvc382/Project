@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     full_name = models.CharField(max_length=100, default='')
     email = models.CharField(max_length=100, default='')
-    phone_number = models.IntegerField(default=0)
+    phone_number = models.CharField(max_length=100, default='')
     department = models.CharField(max_length=100, default='')
 
     def __str__(self):
