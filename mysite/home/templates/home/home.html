@@ -2,11 +2,50 @@
 
 {% block body %}
     <div class="container">
-        <h2 class="text-center"> Welcome back {{ user }}!</h2>
+        <h2 class="text-center"> Welcome back {{ name }}!</h2>
+        <p>Profile:</p>
+        <br>
         <p>Name: {{ user.userprofile.full_name }}</p>
         <p>E-Mail: {{ user.userprofile.email }}</p>
         <p>Phone: {{ user.userprofile.phone_number }}</p>
         <p>Department: {{ user.userprofile.department }}</p>
         </div>
+    <hr>
 
-    {% endblock %}
+      <div class="row main-row_header">
+    <h1>Pending Absence Requests</h1>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <p class="visible-xs-block"><em class="text-muted">Scroll table horizontally</em></p>
+      <div class="table-responsive">
+      <table class="table table-hover user-requests-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Start</th>
+              <th>End</th>
+            <th><span class="pull-right">Status</span></th>
+          </tr>
+        </thead>
+    {% for entry in entries %}
+                <tr class="leave-request-row">
+          <td>{{ entry.leave_type }}</td>
+          <td>{{ entry.start }}</td>
+          <td>{{ entry.end }}</td>
+          <td><span class="pull-right leave-request-row-status">{{ entry.status }}</span></td>
+        </tr>
+    {% endfor %}
+
+    <style>
+        h1 {
+            font-family: verdana;
+            font-size: 150%;
+            text-align: center;
+            color: darkred;
+}
+    </style>
+
+{% endblock %}

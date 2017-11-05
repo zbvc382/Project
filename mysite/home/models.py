@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 class Requests(models.Model):
 
-    HOLIDAY = 'HO'
-    SICK_LEAVE = 'SL'
+    HOLIDAY = 'Holiday'
+    SICK_LEAVE = 'Sick Leave'
 
     LEAVE_TYPE = (
         (HOLIDAY, 'Holiday'),
@@ -15,8 +15,8 @@ class Requests(models.Model):
     )
 
     user = models.CharField(max_length=20, default='')
-    leave_type = models.CharField(max_length=2, choices=LEAVE_TYPE, default=HOLIDAY)
-    start = models.DateTimeField()
-    end = models.DateTimeField()
+    leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
+    start = models.DateField()
+    end = models.DateField()
     reason = models.CharField(max_length=100, default='')
     status = models.CharField(max_length=10, default='pending')

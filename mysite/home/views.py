@@ -3,11 +3,16 @@ from django.urls import reverse
 from . import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from home.models import Requests
 
 
 @login_required
 def home(request):
-    return render(request, 'home/home.html')
+    user = request.user
+    name = user.userprofile.full_name.split()[0]
+    entries = Requests.objects.filter(user=request.user)
+
+    return render(request, 'home/home.html', {'name': name, 'entries': entries})
 
 
 @login_required
