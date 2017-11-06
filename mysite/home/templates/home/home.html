@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-center"> Welcome back {{ name }}!</h2>
-        <p>Profile:</p>
-        <br>
-        <p>Name: {{ user.userprofile.full_name }}</p>
-        <p>E-Mail: {{ user.userprofile.email }}</p>
-        <p>Phone: {{ user.userprofile.phone_number }}</p>
-        <p>Department: {{ user.userprofile.department }}</p>
-        </div>
+            <div class="container">
+                      <div class="row">
+                          <div class="container" style="border-bottom:1px solid black">
+                            <h2>{{ user.userprofile.full_name }}</h2>
+                          </div>
+                          <br>
+                          <ul class="container details">
+                            <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{ user.userprofile.phone_number }}</p></li>
+                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{ user.userprofile.email }}</p></li>
+                            <li><p><span class="glyphicon glyphicon-briefcase" style="width:50px;"></span>{{ user.userprofile.department }}</p></li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
     <hr>
-
-      <div class="row main-row_header">
-    <h1>Pending Absence Requests</h1>
-  </div>
+    <div class="row">
+        <div class="container" style="border-bottom:1px solid black">
+            <h3>Absences</h3>
+        </div>
 
   <div class="row">
 
@@ -44,8 +49,13 @@
             font-family: verdana;
             font-size: 150%;
             text-align: center;
-            color: darkred;
-}
+            color: black;
+        }
+
+        .details li {
+            list-style: none;
+        }
+
     </style>
 
 {% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'home',
     'datetimewidget',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

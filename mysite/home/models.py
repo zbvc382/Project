@@ -14,9 +14,9 @@ class Requests(models.Model):
         (SICK_LEAVE, 'Sick Leave')
     )
 
-    user = models.CharField(max_length=20, default='')
+    user = models.CharField(max_length=20)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
-    reason = models.CharField(max_length=100, default='')
+    reason = models.TextField(max_length=500)
     status = models.CharField(max_length=10, default='pending')
