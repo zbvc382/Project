@@ -140,3 +140,9 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/home/'
 
 LOGIN_URL = '/account/login/'
+
+MEDIA_URL = '/media/'
+
+ENV_PATH = os.path.abspath(os.path.dirname(__file__))
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

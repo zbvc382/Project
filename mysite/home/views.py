@@ -21,7 +21,7 @@ def form_request(request):
     print(request.user)
 
     if request.method == 'POST':
-        form = forms.RequestForm(request.POST)
+        form = forms.RequestForm(request.POST, request.FILES)
 
         if form.is_valid():
             o = form.save(commit=False)
@@ -32,4 +32,3 @@ def form_request(request):
             return redirect(reverse('home:home'))
 
     return render(request, 'home/request.html', {'form': form})
-

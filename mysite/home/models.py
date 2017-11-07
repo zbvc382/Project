@@ -18,5 +18,6 @@ class Requests(models.Model):
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
-    reason = models.TextField(max_length=500)
+    reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='pending')
+    document = models.FileField(upload_to='media/', default='')

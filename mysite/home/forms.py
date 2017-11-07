@@ -10,7 +10,7 @@ class RequestForm(forms.ModelForm):
 
     class Meta:
         model = Requests
-        fields = ['leave_type', 'start', 'end', 'reason']
+        fields = ['leave_type', 'start', 'end', 'reason', 'document']
         widgets = {
             'start': DateInput(),
             'end': DateInput()
