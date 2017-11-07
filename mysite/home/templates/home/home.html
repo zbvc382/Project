@@ -32,14 +32,20 @@
             <th>Type</th>
             <th>Start</th>
               <th>End</th>
+              <th>Attachment</th>
             <th><span class="pull-right">Status</span></th>
           </tr>
         </thead>
     {% for entry in entries %}
-                <tr class="leave-request-row">
-          <td>{{ entry.leave_type }}</td>
-          <td>{{ entry.start }}</td>
-          <td>{{ entry.end }}</td>
+        <tr class="leave-request-row">
+            <td>{{ entry.leave_type }}</td>
+            <td>{{ entry.start }}</td>
+            <td>{{ entry.end }}</td>
+            <td>
+                <a href="media/{{ entry.attachment }}">
+                    <div style="height:100%;width:100%">{{entry.attachment}}</div>
+                </a>
+            </td>
           <td><span class="pull-right leave-request-row-status">{{ entry.status }}</span></td>
         </tr>
     {% endfor %}

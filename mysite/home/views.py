@@ -17,8 +17,6 @@ def home(request):
 
 @login_required
 def form_request(request):
-    form = forms.RequestForm()
-    print(request.user)
 
     if request.method == 'POST':
         form = forms.RequestForm(request.POST, request.FILES)
@@ -30,5 +28,8 @@ def form_request(request):
             messages.success(request, 'Form submitted successfully!')
 
             return redirect(reverse('home:home'))
+
+    else:
+        form = forms.RequestForm()
 
     return render(request, 'home/request.html', {'form': form})

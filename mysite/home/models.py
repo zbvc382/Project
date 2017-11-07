@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+def user_directory_path(instance, filename):
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+
 class Requests(models.Model):
 
     HOLIDAY = 'Holiday'
@@ -20,4 +24,4 @@ class Requests(models.Model):
     end = models.DateField()
     reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='pending')
-    document = models.FileField(upload_to='media/', default='')
+    attachment = models.FileField(upload_to=user_directory_path, default='No file uploaded.')
