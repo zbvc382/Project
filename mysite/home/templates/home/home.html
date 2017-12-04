@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-            <div class="container">
-                      <div class="row">
-                          <div class="container" style="border-bottom:1px solid black">
+
+    <div class="container">
+        <div class="row">
+            <div class="container" style="border-bottom:1px solid black">
                             <h2>{{ user.userprofile.full_name }}</h2>
                           </div>
                           <br>
@@ -18,11 +19,9 @@
     <hr>
     <div class="row">
         <div class="container" style="border-bottom:1px solid black">
-            <h3>Absences</h3>
+            <h3>Pending Requests</h3>
         </div>
-
   <div class="row">
-
     <div class="col-md-12">
       <p class="visible-xs-block"><em class="text-muted">Scroll table horizontally</em></p>
       <div class="table-responsive">
@@ -36,7 +35,9 @@
             <th><span class="pull-right">Status</span></th>
           </tr>
         </thead>
+
     {% for entry in entries %}
+
         <tr class="leave-request-row">
             <td>{{ entry.leave_type }}</td>
             <td>{{ entry.start }}</td>
@@ -48,9 +49,11 @@
             </td>
           <td><span class="pull-right leave-request-row-status">{{ entry.status }}</span></td>
         </tr>
+
     {% endfor %}
 
     <style>
+
         h1 {
             font-family: verdana;
             font-size: 150%;

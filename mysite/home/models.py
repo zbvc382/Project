@@ -24,4 +24,4 @@ class Requests(models.Model):
     end = models.DateField()
     reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='pending')
-    attachment = models.FileField(upload_to=user_directory_path, default='No file uploaded.')
+    attachment = models.FileField(upload_to=user_directory_path, blank=True, null=True)

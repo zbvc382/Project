@@ -4,8 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-# Create your models here.
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     full_name = models.CharField(max_length=100, default='')
@@ -16,7 +14,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return '%s' % self.user
 
-
+# Creates a user profile for every user created by the admin
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
