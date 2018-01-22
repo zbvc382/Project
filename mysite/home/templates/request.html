@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    {% load widget_tweaks %}
+
+    <br/>
+    <div class="container" >
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {% for hidden in form.hidden_fields %}
+
+                {{ hidden }}
+
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+
+                    {{ field|add_class:'form-control' }}
+
+                    {% for error in field.errors %}
+
+                        <span class="help-block">{{ error }}</span>
+
+                    {% endfor %}
+                </div>
+
+            {% endfor %}
+
+            <input type="submit" class="btn btn-success" value="Submit">
+            <a href="{% url 'home:home' %}" class="btn btn-info" role="button">Cancel</a>
+        </form>
+    </div>
+    <br>
+
+{%  endblock %}

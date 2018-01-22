@@ -1,0 +1,10 @@
+h1 {
+    font-family: verdana;
+    font-size: 150%;
+    text-align: center;
+    color: black;
+}
+
+.details li {
+    list-style: circle;
+}

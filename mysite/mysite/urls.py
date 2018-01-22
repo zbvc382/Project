@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from mysite import views
+from . import views
 
 urlpatterns = [
     url(r'^$', views.login_redirect, name='login_redirect'),
