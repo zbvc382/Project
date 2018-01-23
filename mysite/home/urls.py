@@ -1,11 +1,12 @@
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^request/', views.form_request, name='request')
+    url(r'^$', login_required(views.HomeView.as_view()), name='home'),
+    url(r'^request/', login_required(views.RequestView.as_view()), name='request')
 ]
 
 if settings.DEBUG is True:

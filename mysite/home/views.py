@@ -1,25 +1,29 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views import View
 from .forms import RequestForm
 from .models import Requests
 
 
-@login_required
-def home(request):
+class HomeView(View):
+    home_template = 'home.html'
 
-    user = request.user
-    entries = Requests.objects.filter(user=request.user)
+    def get(self, request):
+        user = request.user
+        entries = Requests.objects.filter(user=request.user)
+        return render(request, self.home_template, {'user': user, 'entries': entries})
 
-    return render(request, 'home.html', {'user': user, 'entries': entries})
 
+class RequestView(View):
+    request_template = 'request.html'
+    form = RequestForm
 
-@login_required
-def form_request(request):
+    def get(self, request):
+        return render(request, self.request_template, {'form': self.form})
 
-    if request.method == 'POST':
-        form = RequestForm(request.POST, request.FILES)
+    def post(self, request):
+        form = self.form(request.POST)
 
         if form.is_valid():
             o = form.save(commit=False)
@@ -28,9 +32,3 @@ def form_request(request):
             messages.success(request, 'Form submitted successfully!')
 
             return redirect(reverse('home:home'))
-
-    else:
-
-        form = RequestForm()
-
-    return render(request, 'request.html', {'form': form})
