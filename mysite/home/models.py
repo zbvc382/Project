@@ -16,7 +16,7 @@ class Requests(models.Model):
         (SICK_LEAVE, 'Sick Leave')
     )
 
-    user = models.CharField(max_length=20)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
