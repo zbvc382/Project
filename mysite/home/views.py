@@ -1,34 +1,31 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
-from django.views import View
+from django.views.generic import TemplateView, CreateView
 from .forms import RequestForm
 from .models import Requests
 
 
-class HomeView(View):
-    home_template = 'home.html'
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
-    def get(self, request):
-        user = request.user
-        entries = Requests.objects.filter(user=request.user)
-        return render(request, self.home_template, {'user': user, 'entries': entries})
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        entries = Requests.objects.filter(user=self.request.user)
+        context = {'user': user, 'entries': entries}
+
+        return context
 
 
-class RequestView(View):
-    request_template = 'request.html'
-    form = RequestForm
+class RequestView(CreateView):
+    template_name = 'request.html'
+    form_class = RequestForm
+    model = Requests
 
-    def get(self, request):
-        return render(request, self.request_template, {'form': self.form})
+    def form_valid(self, form):
+        o = form.save(commit=False)
+        o.user = self.request.user
+        o.save()
+        messages.success(self.request, 'Form submitted successfully!')
 
-    def post(self, request):
-        form = self.form(request.POST)
-
-        if form.is_valid():
-            o = form.save(commit=False)
-            o.user = request.user
-            o.save()
-            messages.success(request, 'Form submitted successfully!')
-
-            return redirect(reverse('home:home'))
+        return redirect(reverse('home:home'))
