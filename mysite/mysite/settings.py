@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mysite_db',
+        'NAME': 'django_db',
         'USER': 'dioxinas',
-        'PASSWORD': 'xboxlive1',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
