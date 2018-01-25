@@ -1,10 +1,143 @@
-h1 {
-    font-family: verdana;
-    font-size: 150%;
-    text-align: center;
-    color: black;
+.details li {
+    list-style: none;
+    position: relative;
+    left: -7px;
 }
 
-.details li {
-    list-style: circle;
+.header {
+    font-size: 150%;
+    position: relative;
+    left: 22px;
 }
+
+.jumbotron {
+    height: 180px;
+    background: rgba(51, 61, 70, 0.05);
+    padding: 0.9em 0.6em;
+}
+
+.jumbotron .glyphicon {
+    font-size:15px;
+}
+.jumbotron .container p {
+    font-size:15px;
+}
+.row .details {
+    position: relative;
+    top: 10px;
+    right: 850px;
+}
+
+.col-md-3 .calendar_month {
+    position: relative;
+    left: 300px;
+    height: 100px;
+    font-size:12px;
+    display: inline-block;
+}
+
+.col-md-3 .calendar_month tbody {
+    font-size:12px;
+
+}
+
+.calendar_month {
+  width: 100%;
+}
+
+.calendar_month td {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.calendar_month thead {
+  text-align: center;
+  font-weight: bolder;
+}
+
+div.month_container {
+  height: 250px;
+}
+
+.team-view-table {
+  width: 100%;
+}
+
+.team-view-table td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+td.team-view-header {
+  height: 43px;
+  text-align: center;
+}
+
+td.calendar_cell {
+  width: 15px !important;
+  min-width: 15px !important;
+  max-width: 15px !important;
+  position: relative;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+td.calendar_cell span {
+  position: relative;
+  left: 7px;
+  top: -1px;
+  display: block;
+  text-align: center;
+  z-index: 10;
+}
+
+td.current_day_cell {
+  background: #e25440;
+  color: #ffffff;
+}
+
+td.weekend_cell {
+  background: #F5F7F8;
+}
+
+td.bank_holiday_cell {
+  background: #31B0D5;
+  color: #ffffff;
+}
+
+td.leave_cell {
+  background: #9fbb58;
+  color: #ffffff;
+}
+
+td.leave_cell_pended {
+  background: #FFCBA4;
+  color: #61686b;
+}
+
+.modal-dialog {
+  max-width: 450px;
+}
+
+.left-column-cell {
+  text-overflow: ellipsis;
+  width: 165px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.main-row_header {
+  border: none;
+  font-weight: normal;
+  color: #5ba4e5;
+  letter-spacing: -0.01em;
+  font-size: 19px;
+  line-height: 1.15em;
+  text-align: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+

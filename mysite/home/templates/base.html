@@ -1,97 +1,96 @@
 {% load static %}
 <html>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/global.css' %}"> {% block head %} {% endblock %}
 
-    {% block head %}
-    {% endblock %}
+<body>
 
-    <body>
+    {% if user.is_authenticated %}
 
-        {% if user.is_authenticated %}
-
-        <div class="container-fluid">
-            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{% url 'home:home' %}">
-                        <img  src="https://i.imgur.com/fZgWWVK.png">
-                    </a>
-                </div>
-
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="inactive links"><a href="{% url 'home:home' %}">Home</a></li>
-                        <li class="inactive links"><a href="{% url 'home:request' %}">Request</a></li>
-
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Settings <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Button 1</a></li>
-                                <li><a href="#">Button 2</a></li>
-                                <li><a href="#">Button 3</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Button 4</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-                        <li><a></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-        {% for message in messages %}
-
-        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-            <span type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </span>
-
-            {{ message }}
-
-        </div>
-
-        {% endfor %}
-        {% endif %}
-
-        <div class="container">
-            <div class="row">
-
-                {% block body %}{% endblock %}
-
+    <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home:home' %}">
+                    <img src="https://i.imgur.com/fZgWWVK.png">
+                </a>
             </div>
+            <p class="navbar-text text-center" id="absence-text">ABSENCE</p>
+            <p class="navbar-text text-center" id="management-text">MANAGEMENT</p>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="left_side">
+                    <li class="inactive links"><a href="{% url 'home:home' %}">Home</a></li>
+                    <li class="inactive links"><a href="{% url 'home:request' %}">Request</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Settings <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Button 1</a></li>
+                            <li><a href="#">Button 2</a></li>
+                            <li><a href="#">Button 3</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Button 4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                    <li>
+                        <a></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    {% endif %} {% for message in messages %}
+
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert" style="position:fixed; top: 50px;left: 0;right: 0;z-index: 7000;   margin-bottom: 1px;
+  height: 30px;
+  line-height:30px;
+  padding:0px 15px;">
+
+        {{ message }}
+
+    </div>
+
+    {% endfor %}
+
+    <div class="container" style="position:relative;top:50px; background-color:#ffffff" ;>
+        <div class="row">
+
+            {% block body %}{% endblock %}
+
         </div>
+    </div>
 
-        <script>
-            $(document).ready(function() {
-                setTimeout(function() {
-                    $(".alert").fadeOut("slow");
-                }, 5000);
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".alert").fadeOut("slow");
+            }, 5000);
 
-                $(".links").each(function() {
-                    if ($('a', this).attr("href") === window.location.pathname) {
-                        $(this).removeClass('inactive').addClass('active');
-                    }
-                });
+            $(".links").each(function() {
+                if ($('a', this).attr("href") === window.location.pathname) {
+                    $(this).removeClass('inactive').addClass('active');
+                }
             });
-        </script>
+        });
+    </script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    </body>
+</body>
+
 </html>

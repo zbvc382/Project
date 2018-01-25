@@ -1,41 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block body %} {% load widget_tweaks %}
 
-{% block body %}
+<br/>
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
 
-    {% load widget_tweaks %}
+        {% csrf_token %} {% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in form.visible_fields %}
 
-    <br/>
-    <div class="container" >
-        <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
 
-            {% csrf_token %}
+            {{ field|add_class:'form-control' }} {% for error in field.errors %}
 
-            {% for hidden in form.hidden_fields %}
+            <span class="help-block">{{ error }}</span> {% endfor %}
+        </div>
 
-                {{ hidden }}
+        {% endfor %}
 
-            {% endfor %}
-
-            {% for field in form.visible_fields %}
-
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-
-                    {{ field|add_class:'form-control' }}
-
-                    {% for error in field.errors %}
-
-                        <span class="help-block">{{ error }}</span>
-
-                    {% endfor %}
-                </div>
-
-            {% endfor %}
-
-            <input type="submit" class="btn btn-success" value="Submit">
-            <a href="{% url 'home:home' %}" class="btn btn-info" role="button">Cancel</a>
-        </form>
-    </div>
-    <br>
-
-{%  endblock %}
+        <input type="submit" class="btn btn-success" value="Submit">
+        <a href="{% url 'home:home' %}" class="btn btn-info" role="button">Cancel</a>
+    </form>
+</div>
+<br> {% endblock %}
