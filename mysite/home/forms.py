@@ -1,5 +1,5 @@
 from django import forms
-from .models import Requests
+from .models import Request
 
 
 class DateInput(forms.DateInput):
@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
 
 class RequestForm(forms.ModelForm):
     class Meta:
-        model = Requests
+        model = Request
         fields = ['leave_type', 'start', 'end', 'reason', 'attachment']
         widgets = {
             'start': DateInput(),

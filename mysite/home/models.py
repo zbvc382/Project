@@ -1,12 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 
-class Requests(models.Model):
+class Request(models.Model):
 
     HOLIDAY = 'Holiday'
     SICK_LEAVE = 'Sick Leave'

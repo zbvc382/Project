@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, CreateView
 from .forms import RequestForm
-from .models import Requests
+from .models import Request
 
 
 class HomeView(TemplateView):
@@ -11,7 +11,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        entries = Requests.objects.filter(user=self.request.user)
+        entries = Request.objects.filter(user=self.request.user)
         context = {'user': user, 'entries': entries}
 
         return context
@@ -20,7 +20,7 @@ class HomeView(TemplateView):
 class RequestView(CreateView):
     template_name = 'request.html'
     form_class = RequestForm
-    model = Requests
+    model = Request
 
     def form_valid(self, form):
         o = form.save(commit=False)
