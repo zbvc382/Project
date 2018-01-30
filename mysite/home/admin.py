@@ -19,6 +19,7 @@ class RequesterAdmin(admin.ModelAdmin):
     get_username.short_description = 'USERNAME'
     get_email_address.short_description = 'EMAIL ADDRESS'
     get_is_active.short_description = 'IS ACTIVE'
+    search_fields = ('user__username',)
 
 
 admin.site.register(Request)
