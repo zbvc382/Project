@@ -7,6 +7,13 @@ from .models import Request
 
 
 class HomeView(TemplateView):
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_admin:
+            return redirect('/admin')
+
+        return super(TemplateView, self).dispatch(request, *args, **kwargs)
+
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):

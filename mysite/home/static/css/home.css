@@ -1,3 +1,7 @@
+#left span {
+    width:50px;
+}
+
 .details #left {
     position: absolute;
     top: 40px;
@@ -6,8 +10,8 @@
 }
 .details #right {
     position: absolute;
-    top: 40px;
-    left: 900px;
+    top: 10px;
+    left: 890px;
     list-style: none;
 }
 .col-md-3 {
@@ -27,7 +31,7 @@
     color: #ea641b;
     position: relative;
     display: inline-block;
-    right: -60px;
+    right: -70px;
 }
 .divider-vertical-left {
     opacity: 0.2;

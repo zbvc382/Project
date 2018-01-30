@@ -6,24 +6,27 @@
 <div class="details">
   <ul id="left">
     <li>
-      <p><span class="glyphicon glyphicon-user" style="width:50px;"></span>{{ user.userprofile.full_name }}</p>
+      <p><span class="glyphicon glyphicon-user"></span>{{ user.get_full_name }}</p>
     </li>
     <li>
-      <p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{ user.userprofile.phone_number }}</p>
+      <p><span class="glyphicon glyphicon-earphone one"></span>{{ user.phone_number }}</p>
     </li>
     <li>
-      <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{ user.userprofile.email }}</p>
+      <p><span class="glyphicon glyphicon-envelope one"></span>{{ user.email }}</p>
     </li>
     <li>
-      <p><span class="glyphicon glyphicon-book" style="width:50px;"></span>{{ user.userprofile.department }}</p>
+      <p><span class="glyphicon glyphicon-book"></span>{{ user.department }}</p>
     </li>
   </ul>
 </div>
 <div class="details">
   <ul id="right">
     <li id="welcome-text">
-      <p><b>Welcome back.</b></p>
+      <p><b>Information</b></p>
     </li>
+      <li id="role">
+      <p><b>Role: </b>{{ user.user_role }}</p>
+      </li>
     <li id="pending-text">
       <p><b>Pending Requests: </b></p>
     </li>

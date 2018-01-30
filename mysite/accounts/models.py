@@ -36,11 +36,11 @@ class User(AbstractBaseUser):
         unique=True,
     )
     USER_ROLE_CHOICES = (
-        (1, 'Requester'),
-        (2, 'Authoriser'),
+        ('Requester', 'Requester'),
+        ('Authoriser', 'Authoriser'),
     )
 
-    user_role = models.PositiveSmallIntegerField(choices=USER_ROLE_CHOICES, default=1)
+    user_role = models.CharField(max_length=100, blank=True, null=True, choices=USER_ROLE_CHOICES)
     username = models.CharField(max_length=30, unique=True,
         help_text=('Required. 30 characters or fewer. Letters, digits and '
                     '@/./+/-/_ only.'),
@@ -96,3 +96,11 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+    def is_requester(self):
+        if self.user_role == 'Requester':
+            return True
+
+    def is_authoriser(self):
+        if self.user_role == 'Authoriser':
+            return True
