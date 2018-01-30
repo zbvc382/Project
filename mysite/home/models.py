@@ -37,6 +37,8 @@ class Requester(models.Model):
     def __str__(self):
         return '%s' % self.user
 
+
+
 # creates a requester object if created user's role is 'Requester'
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
