@@ -4,7 +4,8 @@ from .models import Request, Requester
 
 class RequesterAdmin(admin.ModelAdmin):
     model = Requester
-    list_display = ['get_username', 'get_email_address', 'get_is_active']
+    list_display = ['get_username', 'get_email_address', 'get_is_active',
+                    'assigned_authoriser']
 
     def get_username(self, obj):
         return obj.user.username

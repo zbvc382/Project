@@ -31,14 +31,21 @@ class Request(models.Model):
     attachment = models.FileField(upload_to=user_directory_path, blank=True, null=True)
 
 
+class RequesterManager(models.Manager):
+    def get_authorisers(self):
+        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
+
+        return queryset
+
+
 class Requester(models.Model):
+    objects = RequesterManager()
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    CHOICES = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
+    CHOICES = objects.get_authorisers()
     assigned_authoriser = models.IntegerField(blank=True, null=True, choices=CHOICES)
 
     def __str__(self):
         return '%s' % self.user
-
 
 
 # creates a requester object if created user's role is 'Requester'
