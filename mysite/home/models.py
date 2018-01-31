@@ -33,6 +33,8 @@ class Request(models.Model):
 
 class Requester(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    CHOICES = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
+    assigned_authoriser = models.IntegerField(blank=True, null=True, choices=CHOICES)
 
     def __str__(self):
         return '%s' % self.user
