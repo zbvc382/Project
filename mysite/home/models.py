@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 User = get_user_model()
 
 
@@ -32,21 +33,22 @@ class Request(models.Model):
 
 
 class RequesterManager(models.Manager):
+
     def get_authorisers(self):
-        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
+        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))
 
         return queryset
 
 
 class Requester(models.Model):
-    objects = RequesterManager()
+    obj = RequesterManager()
+    CHOICES = obj.get_authorisers()
+
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    CHOICES = objects.get_authorisers()
-    assigned_authoriser = models.IntegerField(blank=True, null=True, choices=CHOICES)
+    assigned_authoriser = models.IntegerField(blank=False, null=True, choices=CHOICES)
 
     def __str__(self):
         return '%s' % self.user
-
 
 # creates a requester object if created user's role is 'Requester'
 @receiver(post_save, sender=User)
