@@ -33,22 +33,21 @@ class Request(models.Model):
 
 
 class RequesterManager(models.Manager):
-
     def get_authorisers(self):
-        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))
+        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
 
         return queryset
 
 
 class Requester(models.Model):
-    obj = RequesterManager()
-    CHOICES = obj.get_authorisers()
-
+    objects = RequesterManager()
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    assigned_authoriser = models.IntegerField(blank=False, null=True, choices=CHOICES)
+    CHOICES = objects.get_authorisers()
+    assigned_authoriser = models.IntegerField(blank=True, null=True, choices=CHOICES)
 
     def __str__(self):
         return '%s' % self.user
+
 
 # creates a requester object if created user's role is 'Requester'
 @receiver(post_save, sender=User)
