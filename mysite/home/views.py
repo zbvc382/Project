@@ -5,17 +5,15 @@ from django.views.generic import TemplateView, CreateView
 from .forms import RequestForm
 from .models import Request, Requester
 from django.contrib.auth import get_user_model
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from .decorators import requester_required
 
 User = get_user_model()
 
 
-class HomeView(TemplateView):
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_admin:
-            return redirect('/admin')
-
-        return super(TemplateView, self).dispatch(request, *args, **kwargs)
+@method_decorator([login_required, requester_required], name='dispatch')
+class RequesterHomeView(TemplateView):
 
     template_name = 'home.html'
 

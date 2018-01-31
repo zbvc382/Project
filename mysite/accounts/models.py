@@ -97,10 +97,12 @@ class User(AbstractBaseUser):
         # Simplest possible answer: All admins are staff
         return self.is_admin
 
+    @property
     def is_requester(self):
         if self.user_role == 'Requester':
             return True
 
+    @property
     def is_authoriser(self):
         if self.user_role == 'Authoriser':
             return True
