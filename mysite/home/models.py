@@ -22,7 +22,7 @@ class Request(models.Model):
         (SICK_LEAVE, 'Sick Leave')
     )
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     date_requested = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
@@ -31,29 +31,45 @@ class Request(models.Model):
     status = models.CharField(max_length=10, default='pending')
     attachment = models.FileField(upload_to=user_directory_path, blank=True, null=True)
 
+    def __str__(self):
+        return '%s' % self.user
+
 
 class RequesterManager(models.Manager):
     def get_authorisers(self):
-        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'first_name'))
+        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))
 
         return queryset
 
 
-class Requester(models.Model):
-    objects = RequesterManager()
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    CHOICES = objects.get_authorisers()
-    assigned_authoriser = models.IntegerField(blank=True, null=True, choices=CHOICES)
+class Authoriser(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s' % self.user
 
 
-# creates a requester object if created user's role is 'Requester'
+class Requester(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    assigned_authoriser = models.ForeignKey(Authoriser, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return '%s' % self.user
+
+
+# creates a requester model object if created user's role is 'Requester'
 @receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
+def create_requester(sender, instance, created, **kwargs):
     if created and instance.user_role == 'Requester':
         Requester.objects.create(user=instance)
 
 
-post_save.connect(create_profile, sender=User)
+# creates an authoriser model object if created user's role is 'Authoriser'
+@receiver(post_save, sender=User)
+def create_authoriser(sender, instance, created, **kwargs):
+    if created and instance.user_role == 'Authoriser':
+        Authoriser.objects.create(user=instance)
+
+
+post_save.connect(create_authoriser, sender=User)
+post_save.connect(create_requester, sender=User)
