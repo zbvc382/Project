@@ -21,7 +21,8 @@ class RequesterAdmin(admin.ModelAdmin):
 
     def get_assigned_to(self, obj):
         try:
-            return obj.assigned_authoriser.user
+            return obj.assigned_authoriser.user.username
+
         except AttributeError:
             return None
 
