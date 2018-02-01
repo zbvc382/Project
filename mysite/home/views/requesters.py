@@ -36,6 +36,7 @@ class RequesterHomeView(TemplateView):
         return context
 
 
+@method_decorator([login_required, requester_required], name='dispatch')
 class RequestView(CreateView):
     template_name = 'request.html'
     form_class = RequestForm

@@ -1,28 +1,25 @@
-from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import redirect
 
 
-def requester_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='/account/login/'):
+def authoriser_required(function):
+    def decorator(request, *args, **kwargs):
+        if request.user.is_requester:
+            return redirect('home:requester')
+        if request.user.is_admin:
+            return redirect('home:admin')
 
-    actual_decorator = user_passes_test(
-        lambda u: u.is_active and u.is_requester,
-        login_url=login_url,
-        redirect_field_name=redirect_field_name
-    )
-    if function:
-        return actual_decorator(function)
+        return function(request, *args, **kwargs)
 
-    return actual_decorator
+    return decorator
 
 
-def authoriser_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='/account/login/'):
+def requester_required(function):
+    def decorator(request, *args, **kwargs):
+        if request.user.is_authoriser:
+            return redirect('home:authoriser')
+        if request.user.is_admin:
+            return redirect('home:admin')
 
-    actual_decorator = user_passes_test(
-        lambda u: u.is_active and u.is_authoriser,
-        login_url=login_url,
-        redirect_field_name=redirect_field_name
-    )
-    if function:
-        return actual_decorator(function)
+        return function(request, *args, **kwargs)
 
-    return actual_decorator
+    return decorator
