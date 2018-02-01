@@ -20,7 +20,10 @@ class RequesterAdmin(admin.ModelAdmin):
         return obj.user.is_active
 
     def get_assigned_to(self, obj):
-        return obj.assigned_authoriser.user.username
+        try:
+            return obj.assigned_authoriser.user
+        except AttributeError:
+            return None
 
     # Changes the representation of user in the user selection list
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -31,8 +34,10 @@ class RequesterAdmin(admin.ModelAdmin):
             field.label_from_instance = lambda u: "%s" % u.user.username
         return field
 
+    if get_assigned_to is not None:
+        get_assigned_to.short_description = 'ASSIGNED TO'
+
     get_username.short_description = 'USERNAME'
-    get_assigned_to.short_description = 'ASSIGNED TO'
     get_email_address.short_description = 'EMAIL ADDRESS'
     get_is_active.short_description = 'IS ACTIVE'
     search_fields = ('user__username',)
