@@ -16,5 +16,7 @@ def home(request):
             return redirect('home:requester')
         if request.user.is_admin:
             return redirect('home:admin')
+        if request.user.is_authoriser:
+            return redirect('home:authoriser')
 
     return render(request, 'home.html')

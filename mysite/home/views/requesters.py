@@ -47,5 +47,5 @@ class RequestView(CreateView):
         o.save()
         messages.success(self.request, 'Form submitted successfully!')
 
-        return redirect(reverse(''))
+        return redirect(reverse('home:home'))
 
