@@ -1,12 +1,12 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.decorators import login_required
-from . import views
+from .views import requesters, home
 
 urlpatterns = [
-    url(r'^$', views.RequesterHomeView.as_view(), name='home'),
-    url(r'^request/', login_required(views.RequestView.as_view()), name='request')
+    url(r'^$', home.home, name='home'),
+    url(r'^requester/', requesters.RequesterHomeView.as_view(), name='requester'),
+    url(r'^absence/', requesters.RequestView.as_view(), name='absence'),
 ]
 
 if settings.DEBUG is True:
