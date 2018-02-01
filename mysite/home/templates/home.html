@@ -28,16 +28,21 @@
       <p><b>Role: </b>{{ user.user_role }}</p>
       </li>
     <li id="pending-text">
+        {% if user.is_requester %}
       <p><b>Pending Requests: </b></p>
+        {% endif %}
     </li>
     <li id="authoriser-text">
+        {% if user.is_requester %}
       <p><b>Authoriser: </b>{{ authoriser }}</p>
+        {% endif %}
     </li>
     <li id="last-login-text">
       <p><b>Last login: </b>{{ user.last_login }}</p>
     </li>
   </ul>
 </div>
+    {% if user.is_requester %}
 <div class="divider-vertical-right"></div>
 <div class="divider-vertical-left"></div>
 <div class="col-md-3 month_container">
@@ -380,6 +385,8 @@
     </tbody>
   </table>
 </div>
+    {% endif %}
+    {% if user.is_requester %}
 <div class="row">
   <div class="header">
     <h3>Pending Requests</h3>
@@ -416,4 +423,5 @@
     </div>
   </div>
 </div>
+    {% endif %}
 {% endblock %}
