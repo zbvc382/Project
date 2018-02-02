@@ -425,27 +425,23 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th class="col-md-1">#</th>
-                  <th class="col-md-2">Header</th>
-                  <th class="col-md-3">Header</th>
+                  <th class="col-md-1">Date</th>
+                  <th class="col-md-2">Name</th>
+                  <th class="col-md-3">Status</th>
                 </tr>
               </thead>
               <tbody>
+              {% for request in pending_requests %}
                 <tr>
-                  <td class="col-md-1">1,001</td>
-                  <td class="col-md-2">1,001</td>
-                  <td class="col-md-3">1,001</td>
+                    <td class="col-md-1">{{ request.date_requested }}</td>
+                    <td class="col-md-2">{{ request.user.get_full_name }}</td>
+                    <td class="col-md-3">{{ request.status }}</td>
                 </tr>
                 <tr>
-                  <td class="col-md-1">1,001</td>
-                  <td class="col-md-2">1,001</td>
-                  <td class="col-md-3">1,001</td>
                 </tr>
                  <tr>
-                  <td class="col-md-1">1,001</td>
-                  <td class="col-md-2">1,001</td>
-                  <td class="col-md-3">1,001</td>
                 </tr>
+              {% endfor %}
               </tbody>
             </table></div>
     {% endif %}

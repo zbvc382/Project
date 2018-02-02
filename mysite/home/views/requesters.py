@@ -2,12 +2,12 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, CreateView
-from ..forms import RequestForm
-from ..models import Request, Requester
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from ..decorators import requester_required
+from ..forms import RequestForm
+from ..models import Request
 
 User = get_user_model()
 
@@ -21,17 +21,7 @@ class RequesterHomeView(TemplateView):
         user = self.request.user
         entries = Request.objects.filter(user=self.request.user)
 
-        ''' get the current user's linked requester object and parse
-        id value from one of its fields
-        '''
-        authoriser_id = Requester.objects.get(user=user.id).assigned_authoriser
-
-        ''' get user object which matches its primary key with the id supplied
-        and parse its full name
-        '''
-        authoriser_name = User.objects.get(id=authoriser_id).get_full_name()
-
-        context = {'user': user, 'entries': entries, 'authoriser': authoriser_name }
+        context = {'user': user, 'entries': entries}
 
         return context
 
