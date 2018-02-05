@@ -7,7 +7,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from ..decorators import requester_required
 from ..forms import RequestForm
-from ..models import Request
+from ..models import Request, Requester
+# from django.core.exceptions import ObjectDoesNotExist
 
 User = get_user_model()
 
@@ -21,7 +22,10 @@ class RequesterHomeView(TemplateView):
         user = self.request.user
         entries = Request.objects.filter(user=self.request.user)
 
-        context = {'user': user, 'entries': entries}
+        # Might need exception handling later on
+        assigned_authoriser = Requester.objects.get(user=self.request.user).assigned_authoriser.user.get_full_name
+
+        context = {'user': user, 'entries': entries, 'assigned_authoriser': assigned_authoriser}
 
         return context
 

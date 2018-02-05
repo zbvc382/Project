@@ -23,12 +23,13 @@ class Request(models.Model):
     )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    date_requested = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
     reason = models.TextField(max_length=200)
-    status = models.CharField(max_length=10, default='pending')
+    status = models.CharField(max_length=10, default='Pending')
     attachment = models.FileField(upload_to=user_directory_path, blank=True, null=True)
 
     def __str__(self):

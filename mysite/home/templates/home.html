@@ -8,6 +8,22 @@
 {% if user.is_authoriser %}
 <div class="jumbotron" id="authoriser_jumbatron">
 </div>
+    <div class="details">
+        <ul id="left-authoriser">
+            <li>
+                <p><span class="glyphicon glyphicon-user"></span>{{ user.get_full_name }}</p>
+            </li>
+            <li>
+                <p><span class="glyphicon glyphicon-earphone one"></span>{{ user.phone_number }}</p>
+            </li>
+            <li>
+                <p><span class="glyphicon glyphicon-envelope one"></span>{{ user.email }}</p>
+            </li>
+            <li>
+                <p><span class="glyphicon glyphicon-book"></span>{{ user.department }}</p>
+            </li>
+        </ul>
+    </div>
 {% endif %}
 {% if user.is_requester %}
 <div class="details">
@@ -41,7 +57,7 @@
     </li>
     <li id="authoriser-text">
       {% if user.is_requester %}
-      <p><b>Authoriser: </b>{{ authoriser }}</p>
+      <p><b>Authoriser: </b>{{ assigned_authoriser }}</p>
       {% endif %}
     </li>
     <li id="last-login-text">
@@ -407,15 +423,18 @@
         </div>
         <div class="col-sm-6">
           <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-info">
-            <input type="radio" name="status" id="button-all" value=""> All
-            </label>
-            <label class="btn btn-warning active">
-            <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
-            </label>
-            <label class="btn btn-success">
-            <input type="radio" name="status" id="button-approved" value="Approved"> Approved
-            </label>
+              <label class="btn btn-info">
+                  <input type="radio" name="status" id="button-all" value=""> All
+              </label>
+              <label class="btn btn-warning active">
+                  <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
+              </label>
+              <label class="btn btn-success">
+                  <input type="radio" name="status" id="button-approved" value="Approved"> Approved
+              </label>
+              <label class="btn btn-danger">
+                  <input type="radio" name="status" id="button-declined" value="Declined"> Declined
+              </label>
           </div>
         </div>
       </div>
@@ -435,7 +454,7 @@
       <tbody id="stud">
         {% for request in pending_requests %}
         <tr>
-          <td>{{ request.date_requested }}</td>
+          <td>{{ request.created_at }}</td>
           <td>{{ request.user.get_full_name }}</td>
           <td>{{ request.user.department }}</td>
           <td>{{ request.leave_type }}</td>
@@ -478,7 +497,7 @@
         </thead>
         {% for entry in entries %}
         <tr class="leave-request-row">
-          <td>{{ entry.date_requested }}</td>
+          <td>{{ entry.created_at }}</td>
           <td>{{ entry.leave_type }}</td>
           <td>{{ entry.start }}</td>
           <td>{{ entry.end }}</td>

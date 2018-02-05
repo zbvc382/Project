@@ -1,9 +1,18 @@
-#left span {
+ #left span {
      width:50px;
+}
+ #left-authoriser span {
+     width:30px;
 }
  .details #left {
      position: absolute;
      top: 40px;
+     left: -1.7%;
+     list-style: none;
+}
+ .details #left-authoriser {
+     position: absolute;
+     top: 27px;
      left: -1.7%;
      list-style: none;
 }
@@ -61,7 +70,7 @@
      left: -1px;
      bottom: 0px;
      top: 0px;
-     height: 111px;
+     height: 160px;
      background: rgb(34, 41, 49);
      background: rgba(51, 61, 70, 0.05);
      padding: 0.9em 0.6em;
@@ -83,7 +92,7 @@
     width: 100%;
     position: absolute;
     left: -0.1%;
-    top: 100px;
+    top: 150px;
 }
  .jumbotron .glyphicon {
      font-size:15px;
@@ -280,8 +289,9 @@
      color: #FFC107;
 }
  #footer {
-     left: 500px;
+     left: 496px;
      position: absolute;
+     bottom: 0px;
      top: 510px;
      width: 50%;
      display: inline-block;
@@ -289,13 +299,14 @@
  #footer a {
      color: #fff;
      background: rgb(34, 41, 49);
-     background: rgba(34, 41, 49, .5);
+     background: rgba(34, 41, 49, .2);
 }
  #footer1 {
      color: #CBCBCB;
      left: 0px;
      position: absolute;
-     top: 525px;
+     bottom: 0px;
+     top: 530px;
      width: 100%;
      display: inline-block;
 }
