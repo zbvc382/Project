@@ -467,8 +467,12 @@
             <span class="status text-warning">&bull;</span>
             {{ request.status }}
             {% endif %}
+            {% if request.status == 'Declined' %}
+            <span class="status text-danger">&bull;</span>
+            {{ request.status }}
+            {% endif %}
           </td>
-          <td><a href="#" class="btn btn-sm manage">View</a></td>
+          <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a></td>
         </tr>
         {% endfor %}
       </tbody>

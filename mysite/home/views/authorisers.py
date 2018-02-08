@@ -1,9 +1,10 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
+from django.urls import reverse_lazy
 
 
 User = get_user_model()
@@ -26,3 +27,15 @@ class AuthoriserHomeView(TemplateView):
         context = {'pending_requests': pending_requests}
 
         return context
+
+
+@method_decorator([login_required, authoriser_required], name='dispatch')
+class AuthoriserRequestView(UpdateView):
+    model = Request
+    fields = ['reason', 'comment', 'status', 'leave_type']
+    template_name = 'update.html'
+    success_url = reverse_lazy('home:home')
+
+
+
+

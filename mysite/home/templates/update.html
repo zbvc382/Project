@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+
+
+
+
+
+    <p>status text: {{ form.status.value }}</p>
+
+    <input type="submit" value="Update" />
+</form>
+
+<script>
+    document.getElementById('id_status').value = 'Declined';
+
+
+</script>
+
+</body>
+</html>

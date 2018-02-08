@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^authoriser/', authorisers.AuthoriserHomeView.as_view(), name='authoriser'),
     url(r'^absence/', requesters.RequestView.as_view(), name='absence'),
     url(r'^admin/', home.AdminRedirect.as_view(), name='admin'),
+    url(r'^request/(?P<pk>\d+)/', authorisers.AuthoriserRequestView.as_view(), name='request')
 ]
 
 if settings.DEBUG is True:
