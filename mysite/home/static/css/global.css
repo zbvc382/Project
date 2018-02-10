@@ -93,3 +93,16 @@ body {
          background-color: #ea641b;
     }
 }
+
+#custom-thead {
+    background: rgb(34, 41, 49);
+    background: rgba(34, 41, 49, 1);
+    color: #fff;
+    font-size: small;
+}
+
+#info tbody{
+    border-bottom: 0.5px solid #222931;
+    border-left: 0.5px solid #222931;
+    border-right: 0.5px solid #222931;
+}
