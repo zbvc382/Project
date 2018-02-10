@@ -61,6 +61,21 @@
             </div>
         </div>
         </fieldset>
+
+                <div class="form-group">
+            <label for="disabledStatement" class="control-label col-xs-2">Attachment</label>
+            <div class="col-xs-10">
+                <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}"><img
+                        border="0" src="https://i.imgur.com/92UvXKJ.png"
+                        width="25" height="25" ></a>
+            </div>
+        </div>
+
+
+
+
+
+
                         <fieldset disabled>
         <div class="form-group" id="requester-comment-div">
             <label for="disabledRequestSubmissionDate" class="control-label col-xs-2">Request Submission Date</label>
@@ -82,12 +97,7 @@
         {{ form.status }}
         {{ form.comment }}
 
-    <div id="approved-date-text">
-    <p>Absence Request Approved on: {{ request.updated_at }}</p>
-    </div>
-            <div id="declined-date-text">
-    <p>Absence Request Declined on: {{ request.updated_at }}</p>
-    </div>
+
             <button type="submit" value="Update" class="btn btn-success"
             id="approve-button">Approve</button>
     <button type="submit" value="Update" class="btn btn-danger"

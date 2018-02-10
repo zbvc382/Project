@@ -130,7 +130,7 @@ div #authorise-absence-body {
     margin-bottom: 50px;
 }
 .authoriser-request-form{
-    margin: 20px;
+    margin: 25px;
 }
 .form-group textarea input {
     color: #10c469;
@@ -162,4 +162,9 @@ div #authorise-absence-body {
     position: absolute;
     left: 410px;
     bottom: 1px;
+}
+
+#att-img {
+    position: absolute;
+    top: 4px;
 }
