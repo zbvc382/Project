@@ -18,6 +18,8 @@ class AuthoriserHomeView(TemplateView):
         user = self.request.user
         pending_requests = []
 
+
+        ##change name from pending requests to something else
         authoriser_object = Authoriser.objects.filter(user=user)
         requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 
@@ -32,9 +34,14 @@ class AuthoriserHomeView(TemplateView):
 @method_decorator([login_required, authoriser_required], name='dispatch')
 class AuthoriserRequestView(UpdateView):
     model = Request
-    fields = ['reason', 'comment', 'status', 'leave_type']
+    fields = ['comment', 'status']
     template_name = 'update.html'
     success_url = reverse_lazy('home:home')
+
+
+
+
+
 
 
 

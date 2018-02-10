@@ -1,41 +1,137 @@
 {% extends 'base.html' %} {% block body %}{% load widget_tweaks %}
 
-
-<form action="" method="post">{% csrf_token %}
-
 <table class="table" id="info">
   <thead id="custom-thead">
     <tr>
       <th scope="col">Application Number</th>
+        <th scope="col">Status</th>
       <th scope="col">Staff Number</th>
+        <th scope="col">Staff ID</th>
       <th scope="col">Name</th>
       <th scope="col">Department</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{ request.id }}</th>
+        <td>{{ request.status }}</td>
+      <td>{{ request.user.id }}</td>
+      <td>{{ request.user.username }}</td>
+      <td>{{ request.user.get_full_name }}</td>
+        <td>{{ request.user.department }}</td>
     </tr>
   </tbody>
 </table>
+    <div id="authorise-absence-header"><h4>Absence Information</h4></div>
+    <div id="authorise-absence-body">
+        <div class="authoriser-request-form">
+    <form class="form-horizontal" action="" method="post"> {% csrf_token %}
+        <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledDateFrom" class="control-label col-xs-2">Absence Date From</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="disabledDateFrom"
+                       placeholder= {{ request.start|date:"d/m/Y" }}>
+            </div>
+        </div>
+        </fieldset>
+                <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledDateTo" class="control-label col-xs-2">Absence Date To</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="disabledDateTo"
+                       placeholder= {{ request.end|date:"d/m/Y" }}>
+            </div>
+        </div>
+        </fieldset>
+                        <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledReasonForAbsence" class="control-label col-xs-2">Reason For Absence</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="disabledReasonForAbsence"
+                       placeholder= {{ request.leave_type }}>
+            </div>
+        </div>
+        </fieldset>
+                                <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledStatement" class="control-label col-xs-2">Statement</label>
+            <div class="col-xs-10">
+                <textarea class="form-control" rows="5" id="disabledStatement" >{{ request.reason }}</textarea>
+            </div>
+        </div>
+        </fieldset>
+                        <fieldset disabled>
+        <div class="form-group" id="requester-comment-div">
+            <label for="disabledRequestSubmissionDate" class="control-label col-xs-2">Request Submission Date</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="disabledRequestSubmissionDate"
+                       placeholder= {{ request.created_at|date:"d/m/Y" }}>
+            </div>
+        </div>
+        </fieldset>
 
-    <button type="submit" value="Update" class="btn btn-success"
+                <div class="form-group requester-comment-div">
+            <label for="authoriserComment" class="control-label col-xs-2">Authoriser Comment</label>
+            <div class="col-xs-10">
+                <textarea class="form-control" rows="5" id="authoriserComment"
+                          form="form-horizontal">{{ form.comment.value }}</textarea>
+            </div>
+        </div>
+
+        {{ form.status }}
+        {{ form.comment }}
+
+    <div id="approved-date-text">
+    <p>Absence Request Approved on: {{ request.updated_at }}</p>
+    </div>
+            <div id="declined-date-text">
+    <p>Absence Request Declined on: {{ request.updated_at }}</p>
+    </div>
+            <button type="submit" value="Update" class="btn btn-success"
             id="approve-button">Approve</button>
     <button type="submit" value="Update" class="btn btn-danger"
-            id="decline-button">Decline</button>
-
-</form>
+            id="decline-button">Reject</button>
+    </form>
+</div>
 
 <script>
+
+    $("input[name=status]").hide();
+    $("#id_comment").hide();
+    $("#approved-date-text").hide();
+    $("#declined-date-text").hide();
+    $(".requester-comment-div").wrapAll("<fieldset />");
+
+
+
+    if ($("input[name=status]").val() === "Approved") {
+        $("#approved-date-text").show();
+        $('#approve-button').hide();
+        $('#decline-button').hide();
+        $(".requester-comment-div").wrapAll("<fieldset disabled />");
+
+    }
+    else if ($("input[name=status]").val() === "Declined") {
+        $("#declined-date-text").show();
+        $('#approve-button').hide();
+        $('#decline-button').hide();
+        $(".requester-comment-div").wrapAll("<fieldset disabled />");
+    }
+
+    $("input[name=status]").hide();
+    $("#id_comment").hide();
+
     $('#approve-button').click(function () {
         $("input[name=status]").val("Approved");
+        var comment = $("#authoriserComment").val();
+        $("#id_comment").val(comment);
     });
 
     $('#decline-button').click(function () {
         $("input[name=status]").val("Declined");
+        var comment = $("#authoriserComment").val();
+        $("#id_comment").val(comment);
     });
 </script>
 {% endblock %}

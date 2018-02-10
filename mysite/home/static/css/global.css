@@ -26,7 +26,6 @@ body {
 }
  #navbarCollapse #left_side {
      position: relative;
-     right: 223px
 }
  .navbar-default {
      background-color: #222931;
@@ -97,6 +96,9 @@ body {
 #custom-thead {
     background: rgb(34, 41, 49);
     background: rgba(34, 41, 49, 1);
+    border-top: 0.5px solid #ea641b;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
     color: #fff;
     font-size: small;
 }
@@ -105,4 +107,59 @@ body {
     border-bottom: 0.5px solid #222931;
     border-left: 0.5px solid #222931;
     border-right: 0.5px solid #222931;
+    background: rgba(34, 41, 49, 0.01);
+}
+
+div #authorise-absence-header {
+
+    background: rgba(34, 41, 49, 1);
+    border: 0.5px solid #ea641b;
+    border-bottom-color: #DDDDDD;
+}
+
+div #authorise-absence-header h4 {
+    color: #fff;
+    text-align: center;
+}
+
+div #authorise-absence-body {
+    border: 0.5px solid #222931;
+    border-top: 1.6px solid #DDDDDD;
+    background: rgba(34, 41, 49, 0.01);
+    padding-bottom: 0px;
+    margin-bottom: 50px;
+}
+.authoriser-request-form{
+    margin: 20px;
+}
+.form-group textarea input {
+    color: #10c469;
+}
+
+#authoriserComment {
+    height: 100px;
+}
+
+#approve-button  {
+    position: absolute;
+    left: 510px;
+    bottom: 8px;
+}
+#decline-button  {
+    position: absolute;
+    left: 600px;
+    bottom: 8px;
+}
+
+#approved-date-text {
+    display: inline-block;
+    position: absolute;
+    left: 410px;
+    bottom: 1px;
+}
+#declined-date-text {
+    display: inline-block;
+    position: absolute;
+    left: 410px;
+    bottom: 1px;
 }
