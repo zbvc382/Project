@@ -30,8 +30,8 @@ class Request(models.Model):
     end = models.DateField()
     reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='Pending')
-    attachment = models.FileField(upload_to=user_directory_path, blank=True)
-    comment = models.TextField(max_length=200, blank=True, null=True)
+    attachment = models.FileField(upload_to=user_directory_path, blank=True, null=True)
+    comment = models.TextField(max_length=200, blank=True, default="")
 
     def __str__(self):
         return '%s' % self.user

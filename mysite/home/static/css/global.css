@@ -163,8 +163,18 @@ div #authorise-absence-body {
     left: 410px;
     bottom: 1px;
 }
-
-#att-img {
-    position: absolute;
-    top: 4px;
+.fa-file-pdf {
+    color: rgba(34, 41, 49, 0.8);
+}
+.fa-file-alt {
+    color: rgba(34, 41, 49, 0.8);
+}
+.fa-file-image {
+    color: rgba(34, 41, 49, 0.8);
+}
+.fa-file-word {
+    color: rgba(34, 41, 49, 0.8);
+}
+.fa-file {
+    color: rgba(34, 41, 49, 0.8);
 }

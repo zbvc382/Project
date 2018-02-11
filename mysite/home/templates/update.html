@@ -65,9 +65,9 @@
                 <div class="form-group">
             <label for="disabledStatement" class="control-label col-xs-2">Attachment</label>
             <div class="col-xs-10">
-                <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}"><img
-                        border="0" src="https://i.imgur.com/92UvXKJ.png"
-                        width="25" height="25" ></a>
+                <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
+
+                </a>
             </div>
         </div>
 
@@ -97,6 +97,13 @@
         {{ form.status }}
         {{ form.comment }}
 
+            <div id="approved-date-text">
+    <p>Absence Request Approved on: {{ request.updated_at }}</p>
+    </div>
+            <div id="declined-date-text">
+    <p>Absence Request Declined on: {{ request.updated_at }}</p>
+    </div>
+
 
             <button type="submit" value="Update" class="btn btn-success"
             id="approve-button">Approve</button>
@@ -113,19 +120,40 @@
     $("#declined-date-text").hide();
     $(".requester-comment-div").wrapAll("<fieldset />");
 
+    var extensionArray = ['pdf','jpg','txt','docx'];
+    var attachment = '{{ request.attachment }}';
+    var extension = attachment.split('.').pop();
 
+    if (extensionArray[0] === extension) {
+        $('#att-img').append("<i class=\"far fa-file-pdf fa-2x\"></i>");
+    }
+    else if (extensionArray[1] === extension) {
+        $('#att-img').append("<i class=\"far fa-file-image fa-2x\"></i>");
+    }
+
+    else if (extensionArray[2] === extension) {
+        $('#att-img').append("<i class=\"far fa-file-alt fa-2x\"></i>");
+    }
+
+    else if (extensionArray[3] === extension) {
+        $('#att-img').append("<i class=\"far fa-file-word fa-2x\"></i>");
+    }
+    else {
+        $('#att-img').append("<i class=\"far fa-file fa-2x\"></i>");
+
+    }
 
     if ($("input[name=status]").val() === "Approved") {
         $("#approved-date-text").show();
-        $('#approve-button').hide();
-        $('#decline-button').hide();
+        $("#approve-button").hide();
+        $("#decline-button").hide();
         $(".requester-comment-div").wrapAll("<fieldset disabled />");
 
     }
     else if ($("input[name=status]").val() === "Declined") {
         $("#declined-date-text").show();
-        $('#approve-button').hide();
-        $('#decline-button').hide();
+        $("#approve-button").hide();
+        $("#decline-button").hide();
         $(".requester-comment-div").wrapAll("<fieldset disabled />");
     }
 
