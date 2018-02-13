@@ -442,23 +442,39 @@
     <table class="table table-striped table-bordered table-hover" id="my_table">
       <thead>
         <tr>
+            <th style="width: 5px; padding:0; border: none"></th>
           <th>Date Submitted</th>
+            <th>Date Updated</th>
           <th>Name</th>
           <th>Department</th>
           <th>Type</th>
           <th>Attachment</th>
           <th>Status</th>
-          <th>Action</th>
+          <th>Action &nbsp;</th>
         </tr>
       </thead>
       <tbody id="stud">
         {% for request in pending_requests %}
-        <tr>
+        <tr id="row-height">
+        <td style="background-color:
+
+                {% if request.status == 'Pending' %}
+                    #ECAD55;
+                {% endif %}
+                {% if request.status == 'Approved' %}
+                    #62B65F;
+                {% endif %}
+                {% if request.status == 'Declined' %}
+                    #DC5154;
+                {% endif %}
+
+                padding:0;"></td>
           <td>{{ request.created_at }}</td>
+        <td>{{ request.updated_at }}</td>
           <td>{{ request.user.get_full_name }}</td>
           <td>{{ request.user.department }}</td>
           <td>{{ request.leave_type }}</td>
-          <td>{{ request.attachment }}</td>
+          <td>image</td>
           <td> {% if request.status == 'Approved' %}
             <span class="status text-success">&bull;</span>
             {{ request.status }}

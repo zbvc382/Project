@@ -1,5 +1,5 @@
 body {
-     background-color: #ffffff;
+     background-color: #222931;
      padding-top: 35px;
 }
  #absence-text {
@@ -29,7 +29,7 @@ body {
 }
  .navbar-default {
      background-color: #222931;
-     border-color: #ea641b;
+     border-bottom: 0.5px solid #ea641b;
 }
  .navbar-default .navbar-brand {
      color: #f5f7f2;
@@ -94,8 +94,7 @@ body {
 }
 
 #custom-thead {
-    background: rgb(34, 41, 49);
-    background: rgba(34, 41, 49, 1);
+    background: #222931;
     border-top: 0.5px solid #ea641b;
     border-left: 0.5px solid #ea641b;
     border-right: 0.5px solid #ea641b;
@@ -107,11 +106,11 @@ body {
     border-bottom: 0.5px solid #222931;
     border-left: 0.5px solid #222931;
     border-right: 0.5px solid #222931;
-    background: rgba(34, 41, 49, 0.01);
+    background: rgba(234, 231, 226, 1.2);
 }
 
 div #authorise-absence-header {
-
+    margin-top: -20px;
     background: rgba(34, 41, 49, 1);
     border: 0.5px solid #ea641b;
     border-bottom-color: #DDDDDD;
@@ -125,7 +124,7 @@ div #authorise-absence-header h4 {
 div #authorise-absence-body {
     border: 0.5px solid #222931;
     border-top: 1.6px solid #DDDDDD;
-    background: rgba(34, 41, 49, 0.01);
+    background: rgba(234, 231, 226, 1.2);
     padding-bottom: 0px;
     margin-bottom: 50px;
 }
