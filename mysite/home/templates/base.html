@@ -1,4 +1,5 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -144,9 +145,29 @@
           // Appends the total entries final value to selected element
           $("#pending-text p").append(total_entries);
 
-
-
           {% endif %}
+
+
+          {% if user.is_authoriser %}
+
+
+    $("#approved-date-text").hide();
+    $("#declined-date-text").hide();
+    $(".requester-comment-div").wrapAll("<fieldset />");
+
+    $('#approve-button').click(function () {
+        $("input[name=status]").val("Approved");
+        var comment = $("#authoriserComment").val();
+        $("#id_comment").val(comment);
+    });
+
+    $('#decline-button').click(function () {
+        $("input[name=status]").val("Declined");
+        var comment = $("#authoriserComment").val();
+        $("#id_comment").val(comment);
+    });
+          {% endif %}
+
       });
     </script>
   </body>

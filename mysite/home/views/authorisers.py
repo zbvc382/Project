@@ -38,6 +38,20 @@ class AuthoriserRequestView(UpdateView):
     template_name = 'update.html'
     success_url = reverse_lazy('home:home')
 
+    def get_context_data(self, **kwargs):
+        context = super(AuthoriserRequestView, self).get_context_data(**kwargs)
+        array = ['pdf', 'jpg', 'txt', 'docx']
+        request_object = self.get_object()
+        attachment = request_object.__str__()
+        extension = attachment.split('.').pop()
+        context['array'] = array
+        context['extension'] = extension
+
+        return context
+
+
+
+
 
 
 

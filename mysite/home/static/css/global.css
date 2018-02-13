@@ -135,23 +135,9 @@ div #authorise-absence-body {
 .authoriser-request-form{
     margin: 25px;
 }
-.form-group textarea input {
-    color: #10c469;
-}
 
 #authoriserComment {
     height: 100px;
-}
-
-#approve-button  {
-    position: absolute;
-    left: 510px;
-    bottom: 8px;
-}
-#decline-button  {
-    position: absolute;
-    left: 600px;
-    bottom: 8px;
 }
 
 #approved-date-text {
@@ -194,8 +180,70 @@ textarea {
 }
 
 #authorise-absence-body hr {
-    border-color: #222931;
-    width: 1170px;
+    border: 1px solid #EEEEEE;
+    width: 1167px;
     position: relative;
-    left: -25px;
+    right: 25px;
+}
+
+.disabledStatement2 {
+    position: relative;
+    top: 144px;
+}
+
+.icon-group {
+    position: absolute;
+}
+
+.icon-group #icon-div {
+    left: 96px;
+    bottom: 23.5px;
+}
+
+input[name=status] {
+    display: none;
+}
+
+#id_comment {
+    display: none;
+}
+#disabledStatement {
+    color: #989898;
+}
+
+#authoriserComment {
+    position: relative;
+    height: 20%;
+}
+
+.col-sm-10 .btn-block {
+    position: relative;
+    top: 1.5px;
+    height: 6%;
+}
+
+.col-sm-10 .btn-success {
+    background: #5FBB5E;
+}
+
+.col-sm-10 .btn-danger {
+    background: #D55656;
+}
+
+.col-sm-10 .btn-info {
+    background: #5AC3D9;
+    position: relative;
+    top: 6px;
+}
+
+.col-sm-10 .btn-success:hover {
+    background: #479C47;
+}
+
+.col-sm-10 .btn-danger:hover {
+    background: #C73333;
+}
+
+.col-sm-10 .btn-info:hover {
+    background: #38B2D4;
 }

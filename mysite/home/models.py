@@ -34,7 +34,7 @@ class Request(models.Model):
     comment = models.TextField(max_length=200, blank=True, default="")
 
     def __str__(self):
-        return '%s' % self.user
+        return '%s' % self.attachment
 
 
 class RequesterManager(models.Manager):
