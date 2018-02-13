@@ -474,7 +474,7 @@
           <td>{{ request.user.get_full_name }}</td>
           <td>{{ request.user.department }}</td>
           <td>{{ request.leave_type }}</td>
-          <td>image</td>
+          <td><a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}"></a></td>
           <td> {% if request.status == 'Approved' %}
             <span class="status text-success">&bull;</span>
             {{ request.status }}
