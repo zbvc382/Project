@@ -1,22 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
-  <link rel="stylesheet" href="{% static 'css/global.css' %}">
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/update.js' %}"></script>
+  </head>
   {% block head %} {% endblock %}
   <body>
     {% if user.is_authenticated %}
@@ -80,95 +83,5 @@
         {% block body %}{% endblock %}
       </div>
     </div>
-    <script>
-      $(document).ready(function() {
-
-          $('#my_table').DataTable( {
-              "lengthMenu": [[7], [7]]
-          });
-
-          // Search box
-          $('#searchbox').on( 'keyup click', function () {
-              $('.table').DataTable().search(
-                  $('#searchbox').val()
-              ).draw();
-          });
-
-          var table = $('#my_table').DataTable();
-
-          $('#button-all:input').on('change', function(){
-              table.search('').columns().search().draw();
-          });
-
-          $('#button-pending:input').on('change', function(){
-              table.search(this.value).columns(5).search().draw();
-          });
-
-          $('#button-approved:input').on('change', function(){
-              table.search(this.value).columns(5).search().draw();
-          });
-
-          $('#button-declined:input').on('change', function(){
-              table.search(this.value).columns(5).search().draw();
-          });
-
-          // Default table results (pending)
-          $('input[type=radio]').each(function(){
-              if($(this).is(':checked')){
-                  table.search(this.value).columns(5).search().draw();
-              }
-          });
-
-          $("#my_table_paginate").detach().appendTo('#footer');
-          $("#my_table_info").detach().appendTo('#footer1');
-
-          setTimeout(function() {
-              $(".alert").fadeOut("slow");
-          }, 5000);
-
-          $(".links").each(function() {
-
-              if ($('a', this).attr("href") === window.location.pathname) {
-                  $(this).removeClass('inactive').addClass('active');
-              }
-          });
-
-          {% if user.is_requester %}
-          var total_entries = 0;
-
-          {% for entry in entries %}
-
-              total_entries++;
-
-          {% endfor %}
-
-          // Appends the total entries final value to selected element
-          $("#pending-text p").append(total_entries);
-
-          {% endif %}
-
-
-          {% if user.is_authoriser %}
-
-
-    $("#approved-date-text").hide();
-    $("#declined-date-text").hide();
-    $(".requester-comment-div").wrapAll("<fieldset />");
-
-    $('#approve-button').click(function () {
-        $("input[name=status]").val("Approved");
-        var comment = $("#authoriserComment").val();
-        $("#id_comment").val(comment);
-    });
-
-    $('#decline-button').click(function () {
-        $("input[name=status]").val("Declined");
-        var comment = $("#authoriserComment").val();
-        $("#id_comment").val(comment);
-    });
-          {% endif %}
-
-      });
-    </script>
   </body>
 </html>

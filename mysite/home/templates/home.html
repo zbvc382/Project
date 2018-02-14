@@ -2,28 +2,26 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %} {% block body %}
 {% if user.is_requester %}
-<div class="jumbotron" id="requester_jumbotron">
-</div>
+<div class="jumbotron" id="requester_jumbotron"></div>
 {% endif %}
 {% if user.is_authoriser %}
-<div class="jumbotron" id="authoriser_jumbatron">
+<div class="jumbotron" id="authoriser_jumbatron"></div>
+<div class="details">
+  <ul id="left-authoriser">
+    <li>
+      <p><span class="glyphicon glyphicon-user"></span>{{ user.get_full_name }}</p>
+    </li>
+    <li>
+      <p><span class="glyphicon glyphicon-earphone one"></span>{{ user.phone_number }}</p>
+    </li>
+    <li>
+      <p><span class="glyphicon glyphicon-envelope one"></span>{{ user.email }}</p>
+    </li>
+    <li>
+      <p><span class="glyphicon glyphicon-book"></span>{{ user.department }}</p>
+    </li>
+  </ul>
 </div>
-    <div class="details">
-        <ul id="left-authoriser">
-            <li>
-                <p><span class="glyphicon glyphicon-user"></span>{{ user.get_full_name }}</p>
-            </li>
-            <li>
-                <p><span class="glyphicon glyphicon-earphone one"></span>{{ user.phone_number }}</p>
-            </li>
-            <li>
-                <p><span class="glyphicon glyphicon-envelope one"></span>{{ user.email }}</p>
-            </li>
-            <li>
-                <p><span class="glyphicon glyphicon-book"></span>{{ user.department }}</p>
-            </li>
-        </ul>
-    </div>
 {% endif %}
 {% if user.is_requester %}
 <div class="details">
@@ -423,97 +421,92 @@
         </div>
         <div class="col-sm-6">
           <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-info">
-                  <input type="radio" name="status" id="button-all" value=""> All
-              </label>
-              <label class="btn btn-warning active">
-                  <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
-              </label>
-              <label class="btn btn-success">
-                  <input type="radio" name="status" id="button-approved" value="Approved"> Approved
-              </label>
-              <label class="btn btn-danger">
-                  <input type="radio" name="status" id="button-declined" value="Declined"> Declined
-              </label>
+            <label class="btn btn-info">
+            <input type="radio" name="status" id="button-all" value=""> All
+            </label>
+            <label class="btn btn-warning active">
+            <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
+            </label>
+            <label class="btn btn-success">
+            <input type="radio" name="status" id="button-approved" value="Approved"> Approved
+            </label>
+            <label class="btn btn-danger">
+            <input type="radio" name="status" id="button-declined" value="Declined"> Declined
+            </label>
           </div>
         </div>
       </div>
     </div>
-  <div class="table-container">
-    <table class="table table-striped table-bordered table-hover" id="my_table">
-      <thead>
-        <tr>
+    <div class="table-container">
+      <table class="table table-striped table-bordered table-hover" id="my_table">
+        <thead>
+          <tr>
             <th style="width: 5px; padding:0; border: none"></th>
-          <th>Date Submitted</th>
+            <th>Date Submitted</th>
             <th>Date Updated</th>
-          <th>Name</th>
-          <th>Department</th>
-          <th>Type</th>
-          <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
-          <th>Status</th>
-          <th>Action &nbsp;</th>
-        </tr>
-      </thead>
-      <tbody id="stud">
-        {% for request in pending_requests %}
-        <tr id="row-height">
-        <td style="background-color:
-
-                {% if request.status == 'Pending' %}
-                    #ECAD55;
-                {% endif %}
-                {% if request.status == 'Approved' %}
-                    #62B65F;
-                {% endif %}
-                {% if request.status == 'Declined' %}
-                    #DC5154;
-                {% endif %}
-
-                padding:0;"></td>
-          <td>{{ request.created_at }}</td>
-        <td>{{ request.updated_at }}</td>
-          <td>{{ request.user.get_full_name }}</td>
-          <td>{{ request.user.department }}</td>
-          <td>{{ request.leave_type }}</td>
-          <td>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Type</th>
+            <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
+            <th>Status</th>
+            <th>Action &nbsp;</th>
+          </tr>
+        </thead>
+        <tbody id="stud">
+          {% for request in pending_requests %}
+          <tr id="row-height">
+            <td style="background-color:
+              {% if request.status == 'Pending' %}
+              #ECAD55;
+              {% endif %}
+              {% if request.status == 'Approved' %}
+              #62B65F;
+              {% endif %}
+              {% if request.status == 'Declined' %}
+              #DC5154;
+              {% endif %}
+              padding:0;"></td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.updated_at }}</td>
+            <td>{{ request.user.get_full_name }}</td>
+            <td>{{ request.user.department }}</td>
+            <td>{{ request.leave_type }}</td>
+            <td>
               <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-                  {% if array.0 == request.get_extension %}
-                      <i class="far fa-file-pdf fa-lg"></i>
-                  {% endif %}
-
-                  {% if array.1 == request.get_extension %}
-                      <i class="far fa-file-image fa-lg"></i>
-                  {% endif %}
-
-                  {% if array.2 == request.get_extension %}
-                      <i class="far fa-file-alt fa-lg"></i>
-                  {% endif %}
-
-                  {% if array.3 == request.get_extension %}
-                      <i class="far fa-file-word fa-lg"></i>
-                  {% endif %}
+              {% if array.0 == request.get_extension %}
+              <i class="far fa-file-pdf fa-lg"></i>
+              {% endif %}
+              {% if array.1 == request.get_extension %}
+              <i class="far fa-file-image fa-lg"></i>
+              {% endif %}
+              {% if array.2 == request.get_extension %}
+              <i class="far fa-file-alt fa-lg"></i>
+              {% endif %}
+              {% if array.3 == request.get_extension %}
+              <i class="far fa-file-word fa-lg"></i>
+              {% endif %}
               </a>
-          </td>
-          <td> {% if request.status == 'Approved' %}
-            <span class="status text-success">&bull;</span>
-            {{ request.status }}
-            {% endif %}
-            {% if request.status == 'Pending' %}
-            <span class="status text-warning">&bull;</span>
-            {{ request.status }}
-            {% endif %}
-            {% if request.status == 'Declined' %}
-            <span class="status text-danger">&bull;</span>
-            {{ request.status }}
-            {% endif %}
-          </td>
-          <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    <div class="table-background">&nbsp;</div>
-    </table>
-  </div>
+            </td>
+            <td> {% if request.status == 'Approved' %}
+              <span class="status text-success">&bull;</span>
+              {{ request.status }}
+              {% endif %}
+              {% if request.status == 'Pending' %}
+              <span class="status text-warning">&bull;</span>
+              {{ request.status }}
+              {% endif %}
+              {% if request.status == 'Declined' %}
+              <span class="status text-danger">&bull;</span>
+              {{ request.status }}
+              {% endif %}
+            </td>
+            <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <div class="table-background">&nbsp;</div>
+      </table>
+    </div>
   </div>
 </div>
 {% endif %}
