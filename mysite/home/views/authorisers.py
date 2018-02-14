@@ -26,7 +26,8 @@ class AuthoriserHomeView(TemplateView):
         for requester in requester_objects:
             pending_requests += Request.objects.filter(user=requester.user)
 
-        context = {'pending_requests': pending_requests}
+        array = ['pdf', 'jpg', 'txt', 'docx']
+        context = {'pending_requests': pending_requests, 'array': array}
 
         return context
 

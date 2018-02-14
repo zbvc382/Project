@@ -449,7 +449,7 @@
           <th>Name</th>
           <th>Department</th>
           <th>Type</th>
-          <th>Attachment</th>
+          <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
           <th>Status</th>
           <th>Action &nbsp;</th>
         </tr>
@@ -475,7 +475,25 @@
           <td>{{ request.user.get_full_name }}</td>
           <td>{{ request.user.department }}</td>
           <td>{{ request.leave_type }}</td>
-          <td></td>
+          <td>
+              <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
+                  {% if array.0 == request.get_extension %}
+                      <i class="far fa-file-pdf fa-lg"></i>
+                  {% endif %}
+
+                  {% if array.1 == request.get_extension %}
+                      <i class="far fa-file-image fa-lg"></i>
+                  {% endif %}
+
+                  {% if array.2 == request.get_extension %}
+                      <i class="far fa-file-alt fa-lg"></i>
+                  {% endif %}
+
+                  {% if array.3 == request.get_extension %}
+                      <i class="far fa-file-word fa-lg"></i>
+                  {% endif %}
+              </a>
+          </td>
           <td> {% if request.status == 'Approved' %}
             <span class="status text-success">&bull;</span>
             {{ request.status }}

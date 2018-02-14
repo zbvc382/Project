@@ -36,6 +36,9 @@ class Request(models.Model):
     def __str__(self):
         return '%s' % self.attachment
 
+    def get_extension(self):
+        return self.__str__().split('.').pop()
+
 
 class RequesterManager(models.Manager):
     def get_authorisers(self):

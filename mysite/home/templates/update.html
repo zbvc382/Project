@@ -110,19 +110,22 @@
             </label>
             <div class="col-sm-10" id="icon-div">
               <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-              {% for ext in array %}
-              {% if ext == extension %}
-              <i class="far fa-file-pdf fa-2x"></i>
-              {% elif ext == extension %}
-              <i class="far fa-file-image fa-2x"></i>
-              {% elif ext == extension %}
-              <i class="far fa-file-alt fa-2x"></i>
-              {% elif ext == extension %}
-              <i class="far fa-file-word fa-2x"></i>
-              {% elif ext == extension %}
-              <i class="far fa-file fa-2x"></i>
-              {% endif %}
-              {% endfor %}
+                  {% if array.0 == extension %}
+                      <i class="far fa-file-pdf fa-2x"></i>
+                  {% endif %}
+
+                  {% if array.1 == extension %}
+                      <i class="far fa-file-image fa-2x"></i>
+                  {% endif %}
+
+                  {% if array.2 == extension %}
+                      <i class="far fa-file-alt fa-2x"></i>
+                  {% endif %}
+
+                  {% if array.3 == extension %}
+                      <i class="far fa-file-word fa-2x"></i>
+                  {% endif %}
+              </a>
             </div>
           </div>
           <div class="form-group disabledStatement2">
