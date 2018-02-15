@@ -6,4 +6,8 @@ $(document).ready(function() {
       $(this).removeClass('inactive').addClass('active');
     }
   });
+
+  setTimeout(function() {
+    $(".alert").fadeOut("slow");
+    }, 5000);
 });
