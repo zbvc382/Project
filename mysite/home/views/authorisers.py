@@ -16,7 +16,7 @@ class AuthoriserHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        pending_requests = []
+        authoriser_requests = []
 
 
         ##change name from pending requests to something else
@@ -24,10 +24,10 @@ class AuthoriserHomeView(TemplateView):
         requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 
         for requester in requester_objects:
-            pending_requests += Request.objects.filter(user=requester.user)
+            authoriser_requests += Request.objects.filter(user=requester.user)
 
         array = ['pdf', 'jpg', 'txt', 'docx']
-        context = {'pending_requests': pending_requests, 'array': array}
+        context = {'authoriser_requests': authoriser_requests, 'array': array}
 
         return context
 
@@ -49,15 +49,3 @@ class AuthoriserRequestView(UpdateView):
         context['extension'] = extension
 
         return context
-
-
-
-
-
-
-
-
-
-
-
-

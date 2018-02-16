@@ -1,21 +1,10 @@
-#left span {
-    width: 50px;
-}
-
 #left-authoriser span {
     width: 30px;
 }
 
-.details #left {
-    position: absolute;
-    top: 40px;
-    left: -1.7%;
-    list-style: none;
-}
-
 .details #left-authoriser {
     position: absolute;
-    top: 27px;
+    top: 29px;
     left: -1.7%;
     list-style: none;
 }
@@ -25,49 +14,6 @@
     top: 10px;
     left: 890px;
     list-style: none;
-}
-
-.col-md-3 {
-    position: absolute;
-    left: 17.5%;
-    top: 0%;
-}
-
-.col-md-3 .month_left {
-    position: absolute;
-    left: 110px
-}
-
-.col-md-3 .month_right {
-    position: absolute;
-    left: 400px
-}
-
-#welcome-text {
-    color: #ea641b;
-    position: relative;
-    display: inline-block;
-    right: -70px;
-}
-
-.divider-vertical-left {
-    opacity: 0.2;
-    left: 22%;
-    top: 0px;
-    position: absolute;
-    height: 180px;
-    margin: 0 9px;
-    border-left: 1px solid #222931;
-}
-
-.divider-vertical-right {
-    opacity: 0.2;
-    left: 77%;
-    top: 0px;
-    position: absolute;
-    height: 180px;
-    margin: 0 9px;
-    border-left: 1px solid #222931;
 }
 
 .header {
@@ -80,20 +26,13 @@
     position: absolute;
     width: 100%;
     left: -1px;
-    bottom: 0px;
-    top: 0px;
-    height: 160px;
+    top: 20px;
+    height: 130px;
     background: rgb(234, 231, 226);
     background: rgba(234, 231, 226, 1.2);
     padding: 0.9em 0.6em;
-    border: 1px solid #ea641b;
+    border: 0.5px solid #ea641b;
     border-radius: 5px 5px 0px 0px;
-}
-
-#requester_jumbotron {
-    height: 180px;
-    background: rgba(51, 61, 70, 0.05);
-    padding: 0.9em 0.6em;
 }
 
 .table-wrapper {
@@ -106,11 +45,11 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     width: 100%;
     position: absolute;
-    left: -0.1%;
     top: 150px;
     max-width: 100%;
-    min-height: 378.5px;
-    max-height: 378.5px;
+    left: -0.07%;
+    min-height: 382px;
+    max-height: 382px;
 }
 
 .table.table>thead>tr>th {
@@ -254,11 +193,11 @@ table.table-striped tbody tr:nth-of-type(odd) {
 .pagination li a {
     border: none;
     min-width: 30px;
-    min-height: 30px;
+    min-height: 25px;
     color: #999;
     margin: 0 2px;
-    line-height: 30px;
-    border-radius: 4px !important;
+    line-height: 25px;
+    border-radius: 0px !important;
     text-align: center;
     padding: 0;
 }
@@ -269,11 +208,11 @@ table.table-striped tbody tr:nth-of-type(odd) {
 
 .pagination li.active a,
 .pagination li.active a.page-link {
-    background: #59bdb3;
+    background: #ea641b;
 }
 
 .pagination li.active a:hover {
-    background: #45aba0;
+    background: #ea641b;
 }
 
 .pagination li:first-child a,
@@ -413,36 +352,29 @@ table.table th i {
     color: #FFC107;
 }
 
-#footer {
-    left: 496px;
-    position: absolute;
-    bottom: 0px;
-    top: 490px;
-    width: 50%;
-    display: inline-block;
+#footer-info {
+    position: relative;
+    width: 30%;
+    top: 229px;
+    color: #999;
+    left: 2px;
+    font-size: 8pt;
 }
 
-#footer a {
-    color: #fff;
-    background: rgb(34, 41, 49);
-    background: rgba(34, 41, 49, .2);
-}
-
-#footer1 {
+#footer-paginate {
     color: #CBCBCB;
-    left: 0px;
     position: absolute;
-    bottom: 0px;
-    top: 510px;
-    width: 100%;
     display: inline-block;
+    width: 30%;
+    top: 258px;
+    left: 0px;
 }
 
 .table-background {
     background: #EAE7E2;
     position: absolute;
     display: inline-block;
-    top: 134px;
+    top: 117px;
     width: 1169px;
-    height: 244px;
+    height: 264.5px;
 }

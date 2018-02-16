@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from ..decorators import requester_required
 from ..forms import RequestForm
 from ..models import Request, Requester
-# from django.core.exceptions import ObjectDoesNotExist
 
 User = get_user_model()
 
@@ -20,12 +19,14 @@ class RequesterHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        entries = Request.objects.filter(user=self.request.user)
+        requester_requests = Request.objects.filter(user=self.request.user)
 
         # Might need exception handling later on
         assigned_authoriser = Requester.objects.get(user=self.request.user).assigned_authoriser.user.get_full_name
+        array = ['pdf', 'jpg', 'txt', 'docx']
 
-        context = {'user': user, 'entries': entries, 'assigned_authoriser': assigned_authoriser}
+        context = {'user': user, 'requester_requests': requester_requests,
+                   'assigned_authoriser': assigned_authoriser, 'array': array}
 
         return context
 
@@ -43,4 +44,3 @@ class RequestView(CreateView):
         messages.success(self.request, 'Form submitted successfully!')
 
         return redirect(reverse('home:home'))
-
