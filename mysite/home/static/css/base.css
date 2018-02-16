@@ -292,3 +292,17 @@ input[name=status] {
 .col-sm-10 .btn-info:hover {
     background: #38B2D4;
 }
+
+.alert {
+    position:fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 7000;
+    margin-bottom: 1px;
+    height: 30px;
+    line-height:30px;
+    padding:0 15px;
+    border-radius: 0;
+
+}

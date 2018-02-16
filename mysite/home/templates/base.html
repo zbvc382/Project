@@ -70,10 +70,7 @@
         {% endif %}
         {% if user.is_requester %}
         {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible" role="alert" style="position:fixed; top: 50px;left: 0;right: 0;z-index: 7000;   margin-bottom: 1px;
-            height: 30px;
-            line-height:30px;
-            padding:0px 15px;">
+        <div class="alert {{ message.tags }} alert-dismissible fade in text-center" role="alert">
             {{ message }}
         </div>
         {% endfor %}
