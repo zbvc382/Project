@@ -3,6 +3,12 @@ body {
     padding-top: 20px;
 }
 
+#main-container {
+    position:relative;
+    top:50px;
+    background-color:#222931;
+}
+
 #absence-text {
     position: relative;
     left: 455px;
