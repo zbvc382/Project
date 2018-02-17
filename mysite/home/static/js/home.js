@@ -24,7 +24,7 @@ $(document).ready(function () {
       auth_table.order([1, "asc"]).draw();
 
       req_table.search(this.value).columns(7).search().draw();
-      req_table.order([1, "asc"]).draw();
+      req_table.order([1, "desc"]).draw();
     });
     $('#button-approved:input').on('change', function () {
       auth_table.search(this.value).columns(6).search().draw();
@@ -46,13 +46,14 @@ $(document).ready(function () {
         auth_table.search(this.value).columns(5).search().draw();
 
         req_table.search(this.value).columns(7).search().draw();
+        req_table.order([1, "desc"]).draw();
       }
     });
     $("#authoriser_table_paginate").detach().appendTo('#footer-paginate');
     $("#authoriser_table_info").detach().appendTo('#footer-info');
 
-    $("#requester_table_info").detach().appendTo('#footer-info');
     $("#requester_table_paginate").detach().appendTo('#footer-paginate');
+    $("#requester_table_info").detach().appendTo('#footer-info');
   }
 
 );

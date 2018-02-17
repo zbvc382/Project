@@ -1,0 +1,15 @@
+
+div #request-absence-body {
+    position: relative;
+    top: 100px;
+    width: 100%;
+    padding-top: 50px;
+    border: 0.5px solid #ea641b;
+    background: rgba(234, 231, 226, 1.2);
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.row {
+    background: #222931;
+}

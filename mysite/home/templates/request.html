@@ -1,23 +1,51 @@
-{% extends 'base.html' %} {% block body %} {% load widget_tweaks %}
-
-<br/>
-<div class="container">
-    <form method="post" enctype="multipart/form-data">
-
-        {% csrf_token %} {% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in form.visible_fields %}
-
-        <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-
-            {{ field|add_class:'form-control' }} {% for error in field.errors %}
-
-            <span class="help-block">{{ error }}</span> {% endfor %}
-        </div>
-
-        {% endfor %}
-
-        <input type="submit" class="btn btn-success" value="Submit">
+{% extends 'base.html' %} {% block body %}
+{% load widget_tweaks %}
+<div id="request-absence-body">
+    <div class="authoriser-request-form">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group form-group-sm">
+                <!-- left column -->
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="{{ form.start.id_for_label }}" class="col-sm-2 control-label">{{ form.start.name }}</label>
+                        <div class="col-sm-10">
+                            {% render_field form.start class="form-control" %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label">{{ form.reason.name }}</label>
+                        <div class="col-sm-10">
+                            {% render_field form.reason class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+                <!-- right column -->
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="{{ form.end.id_for_label }}" class="col-sm-2 control-label">{{ form.end.name }}</label>
+                        </label>
+                        <div class="col-sm-10">
+                            {% render_field form.end class="form-control" %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.leave_type.id_for_label }}" class="col-sm-2 control-label">{{ form.leave_type.name }}</label>
+                        <div class="col-sm-10">
+                            {% render_field form.leave_type class="form-control" %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.attachment.id_for_label }}" class="col-sm-2 control-label">{{ form.attachment.name }}</label>
+                        <div class="col-sm-10">
+                            {% render_field form.attachment class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <input type="submit" class="btn btn-success" value="Submit">
         <a href="{% url 'home:home' %}" class="btn btn-info" role="button">Cancel</a>
-    </form>
+        </form>
+    </div>
 </div>
-<br> {% endblock %}
+{% endblock %}
