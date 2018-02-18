@@ -1,12 +1,33 @@
-
 div #request-absence-body {
     position: relative;
+    margin-top: -60px;
     top: 100px;
     width: 100%;
     padding-top: 50px;
     border: 0.5px solid #ea641b;
     background: rgba(234, 231, 226, 1.2);
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+}
+
+.col-sm-10 {
+    position: relative;
+    display: inline-block;
+    left: 30px;
+}
+
+#absence-label-from {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}
+
+#absence-label-to {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}
+
+#control-statement {
+    position: relative;
+    left: 56px;
 }
 

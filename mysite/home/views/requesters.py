@@ -34,7 +34,6 @@ class RequesterHomeView(TemplateView):
 class RequestView(CreateView):
     template_name = 'request.html'
     form_class = RequestForm
-    model = Request
 
     def form_valid(self, form):
         o = form.save(commit=False)
