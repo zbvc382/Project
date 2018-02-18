@@ -97,15 +97,14 @@
                         <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
                             {% if array.0 == request.get_extension %}
                                 <i class="far fa-file-pdf fa-lg"></i>
-                            {% endif %}
-                            {% if array.1 == request.get_extension %}
+                            {% elif array.1 == request.get_extension %}
                                 <i class="far fa-file-image fa-lg"></i>
-                            {% endif %}
-                            {% if array.2 == request.get_extension %}
+                            {% elif array.2 == request.get_extension %}
                                 <i class="far fa-file-alt fa-lg"></i>
-                            {% endif %}
-                            {% if array.3 == request.get_extension %}
+                            {% elif array.3 == request.get_extension %}
                                 <i class="far fa-file-word fa-lg"></i>
+                            {% else %}
+                                <i class="far fa-file-alt fa-lg"></i>
                             {% endif %}
                             </a>
                         </td>
@@ -146,18 +145,17 @@
                         <td>{{ request.leave_type }}</td>
                         <td>
                             <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-                            {% if array.0 == request.get_extension %}
-                            <i class="far fa-file-pdf fa-lg"></i>
-                            {% endif %}
-                            {% if array.1 == request.get_extension %}
-                            <i class="far fa-file-image fa-lg"></i>
-                            {% endif %}
-                            {% if array.2 == request.get_extension %}
-                            <i class="far fa-file-alt fa-lg"></i>
-                            {% endif %}
-                            {% if array.3 == request.get_extension %}
-                            <i class="far fa-file-word fa-lg"></i>
-                            {% endif %}
+                                {% if array.0 == request.get_extension %}
+                                    <i class="far fa-file-pdf fa-lg"></i>
+                                {% elif array.1 == request.get_extension %}
+                                    <i class="far fa-file-image fa-lg"></i>
+                                {% elif array.2 == request.get_extension %}
+                                    <i class="far fa-file-alt fa-lg"></i>
+                                {% elif array.3 == request.get_extension %}
+                                    <i class="far fa-file-word fa-lg"></i>
+                                {% else %}
+                                    <i class="far fa-file-alt fa-lg"></i>
+                                {% endif %}
                             </a>
                         </td>
                         <td> {% if request.status == 'Approved' %}

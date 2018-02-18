@@ -112,15 +112,14 @@
               <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
               {% if array.0 == extension %}
               <i class="far fa-file-pdf fa-2x"></i>
-              {% endif %}
-              {% if array.1 == extension %}
+              {% elif array.1 == extension %}
               <i class="far fa-file-image fa-2x"></i>
-              {% endif %}
-              {% if array.2 == extension %}
+              {% elif array.2 == extension %}
               <i class="far fa-file-alt fa-2x"></i>
-              {% endif %}
-              {% if array.3 == extension %}
+              {% elif array.3 == extension %}
               <i class="far fa-file-word fa-2x"></i>
+              {% else %}
+                  <i class="far fa-file-alt fa-2x"></i>
               {% endif %}
               </a>
             </div>
