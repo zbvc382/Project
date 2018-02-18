@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from .validators import validate_file_size
 
 
 User = get_user_model()
@@ -30,7 +31,7 @@ class Request(models.Model):
     end = models.DateField()
     reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='Pending')
-    attachment = models.FileField(upload_to=user_directory_path)
+    attachment = models.FileField(upload_to=user_directory_path, null=True, validators=[validate_file_size])
     comment = models.TextField(max_length=200, blank=True, default="")
 
     def __str__(self):

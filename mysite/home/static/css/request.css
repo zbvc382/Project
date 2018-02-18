@@ -3,7 +3,7 @@ div #request-absence-body {
     margin-top: -60px;
     top: 100px;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 20px;
     border: 0.5px solid #ea641b;
     background: rgba(234, 231, 226, 1.2);
 }
@@ -32,9 +32,15 @@ div #request-absence-body {
     width: 150px;
 }
 
+#absence-label-statement {
+    position: relative;
+    display: inline-block;
+    width: 98px;
+}
+
 #control-statement {
     position: relative;
-    left: 56px;
+    left: 52px;
 }
 
 #control-leave-type {
@@ -43,5 +49,51 @@ div #request-absence-body {
 
 #control-leave-attachment {
     position: relative;
+}
+
+.col-xs-8 p {
+    margin-top: 5px;
+    position: relative;
+    font-size: 10pt;
+}
+
+.form-group label:after {
+    color: #e32;
+    content: ' *';
+
+}
+
+#asterisk-help:before {
+    color: #e32;
+    content: '* ';
+}
+
+#asterisk-help {
+    position: relative;
+    right: 10px;
+    bottom: 35px;
+}
+
+.request-button {
+    position: relative;
+    left: 845px;
+    margin-right: 20px;
+    border-radius: 0;
+}
+
+.btn-success {
+    background: #5FBB5E;
+}
+
+.btn-success:hover {
+    background: #479C47;
+}
+
+.btn-info {
+    background: #5AC3D9;
+}
+
+.btn-info:hover {
+    background: #38B2D4;
 }
 

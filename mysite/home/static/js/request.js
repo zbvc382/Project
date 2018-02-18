@@ -6,5 +6,6 @@ $(document).ready(function () {
         $('#id_end').datetimepicker({
             format: 'DD/MM/YYYY'
         });
+        $('#control-leave-attachment').addClass('has-error');
     });
 });

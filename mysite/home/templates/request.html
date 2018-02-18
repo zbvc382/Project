@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-{% load widget_tweaks %}
+{% load widget_tweaks %} {% load static %}
     <table class="table" id="info">
   <thead id="custom-thead">
     <tr>
@@ -24,6 +24,7 @@
 </table>
 <div id="request-absence-body">
     <div class="authoriser-request-form">
+    <p id="asterisk-help">Indicates required field</p>
         <form class="form-horizontal" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group form-group-sm">
@@ -41,7 +42,7 @@
                     </div>
                     </div>
                     <div class="form-group" id="control-statement">
-                        <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label">Statement</label>
+                        <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Statement</label>
                         <div class="col-xs-8">
                             {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
                         </div>
@@ -68,16 +69,26 @@
                             {% render_field form.leave_type class="form-control" %}
                         </div>
                     </div>
-                    <div class="form-group" id="control-leave-attachment">
+                    <div class="form-group {% if form.errors.attachment %} has-error" {% endif %}
+                         id="control-leave-attachment">
                         <label for="{{ form.attachment.id_for_label }}" class="col-sm-2 control-label" id="absence-label-attachment">Attachment</label>
                         <div class="col-xs-8">
                             {% render_field form.attachment class="form-control" %}
+                            {% if form.errors.attachment %}
+                              <span id="helpBlock2" class="help-block">
+                                  {% for error in form.errors.attachment %}
+                                      {{ error }}
+                                  {% endfor %}
+                              </span>
+                                  {% else %}
+                                <p>Maximum upload file size: 5MB</p>
+                                  {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-                    <input type="submit" class="btn btn-success" value="Submit">
-        <a href="{% url 'home:home' %}" class="btn btn-info" id="bybis" role="button">Cancel</a>
+            <input type="submit" class="btn btn-success btn-lg request-button" value="Submit">
+            <a href="{% url 'home:home' %}" class="btn btn-info btn-lg request-button" role="button">Cancel</a>
         </form>
     </div>
 </div>
