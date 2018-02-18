@@ -7,5 +7,11 @@ $(document).ready(function () {
             format: 'DD/MM/YYYY'
         });
         $('#control-leave-attachment').addClass('has-error');
+
+
+        $("#cal-button").click(function(){
+
+            $("#drop-down").slideToggle();
+        });
     });
 });

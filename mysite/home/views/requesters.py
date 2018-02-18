@@ -21,7 +21,8 @@ class RequesterHomeView(TemplateView):
         requester_requests = Request.objects.filter(user=self.request.user)
 
         # TODO: Might need exception handling
-        assigned_authoriser = Requester.objects.get(user=self.request.user).assigned_authoriser.user.get_full_name
+        assigned_authoriser = Requester.objects.get(user=self.request.user)\
+            .assigned_authoriser.user.get_full_name
         array = ['pdf', 'jpg', 'txt', 'docx']
 
         context = {'user': user, 'requester_requests': requester_requests,
@@ -34,6 +35,14 @@ class RequesterHomeView(TemplateView):
 class RequestView(CreateView):
     template_name = 'request.html'
     form_class = RequestForm
+
+    def get_context_data(self, **kwargs):
+        context = super(RequestView, self).get_context_data(**kwargs)
+        assigned_authoriser = Requester.objects.get(user=self.request.user)\
+            .assigned_authoriser.user.get_full_name
+        context['authoriser'] = assigned_authoriser
+
+        return context
 
     def form_valid(self, form):
         o = form.save(commit=False)

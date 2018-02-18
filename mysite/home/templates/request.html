@@ -1,30 +1,25 @@
 {% extends 'base.html' %} {% block body %}
 {% load widget_tweaks %} {% load static %}
-    <table class="table" id="info">
-  <thead id="custom-thead">
-    <tr>
-      <th scope="col">Application Number</th>
-      <th scope="col">Status</th>
-      <th scope="col">Staff Number</th>
-      <th scope="col">Staff ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Department</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{{ request.id }}</th>
-      <td>{{ request.status }}</td>
-      <td>{{ request.user.id }}</td>
-      <td>{{ request.user.username }}</td>
-      <td>{{ request.user.get_full_name }}</td>
-      <td>{{ request.user.department }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="request-form-header">
+<h4>Absence Request Form</h4>
+<div id="upper-right-divider"></div>
+</div>
 <div id="request-absence-body">
     <div class="authoriser-request-form">
-    <p id="asterisk-help">Indicates required field</p>
+    <span>
+        <p id="asterisk-help">Indicates required field</p>
+    </span>
+    <div class="icons">
+        <button id="auth-button">
+            <i class="far fa-id-badge fa-2x" id="auth-icon"></i>
+        </button>
+        <button id="cal-button">
+            <i class="far fa-calendar-times fa-2x" id="cal-icon"></i>
+        </button>
+    </div>
+      <div id="drop-down">
+          <p></p>
+      </div>
         <form class="form-horizontal" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group form-group-sm">
@@ -87,8 +82,9 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" class="btn btn-success btn-lg request-button" value="Submit">
-            <a href="{% url 'home:home' %}" class="btn btn-info btn-lg request-button" role="button">Cancel</a>
+        <div id="lower-divider"></div>
+            <input type="submit" class="btn btn-success request-button" value="Submit">
+            <a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
         </form>
     </div>
 </div>

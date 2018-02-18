@@ -1,10 +1,10 @@
 div #request-absence-body {
     position: relative;
-    margin-top: -60px;
-    top: 100px;
     width: 100%;
-    padding-top: 20px;
-    border: 0.5px solid #ea641b;
+    padding-top: 30px;
+    border-bottom: 0.5px solid #ea641b;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
     background: rgba(234, 231, 226, 1.2);
 }
 
@@ -71,29 +71,89 @@ div #request-absence-body {
 #asterisk-help {
     position: relative;
     right: 10px;
-    bottom: 35px;
+    bottom: 40px;
 }
 
 .request-button {
     position: relative;
-    left: 845px;
+    left: 711px;
+    top: 15px;
     margin-right: 20px;
     border-radius: 0;
 }
 
 .btn-success {
-    background: #5FBB5E;
+    background: #ea641b;
+    width: 159px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-success:hover {
-    background: #479C47;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info {
-    background: #5AC3D9;
+    background: #ea641b;
+    width: 159px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info:hover {
-    background: #38B2D4;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
+.request-form-header {
+    margin-top: 26px;
+    color: #fff;
+    height: 40px;
+    background: #222931;
+    border: 0.5px solid #ea641b;
+}
+
+.request-form-header h4 {
+    text-align: center;
+}
+
+.icons {
+    position: absolute;
+    color: #ea641b;
+    left: 1032px;
+    bottom: 413px;
+}
+
+.icons button {
+    background: #222931;
+    border: none;
+}
+
+#drop-down {
+    position: absolute;
+    width: 134px;
+    height: 60px;
+    left: 1005px;
+    top: 0px;
+    background: #222931;
+    border-left: 1px solid #ea641b;
+    border-bottom: 1px solid #ea641b;
+    display: none;
+}
+
+#upper-right-divider {
+    position: relative;
+    left: 1005px;
+    bottom: 39px;
+    width: 1px;
+    height: 39px;
+    background: #ea641b;
+}
+
+#lower-divider {
+    position: absolute;
+    right: 0px;
+    width: 1139px;
+    height: 3px;
+    background: #EEEEEE;
+
+}
