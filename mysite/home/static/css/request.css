@@ -8,12 +8,6 @@ div #request-absence-body {
     background: rgba(234, 231, 226, 1.2);
 }
 
-.col-sm-10 {
-    position: relative;
-    display: inline-block;
-    left: 30px;
-}
-
 #absence-label-from {
     position: relative;
     display: inline-block;
@@ -26,8 +20,28 @@ div #request-absence-body {
     width: 150px;
 }
 
+#absence-label-type {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}
+
+#absence-label-attachment {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}
+
 #control-statement {
     position: relative;
     left: 56px;
+}
+
+#control-leave-type {
+    position: relative;
+}
+
+#control-leave-attachment {
+    position: relative;
 }
 

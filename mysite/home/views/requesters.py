@@ -20,7 +20,7 @@ class RequesterHomeView(TemplateView):
         user = self.request.user
         requester_requests = Request.objects.filter(user=self.request.user)
 
-        # TODO: Might need exception handling later on
+        # TODO: Might need exception handling
         assigned_authoriser = Requester.objects.get(user=self.request.user).assigned_authoriser.user.get_full_name
         array = ['pdf', 'jpg', 'txt', 'docx']
 
