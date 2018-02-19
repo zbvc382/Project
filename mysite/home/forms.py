@@ -6,11 +6,15 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 
+class TextInput(forms.TextInput):
+    input_type = 'text'
+
+
 class RequestForm(forms.ModelForm):
     class Meta:
         model = Request
         fields = ['leave_type', 'start', 'end', 'reason', 'attachment']
         widgets = {
-            'start': DateInput(),
-            'end': DateInput()
+            'start': TextInput(),
+            'end': TextInput()
         }
