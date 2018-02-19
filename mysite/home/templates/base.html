@@ -13,8 +13,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block style %}
+        {% endblock %}
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
-        <link rel="stylesheet" href="{% static 'css/request.css' %}">
     </head>
     {% block head %} {% endblock %}
     <body>

@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block body %}
-{% load widget_tweaks %} {% load static %}
+{% load widget_tweaks %} {% load staticfiles %}
+    {% block style %}
+                <link rel="stylesheet" href="{% static 'css/request.css' %}">
+        {% endblock %}
 <div class="request-form-header">
 <h4>Absence Request Form</h4>
 <div id="upper-right-divider"></div>

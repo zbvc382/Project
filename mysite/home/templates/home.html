@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
-{% endblock %} {% block body %}
+{% endblock %} {% block body %}    {% load staticfiles %}{% block style %}
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% endblock %}
 {% if user.is_authenticated %}
 <div class="jumbotron" id="authoriser_jumbatron"></div>
 <div class="details">
