@@ -1,13 +1,15 @@
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from ..decorators import requester_required
 from ..forms import RequestForm
 from ..models import Request, Requester
+
 
 User = get_user_model()
 
@@ -32,12 +34,12 @@ class RequesterHomeView(TemplateView):
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequestView(CreateView):
+class RequesterRequestView(CreateView):
     template_name = 'request.html'
     form_class = RequestForm
 
     def get_context_data(self, **kwargs):
-        context = super(RequestView, self).get_context_data(**kwargs)
+        context = super(RequesterRequestView, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
         context['authoriser'] = assigned_authoriser
@@ -51,3 +53,22 @@ class RequestView(CreateView):
         messages.success(self.request, 'Absence request submitted successfully!')
 
         return redirect(reverse('home:home'))
+
+
+@method_decorator([login_required, requester_required], name='dispatch')
+class RequesterCheckView(UpdateView):
+    model = Request
+    fields = ['status']
+    template_name = 'check.html'
+    success_url = reverse_lazy('home:home')
+
+    def get_context_data(self, **kwargs):
+        context = super(RequesterCheckView, self).get_context_data(**kwargs)
+        array = ['pdf', 'jpg', 'txt', 'docx']
+        request_object = self.get_object()
+        attachment = request_object.__str__()
+        extension = attachment.split('.').pop()
+        context['array'] = array
+        context['extension'] = extension
+
+        return context

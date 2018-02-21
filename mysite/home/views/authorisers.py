@@ -18,8 +18,7 @@ class AuthoriserHomeView(TemplateView):
         user = self.request.user
         authoriser_requests = []
 
-
-        ##change name from pending requests to something else
+        # TODO: variable name changes
         authoriser_object = Authoriser.objects.filter(user=user)
         requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 

@@ -123,7 +123,7 @@
                             {{ request.status }}
                             {% endif %}
                         </td>
-                    <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a></td>
+                    <td><a href="{% url 'home:check' request.pk %}" class="btn btn-sm manage">View</a></td>
                     {% endfor %}
                 {% endif %}
                 {% if user.is_authoriser %}

@@ -1,6 +1,6 @@
 div #request-absence-body {
     position: relative;
-    width: 100%;
+    width: 1140px;
     padding-top: 30px;
     border-bottom: 0.5px solid #ea641b;
     border-left: 0.5px solid #ea641b;
@@ -71,7 +71,7 @@ div #request-absence-body {
 #asterisk-help {
     position: relative;
     right: 10px;
-    bottom: 40px;
+    bottom: 35px;
 }
 
 .request-button {
@@ -119,34 +119,13 @@ div #request-absence-body {
 .icons {
     position: absolute;
     color: #ea641b;
-    left: 1032px;
-    bottom: 413px;
+    right: 10px;
+    top: -32px;
 }
 
 .icons button {
     background: #222931;
     border: none;
-}
-
-#drop-down {
-    position: absolute;
-    width: 134px;
-    height: 60px;
-    left: 1005px;
-    top: 0px;
-    background: #222931;
-    border-left: 1px solid #ea641b;
-    border-bottom: 1px solid #ea641b;
-    display: none;
-}
-
-#upper-right-divider {
-    position: relative;
-    left: 1005px;
-    bottom: 39px;
-    width: 1px;
-    height: 39px;
-    background: #ea641b;
 }
 
 #lower-divider {

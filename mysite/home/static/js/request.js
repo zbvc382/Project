@@ -8,10 +8,5 @@ $(document).ready(function () {
         });
         $('#control-leave-attachment').addClass('has-error');
 
-
-        $("#cal-button").click(function(){
-
-            $("#drop-down").slideToggle();
-        });
     });
 });
