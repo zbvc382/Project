@@ -3,15 +3,22 @@
 <link rel="stylesheet" href="{% static 'css/check.css' %}">
 {% endblock %}
 <div class="row">
-  <div class="col-xs-6 col-md-3"><b>Status </b><span id="status"
-    {% if request.status == 'Pending' %} style="color: #FFC107;"
-    {% elif request.status == 'Approved' %} style="color: #10c469;"
-    {% elif request.status == 'Declined' %} style="color: #D9534F;"
-    {% endif %}>{{ request.status }}</span>
+    <div class="col-xs-6 col-md-2">Application Number <span style="color: #ea641b">{{ request.user.id }}</span></div>
+    <div class="col-xs-6 col-md-2"><b></b><span></span></div>
+      <div class="col-xs-6 col-md-2">Status <span style="color: #ea641b">{{ request.status }}</span>
   </div>
-    <div class="col-xs-6 col-md-3"><b>Application Number </b><span style="color: #ea641b">{{ request.user.id }}</span></div>
-    <div class="col-xs-6 col-md-3"><b>Authoriser </b><span style="color: #ea641b">{{ authoriser }}</span></div>
-    <div class="col-xs-6 col-md-3"><b>Date Updated </b><span style="color: #ea641b">{{ request.updated_at }}</span></div>
+    <div class="col-xs-6 col-md-2"><b></b><span></span></div>
+<div class="col-xs-6 col-md-2">Authoriser <span style="color: #ea641b">{{ authoriser }}</span></div>
+<div class="col-xs-6 col-md-2">
+    <div class="utility-buttons">
+        <button>
+            <i class="fas fa-redo-alt"></i>
+        </button>
+        <button>
+            <i class="far fa-save"></i>
+        </button>
+    </div>
+</div>
 </div>
 <div id="authorise-absence-body">
   <div class="authoriser-request-form">

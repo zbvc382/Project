@@ -2,14 +2,19 @@
     position: relative;
     left: 15px;
     width: 1140px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    height: 34px;
+    padding-top: 1px;
     background: #222931;
     color: #EAE7E2;
-    font-size: 9pt;
+    font-size: 10pt;
     border-top: 0.5px solid #ea641b;
     border-left: 0.5px solid #ea641b;
     border-right: 0.5px solid #ea641b;
+}
+
+div.col-xs-6.col-md-2 {
+    padding-top: 6px;
+    height: 25px;
 }
 
 #authorise-absence-body {
@@ -21,8 +26,8 @@
 #comment-header {
     background: #222931;
     margin-top: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
     border: 0.5px solid #ea641b;
     color: #EAE7E2;
     text-align: center;
@@ -38,4 +43,23 @@
 
 #comment-body textarea {
     border-radius: 0;
+}
+
+button {
+    background: #222931;
+    border: none;
+    height: 30px;
+}
+
+.utility-buttons {
+    position: relative;
+    width: 85px;
+    left: 90px;
+    bottom: 6px;
+    background: #222931;
+    border: none;
+}
+
+.utility-buttons button {
+    font-size: 22px;
 }
