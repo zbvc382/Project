@@ -1,26 +1,14 @@
 {% extends 'base.html' %} {% block body %}{% load widget_tweaks %} {% if user.is_requester %}
-<table class="table" id="info">
-  <thead id="custom-thead">
-    <tr>
-      <th scope="col">Application Number</th>
-      <th scope="col">Status</th>
-      <th scope="col">Staff Number</th>
-      <th scope="col">Staff ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Department</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{{ request.id }}</th>
-      <td>{{ request.status }}</td>
-      <td>{{ request.user.id }}</td>
-      <td>{{ request.user.username }}</td>
-      <td>{{ request.user.get_full_name }}</td>
-      <td>{{ request.user.department }}</td>
-    </tr>
-  </tbody>
-</table>
+
+
+    <div class="row">
+  <div class="col-xs-6 col-md-4">{{ request.status }}</div>
+  <div class="col-xs-6 col-md-4">{{ request.user.id }}</div>
+  <div class="col-xs-6 col-md-4">{{ request.user.username }}</div>
+</div>
+
+
+
 <div id="authorise-absence-header">
   <h4>&nbsp;</h4>
 </div>
@@ -61,17 +49,19 @@
               </div>
             </fieldset>
           </div>
-          <hr>
-          <fieldset disabled>
-          <div class="form-group requester-comment-div">
-            <label for="authoriserComment" class="col-sm-2 control-label">Comment</label>
-            <div class="col-sm-10">
-              <textarea class="form-control" rows="5" id="authoriserComment"
-              form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
-            </div>
-          </div>
-          </fieldset>
-        </div>
+            {% if request.status == 'Approved' or request.status == 'Declined' %}
+                <hr>
+                <fieldset disabled>
+                    <div class="form-group requester-comment-div">
+                        <label for="authoriserComment" class="col-sm-2 control-label">Comment</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" id="authoriserComment"
+                                      form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                {% endif %}
+                </div>
         <!-- right column -->
         <div class="col-sm-6">
           <div class="form-group">
