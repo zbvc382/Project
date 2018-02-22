@@ -17,10 +17,17 @@ div.col-xs-6.col-md-2 {
     height: 25px;
 }
 
+div.form-group.form-group-sm {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    height: 200px;
+}
+
 #authorise-absence-body {
     border-top: none;
     margin-top: 0;
     padding-top: 10px;
+    height: 265px;
 }
 
 #comment-header {
@@ -58,6 +65,7 @@ button {
     bottom: 6px;
     background: #222931;
     border: none;
+    color: #EAE7E2;
 }
 
 .utility-buttons button {
@@ -65,4 +73,12 @@ button {
     background: #222931;
     border: none;
     height: 30px;
+}
+
+#update-text {
+    position: absolute;
+    left: 30px;
+    bottom: 122px;
+    font-size: 8pt;
+    color: #ea641b;
 }
