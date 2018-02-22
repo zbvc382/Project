@@ -2,6 +2,7 @@ div #request-absence-body {
     position: relative;
     width: 1140px;
     padding-top: 30px;
+    padding-bottom: 25px;
     border-bottom: 0.5px solid #ea641b;
     border-left: 0.5px solid #ea641b;
     border-right: 0.5px solid #ea641b;
@@ -76,7 +77,7 @@ div #request-absence-body {
 
 .request-button {
     position: relative;
-    left: 711px;
+    left: 735px;
     top: 15px;
     margin-right: 20px;
     border-radius: 0;
@@ -84,7 +85,7 @@ div #request-absence-body {
 
 .btn-success {
     background: #ea641b;
-    width: 159px;
+    width: 167px;
     border: 1px solid #EEEEEE;
 }
 
@@ -95,7 +96,7 @@ div #request-absence-body {
 
 .btn-info {
     background: #ea641b;
-    width: 159px;
+    width: 167px;
     border: 1px solid #EEEEEE;
 }
 
