@@ -1,88 +1,87 @@
 {% extends 'base.html' %} {% block body %}
 {% load widget_tweaks %} {% load staticfiles %}
-    {% block style %}
-                <link rel="stylesheet" href="{% static 'css/request.css' %}">
-        {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/request.css' %}">
+{% endblock %}
 <div class="request-form-header">
-<h4>Absence Request Form</h4>
-<div id="upper-right-divider"></div>
+  <h4>Absence Request Form</h4>
+  <div id="upper-right-divider"></div>
 </div>
 <div id="request-absence-body">
-    <div class="authoriser-request-form">
+  <div class="authoriser-request-form">
     <span>
-        <p id="asterisk-help">Indicates required field</p>
+      <p id="asterisk-help">Indicates required field</p>
     </span>
     <div class="icons">
-        <button id="cal-button">
-            <i class="far fa-calendar-times fa-lg" id="cal-icon"></i>
-        </button>
+      <button id="cal-button">
+      <i class="far fa-calendar-times fa-lg" id="cal-icon"></i>
+      </button>
     </div>
-        <form class="form-horizontal" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group form-group-sm">
-                <!-- left column -->
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="{{ form.start.id_for_label }}" class="col-sm-2 control-label" id="absence-label-from">Absence From</label>
-                        <div class="col-xs-8">
-                            <div class='input-group date' id='datetimepicker3'>
-                            {% render_field form.start class="form-control input-sm" placeholder="Click here to select absence start date" %}
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="form-group" id="control-statement">
-                        <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Statement</label>
-                        <div class="col-xs-8">
-                            {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
-                        </div>
-
-                        </div>
-                </div>
-                <!-- right column -->
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="{{ form.end.id_for_label }}" class="col-sm-2 control-label" id="absence-label-to">Absence To</label>
-                        </label>
-                        <div class="col-xs-8">
-                            <div class='input-group date' id='datetimepicker3'>
-                            {% render_field form.end class="form-control input-sm" placeholder="Click here to select absence end date" %}
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group" id="control-leave-type">
-                        <label for="{{ form.leave_type.id_for_label }}" class="col-sm-2 control-label" id="absence-label-type">Leave Type</label>
-                        <div class="col-xs-8">
-                            {% render_field form.leave_type class="form-control" %}
-                        </div>
-                    </div>
-                    <div class="form-group {% if form.errors.attachment %} has-error" {% endif %}
-                         id="control-leave-attachment">
-                        <label for="{{ form.attachment.id_for_label }}" class="col-sm-2 control-label" id="absence-label-attachment">Attachment</label>
-                        <div class="col-xs-8">
-                            {% render_field form.attachment class="form-control" %}
-                            {% if form.errors.attachment %}
-                              <span id="helpBlock2" class="help-block">
-                                  {% for error in form.errors.attachment %}
-                                      {{ error }}
-                                  {% endfor %}
-                              </span>
-                                  {% else %}
-                                <p>Maximum upload file size: 5MB</p>
-                                  {% endif %}
-                        </div>
-                    </div>
-                </div>
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group form-group-sm">
+        <!-- left column -->
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="{{ form.start.id_for_label }}" class="col-sm-2 control-label" id="absence-label-from">Absence From</label>
+            <div class="col-xs-8">
+              <div class='input-group date' id='datetimepicker3'>
+                {% render_field form.start class="form-control input-sm" placeholder="Click here to select absence start date" %}
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
             </div>
-        <div id="lower-divider"></div>
-            <input type="submit" class="btn btn-success request-button" value="Submit">
-            <a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
-        </form>
-    </div>
+          </div>
+          <div class="form-group" id="control-statement">
+            <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Statement</label>
+            <div class="col-xs-8">
+              {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
+            </div>
+          </div>
+        </div>
+        <!-- right column -->
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="{{ form.end.id_for_label }}" class="col-sm-2 control-label" id="absence-label-to">Absence To</label>
+            </label>
+            <div class="col-xs-8">
+              <div class='input-group date' id='datetimepicker3'>
+                {% render_field form.end class="form-control input-sm" placeholder="Click here to select absence end date" %}
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" id="control-leave-type">
+            <label for="{{ form.leave_type.id_for_label }}" class="col-sm-2 control-label" id="absence-label-type">Leave Type</label>
+            <div class="col-xs-8">
+              {% render_field form.leave_type class="form-control" %}
+            </div>
+          </div>
+          <div class="form-group {% if form.errors.attachment %} has-error" {% endif %}
+          id="control-leave-attachment">
+          <label for="{{ form.attachment.id_for_label }}" class="col-sm-2 control-label" id="absence-label-attachment">Attachment</label>
+          <div class="col-xs-8">
+            {% render_field form.attachment class="form-control" %}
+            {% if form.errors.attachment %}
+            <span id="helpBlock2" class="help-block">
+            {% for error in form.errors.attachment %}
+            {{ error }}
+            {% endfor %}
+            </span>
+            {% else %}
+            <p>Maximum upload file size: 5MB</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+  </div>
+  <div id="lower-divider"></div>
+  <input type="submit" class="btn btn-success request-button" value="Submit">
+  <a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
+  </form>
+</div>
 </div>
 {% endblock %}

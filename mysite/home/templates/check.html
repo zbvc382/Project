@@ -1,18 +1,17 @@
 {% extends 'base.html' %} {% block body %}{% load widget_tweaks %} {% if user.is_requester %} {% load staticfiles %}
-    {% block style %}
-                <link rel="stylesheet" href="{% static 'css/check.css' %}">
-        {% endblock %}
-
-
-    <div class="row">
-        <div class="col-xs-6 col-md-3"><b>Status </b><span id="status"
-                {% if request.status == 'Pending' %} style="color: #FFC107;"
-                {% elif request.status == 'Approved' %} style="color: #10c469;"
-                {% elif request.status == 'Declined' %} style="color: #10c469;"
-                {% endif %}>{{ request.status }}</span></div>
-        <div class="col-xs-6 col-md-3"><b>Application Number </b>{{ request.user.id }}</div>
-        <div class="col-xs-6 col-md-3"><b>Authoriser </b>{{ authoriser }}</div>
-        <div class="col-xs-6 col-md-3"><b>Date Approved/Declined </b>{{ request.updated_at }}</div>
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/check.css' %}">
+{% endblock %}
+<div class="row">
+  <div class="col-xs-6 col-md-3"><b>Status </b><span id="status"
+    {% if request.status == 'Pending' %} style="color: #FFC107;"
+    {% elif request.status == 'Approved' %} style="color: #10c469;"
+    {% elif request.status == 'Declined' %} style="color: #10c469;"
+    {% endif %}>{{ request.status }}</span>
+  </div>
+  <div class="col-xs-6 col-md-3"><b>Application Number </b>{{ request.user.id }}</div>
+  <div class="col-xs-6 col-md-3"><b>Authoriser </b>{{ authoriser }}</div>
+  <div class="col-xs-6 col-md-3"><b>Date Approved/Declined </b>{{ request.updated_at }}</div>
 </div>
 <div id="authorise-absence-body">
   <div class="authoriser-request-form">
@@ -51,19 +50,19 @@
               </div>
             </fieldset>
           </div>
-            {% if request.status == 'Approved' or request.status == 'Declined' %}
-                <hr>
-                <fieldset disabled>
-                    <div class="form-group requester-comment-div">
-                        <label for="authoriserComment" class="col-sm-2 control-label">Comment</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="authoriserComment"
-                                      form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
-                        </div>
-                    </div>
-                </fieldset>
-                {% endif %}
-                </div>
+          {% if request.status == 'Approved' or request.status == 'Declined' %}
+          <hr>
+          <fieldset disabled>
+            <div class="form-group requester-comment-div">
+              <label for="authoriserComment" class="col-sm-2 control-label">Comment</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="5" id="authoriserComment"
+                  form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
+              </div>
+            </div>
+          </fieldset>
+          {% endif %}
+        </div>
         <!-- right column -->
         <div class="col-sm-6">
           <div class="form-group">
@@ -100,7 +99,7 @@
               {% elif array.3 == extension %}
               <i class="far fa-file-word fa-2x"></i>
               {% else %}
-                  <i class="far fa-file-alt fa-2x"></i>
+              <i class="far fa-file-alt fa-2x"></i>
               {% endif %}
               </a>
             </div>
@@ -110,5 +109,5 @@
     </form>
   </div>
 </div>
-    {% endif %}
+{% endif %}
 {% endblock %}
