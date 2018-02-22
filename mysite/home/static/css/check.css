@@ -6,7 +6,7 @@
     padding-top: 10px;
     background: #222931;
     color: #EAE7E2;
-    font-size: 8pt;
+    font-size: 9pt;
     border-top: 0.5px solid #ea641b;
     border-left: 0.5px solid #ea641b;
     border-right: 0.5px solid #ea641b;
@@ -16,4 +16,26 @@
     border-top: none;
     margin-top: 0;
     padding-top: 10px;
+}
+
+#comment-header {
+    background: #222931;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0.5px solid #ea641b;
+    color: #EAE7E2;
+    text-align: center;
+}
+
+#comment-body {
+    background: #EAE7E2;
+    height: 115px;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+    border-bottom: 0.5px solid #ea641b;
+}
+
+#comment-body textarea {
+    border-radius: 0;
 }

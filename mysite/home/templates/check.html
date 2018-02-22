@@ -6,12 +6,12 @@
   <div class="col-xs-6 col-md-3"><b>Status </b><span id="status"
     {% if request.status == 'Pending' %} style="color: #FFC107;"
     {% elif request.status == 'Approved' %} style="color: #10c469;"
-    {% elif request.status == 'Declined' %} style="color: #10c469;"
+    {% elif request.status == 'Declined' %} style="color: #D9534F;"
     {% endif %}>{{ request.status }}</span>
   </div>
-  <div class="col-xs-6 col-md-3"><b>Application Number </b>{{ request.user.id }}</div>
-  <div class="col-xs-6 col-md-3"><b>Authoriser </b>{{ authoriser }}</div>
-  <div class="col-xs-6 col-md-3"><b>Date Approved/Declined </b>{{ request.updated_at }}</div>
+    <div class="col-xs-6 col-md-3"><b>Application Number </b><span style="color: #ea641b">{{ request.user.id }}</span></div>
+    <div class="col-xs-6 col-md-3"><b>Authoriser </b><span style="color: #ea641b">{{ authoriser }}</span></div>
+    <div class="col-xs-6 col-md-3"><b>Date Updated </b><span style="color: #ea641b">{{ request.updated_at }}</span></div>
 </div>
 <div id="authorise-absence-body">
   <div class="authoriser-request-form">
@@ -50,18 +50,6 @@
               </div>
             </fieldset>
           </div>
-          {% if request.status == 'Approved' or request.status == 'Declined' %}
-          <hr>
-          <fieldset disabled>
-            <div class="form-group requester-comment-div">
-              <label for="authoriserComment" class="col-sm-2 control-label">Comment</label>
-              <div class="col-sm-10">
-                <textarea class="form-control" rows="5" id="authoriserComment"
-                  form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
-              </div>
-            </div>
-          </fieldset>
-          {% endif %}
         </div>
         <!-- right column -->
         <div class="col-sm-6">
@@ -109,5 +97,14 @@
     </form>
   </div>
 </div>
+    {% if request.status == 'Approved' or request.status == 'Declined' %}
+    <div id="comment-header">Authoriser Comment</div>
+    <div id="comment-body">
+          <fieldset disabled>
+              <textarea class="form-control" rows="5" id="authoriserComment"
+                        form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
+          </fieldset>
+    </div>
+        {% endif %}
 {% endif %}
 {% endblock %}
