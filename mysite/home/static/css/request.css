@@ -1,3 +1,15 @@
+.request-form-header {
+    margin-top: 19px;
+    color: #EAE7E2;
+    height: 34px;
+    background: #222931;
+    border: 0.5px solid #ea641b;
+    text-align: center;
+    font-size: 12pt;
+    padding-top: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
 div #request-absence-body {
     position: relative;
     width: 1140px;
@@ -71,8 +83,8 @@ div #request-absence-body {
 
 #asterisk-help {
     position: relative;
-    right: 10px;
-    bottom: 45px;
+    left: 15px;
+    bottom: 25px;
 }
 
 .request-button {
@@ -105,21 +117,6 @@ div #request-absence-body {
     border: 1px solid #EEEEEE;
 }
 
-.request-form-header {
-    margin-top: 26px;
-    color: #EAE7E2;
-    height: 34px;
-    background: #222931;
-    border: 0.5px solid #ea641b;
-    text-align: center;
-    font-size: 12pt;
-    padding-top: 5px;
-}
-
-.request-form-header h4 {
-    text-align: center;
-}
-
 #lower-divider {
     position: absolute;
     right: 0px;
@@ -142,4 +139,8 @@ div #request-absence-body {
     background: #222931;
     border: none;
     height: 30px;
+}
+
+textarea {
+    resize: none;
 }
