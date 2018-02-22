@@ -1,16 +1,18 @@
-{% extends 'base.html' %} {% block body %}{% load widget_tweaks %} {% if user.is_requester %}
+{% extends 'base.html' %} {% block body %}{% load widget_tweaks %} {% if user.is_requester %} {% load staticfiles %}
+    {% block style %}
+                <link rel="stylesheet" href="{% static 'css/check.css' %}">
+        {% endblock %}
 
 
     <div class="row">
-  <div class="col-xs-6 col-md-4">{{ request.status }}</div>
-  <div class="col-xs-6 col-md-4">{{ request.user.id }}</div>
-  <div class="col-xs-6 col-md-4">{{ request.user.username }}</div>
-</div>
-
-
-
-<div id="authorise-absence-header">
-  <h4>&nbsp;</h4>
+        <div class="col-xs-6 col-md-3"><b>Status </b><span id="status"
+                {% if request.status == 'Pending' %} style="color: #FFC107;"
+                {% elif request.status == 'Approved' %} style="color: #10c469;"
+                {% elif request.status == 'Declined' %} style="color: #10c469;"
+                {% endif %}>{{ request.status }}</span></div>
+        <div class="col-xs-6 col-md-3"><b>Application Number </b>{{ request.user.id }}</div>
+        <div class="col-xs-6 col-md-3"><b>Authoriser </b>{{ authoriser }}</div>
+        <div class="col-xs-6 col-md-3"><b>Date Approved/Declined </b>{{ request.updated_at }}</div>
 </div>
 <div id="authorise-absence-body">
   <div class="authoriser-request-form">

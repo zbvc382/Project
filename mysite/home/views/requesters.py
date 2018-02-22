@@ -64,11 +64,14 @@ class RequesterCheckView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(RequesterCheckView, self).get_context_data(**kwargs)
+        assigned_authoriser = Requester.objects.get(user=self.request.user)\
+            .assigned_authoriser.user.get_full_name
         array = ['pdf', 'jpg', 'txt', 'docx']
         request_object = self.get_object()
         attachment = request_object.__str__()
         extension = attachment.split('.').pop()
         context['array'] = array
         context['extension'] = extension
+        context['authoriser'] = assigned_authoriser
 
         return context

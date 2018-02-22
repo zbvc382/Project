@@ -1,0 +1,19 @@
+.row {
+    position: relative;
+    left: 15px;
+    width: 1140px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: #222931;
+    color: #EAE7E2;
+    font-size: 8pt;
+    border-top: 0.5px solid #ea641b;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+}
+
+#authorise-absence-body {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 10px;
+}
