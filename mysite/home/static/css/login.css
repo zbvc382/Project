@@ -1,0 +1,73 @@
+body {
+  background-color: #EAE7E2;
+  padding-top: 20px;
+}
+
+div#main-container.container {
+    background: #EAE7E2;
+}
+
+.row {
+    background: #EAE7E2;
+}
+.form
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form .form-heading, .form .checkbox
+{
+    margin-bottom: 10px;
+}
+
+.form .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #222931;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.profile-img
+{
+    width: 256px;
+    height: 157px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.btn {
+    border-radius: 0;
+    background: #ea641b;
+    border: none;
+}
+
+.btn:hover {
+    background: #107AA2;
+    border: none;
+}

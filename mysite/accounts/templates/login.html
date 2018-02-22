@@ -1,74 +1,24 @@
-{% extends 'base.html' %}
-
-{% block body %}
+{% extends 'base.html' %} {% block body %}
+{% load widget_tweaks %} {% load staticfiles %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 <div class="container">
-
-    <p>
-        Please enter your login details below.
-    </p>
-
-<!-- Code used to manually format the form from [https://stackoverflow.com/a/47210343] -->
-
-<div  class="center-block" id="login" style="width: 25%;">
-
-    <form class="form-horizontal form" name="LoginForm"  method="post">
-
-    {% csrf_token %}
-
-    {% if next %}
-
-        <input type="hidden" name="next" value="{{ next }}" />
-
-    {% endif %}
-
-    <div class="control-group">
-
-        <label class="control-label" for="username">Username</label>
-
-        <div class="controls">
-
-            <input class="form-control" type="text" id="username" name="username"  placeholder="Username">
-
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <img class="profile-img" src="https://i.imgur.com/hVhQVKg.jpg" alt="">
+                <form class="form" name="LoginForm" method="post">
+                    {% csrf_token %}
+                    {% render_field form.username class="form-control" placeholder="Username" %}
+                    {% render_field form.password class="form-control" placeholder="Password" %}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <a href="{% url 'accounts:login' %}"></a>
+                </form>
+            </div>
         </div>
-
     </div>
-
-    <div class="control-group">
-
-        <label class="control-label" for="password">Password</label>
-
-        <div class="controls">
-
-            <input class="form-control" type="password" name="password" id="password" placeholder="Password">
-
-        </div>
-
-  </div><br>
-
-  <div class="control-group">
-
-        <div class="controls text-center">
-
-            <button type="submit" class="btn btn-success ">Login</button><a href="{% url 'accounts:login' %}"></a>
-
-        </div>
-
-    </div>
-
+</div>
     </form>
-
-</div>
-
-</div>
-
-    <style>
-
-    p {
-        text-align: center;
-    }
-
-</style>
-
-
 {% endblock %}
