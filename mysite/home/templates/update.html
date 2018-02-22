@@ -1,23 +1,23 @@
 {% extends 'base.html' %} {% block body %}{% load widget_tweaks %} {% load staticfiles %}
-    {% block style %}
-        <link rel="stylesheet" href="{% static 'css/update.css' %}">
-    {% endblock %}
-    <div class="row header1">
-        <div class="col-xs-6 col-md-2">Application Number</div>
-        <div class="col-xs-6 col-md-2">Status</div>
-        <div class="col-xs-6 col-md-2">Name</div>
-        <div class="col-xs-6 col-md-2">Staff Number</div>
-        <div class="col-xs-6 col-md-2">Staff ID</div>
-        <div class="col-xs-6 col-md-2">Department</div>
-    </div>
-    <div class="row body1">
-        <div class="col-xs-6 col-md-2">{{ request.id }}</div>
-        <div class="col-xs-6 col-md-2">{{ request.status }}</div>
-        <div class="col-xs-6 col-md-2">{{ request.user.id }}</div>
-        <div class="col-xs-6 col-md-2">{{ request.user.username }}</div>
-        <div class="col-xs-6 col-md-2">{{ request.user.get_full_name }}</div>
-        <div class="col-xs-6 col-md-2">{{ request.user.department }}</div>
-    </div>
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/update.css' %}">
+{% endblock %}
+<div class="row header1">
+  <div class="col-xs-6 col-md-2">Application Number</div>
+  <div class="col-xs-6 col-md-2">Status</div>
+  <div class="col-xs-6 col-md-2">Name</div>
+  <div class="col-xs-6 col-md-2">Staff Number</div>
+  <div class="col-xs-6 col-md-2">Staff ID</div>
+  <div class="col-xs-6 col-md-2">Department</div>
+</div>
+<div class="row body1">
+  <div class="col-xs-6 col-md-2">{{ request.id }}</div>
+  <div class="col-xs-6 col-md-2">{{ request.status }}</div>
+  <div class="col-xs-6 col-md-2">{{ request.user.id }}</div>
+  <div class="col-xs-6 col-md-2">{{ request.user.username }}</div>
+  <div class="col-xs-6 col-md-2">{{ request.user.get_full_name }}</div>
+  <div class="col-xs-6 col-md-2">{{ request.user.department }}</div>
+</div>
 <div id="authorise-absence-body">
   <div class="authoriser-request-form">
     <form class="form-horizontal" action="" method="post">

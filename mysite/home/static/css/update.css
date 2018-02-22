@@ -1,159 +1,159 @@
 .row.header1 {
-    position: relative;
-    margin-top: 19px;
-    left: 15px;
-    width: 1140px;
-    height: 34px;
-    padding-top: 7px;
-    background: #222931;
-    color: #EAE7E2;
-    font-size: 10pt;
-    border-top: 0.5px solid #ea641b;
-    border-left: 0.5px solid #ea641b;
-    border-right: 0.5px solid #ea641b;
-    border-radius: 5px 5px 0 0;
+  position: relative;
+  margin-top: 19px;
+  left: 15px;
+  width: 1140px;
+  height: 34px;
+  padding-top: 7px;
+  background: #222931;
+  color: #EAE7E2;
+  font-size: 10pt;
+  border-top: 0.5px solid #ea641b;
+  border-left: 0.5px solid #ea641b;
+  border-right: 0.5px solid #ea641b;
+  border-radius: 5px 5px 0 0;
 }
 
 .row.body1 {
-    position: relative;
-    left: 15px;
-    width: 1140px;
-    height: 34px;
-    padding-top: 7px;
-    margin-bottom: 20px;
-    background: #EAE7E2;
-    color: #222931;
-    font-size: 10pt;
-    border-left: 0.5px solid #ea641b;
-    border-right: 0.5px solid #ea641b;
-    border-top: 0.5px solid #ea641b;
+  position: relative;
+  left: 15px;
+  width: 1140px;
+  height: 34px;
+  padding-top: 7px;
+  margin-bottom: 20px;
+  background: #EAE7E2;
+  color: #222931;
+  font-size: 10pt;
+  border-left: 0.5px solid #ea641b;
+  border-right: 0.5px solid #ea641b;
+  border-top: 0.5px solid #ea641b;
 }
 
 div #authorise-absence-body {
-    border: 0.5px solid #ea641b;
-    background: rgba(234, 231, 226, 1.2);
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    border-radius: 5px 5px 0 0;
+  border: 0.5px solid #ea641b;
+  background: rgba(234, 231, 226, 1.2);
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-radius: 5px 5px 0 0;
 }
 
 .authoriser-request-form {
-    margin: 25px;
+  margin: 25px;
 }
 
 #authoriserComment {
-    height: 100px;
+  height: 100px;
 }
 
 #authorise-absence-body hr {
-    border: 1px solid #EEEEEE;
-    width: 1137px;
-    position: relative;
-    right: 25px;
+  border: 1px solid #EEEEEE;
+  width: 1137px;
+  position: relative;
+  right: 25px;
 }
 
 .button-group {
-    position: relative;
-    top: 144px;
+  position: relative;
+  top: 144px;
 }
 
 .button-group button {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .icon-group {
-    position: absolute;
+  position: absolute;
 }
 
 .icon-group #icon-div {
-    left: 96px;
-    bottom: 23.5px;
+  left: 96px;
+  bottom: 23.5px;
 }
 
 input[name=status] {
-    display: none;
+  display: none;
 }
 
 #id_comment {
-    display: none;
+  display: none;
 }
 
 #disabledStatement {
-    color: #989898;
+  color: #989898;
 }
 
 #authoriserComment {
-    position: relative;
-    height: 20%;
+  position: relative;
+  height: 20%;
 }
 
 .col-sm-10 .btn-block {
-    position: relative;
-    top: 1.5px;
-    height: 6%;
+  position: relative;
+  top: 1.5px;
+  height: 6%;
 }
 
 .col-sm-10 .btn-success {
-    background: #ea641b;
-    border: 1px solid #EEEEEE;
+  background: #ea641b;
+  border: 1px solid #EEEEEE;
 }
 
 .col-sm-10 .btn-danger {
-    background: #ea641b;
-    border: 1px solid #EEEEEE;
+  background: #ea641b;
+  border: 1px solid #EEEEEE;
 }
 
 .col-sm-10 .btn-info {
-    background: #ea641b;
-    border: 1px solid #EEEEEE;
-    position: relative;
-    top: 6px;
+  background: #ea641b;
+  border: 1px solid #EEEEEE;
+  position: relative;
+  top: 6px;
 }
 
 .col-sm-10 .btn-success:hover {
-    background: #107AA2;
-    border: 1px solid #EEEEEE;
+  background: #107AA2;
+  border: 1px solid #EEEEEE;
 }
 
 .col-sm-10 .btn-danger:hover {
-    background: #107AA2;
-    border: 1px solid #EEEEEE;
+  background: #107AA2;
+  border: 1px solid #EEEEEE;
 }
 
 .col-sm-10 .btn-info:hover {
-    background: #107AA2;
-    border: 1px solid #EEEEEE;
+  background: #107AA2;
+  border: 1px solid #EEEEEE;
 }
 
 .fa-file-pdf {
-    color: rgba(34, 41, 49, 0.8);
+  color: rgba(34, 41, 49, 0.8);
 }
 
 .fa-file-alt {
-    color: rgba(34, 41, 49, 0.8);
+  color: rgba(34, 41, 49, 0.8);
 }
 
 .fa-file-image {
-    color: rgba(34, 41, 49, 0.8);
+  color: rgba(34, 41, 49, 0.8);
 }
 
 .fa-file-word {
-    color: rgba(34, 41, 49, 0.8);
+  color: rgba(34, 41, 49, 0.8);
 }
 
 .fa-file {
-    color: rgba(34, 41, 49, 0.8);
+  color: rgba(34, 41, 49, 0.8);
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 .icon-group {
-    position: absolute;
+  position: absolute;
 }
 
 .icon-group #icon-div {
-    left: 96px;
-    bottom: 23.5px;
+  left: 96px;
+  bottom: 23.5px;
 }

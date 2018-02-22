@@ -1,10 +1,16 @@
 $(document).ready(function () {
     var auth_table = $('#authoriser_table').DataTable({
-        "lengthMenu": [[7], [7]]
+      "lengthMenu": [
+        [7],
+        [7]
+      ]
     });
 
     var req_table = $('#requester_table').DataTable({
-        "lengthMenu": [[7], [7]]
+      "lengthMenu": [
+        [7],
+        [7]
+      ]
     });
 
     // Search box
