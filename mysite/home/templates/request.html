@@ -3,19 +3,18 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/request.css' %}">
 {% endblock %}
-<div class="request-form-header">
-  <h4>Absence Request Form</h4>
-  <div id="upper-right-divider"></div>
+<div class="request-form-header">Absence Request Form<div id="upper-right-divider"></div>
 </div>
 <div id="request-absence-body">
   <div class="authoriser-request-form">
     <span>
       <p id="asterisk-help">Indicates required field</p>
     </span>
-    <div class="icons">
-      <button id="cal-button">
-      <i class="far fa-calendar-times fa-lg" id="cal-icon"></i>
-      </button>
+    <div class="utility-buttons">
+        <button>
+            <i class="far fa-save"></i>
+        </button>
+    </div>
     </div>
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
       {% csrf_token %}

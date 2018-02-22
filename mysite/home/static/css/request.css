@@ -106,26 +106,17 @@ div #request-absence-body {
 
 .request-form-header {
     margin-top: 26px;
-    color: #fff;
-    height: 40px;
+    color: #EAE7E2;
+    height: 34px;
     background: #222931;
     border: 0.5px solid #ea641b;
+    text-align: center;
+    font-size: 12pt;
+    padding-top: 5px;
 }
 
 .request-form-header h4 {
     text-align: center;
-}
-
-.icons {
-    position: absolute;
-    color: #ea641b;
-    right: 10px;
-    top: -32px;
-}
-
-.icons button {
-    background: #222931;
-    border: none;
 }
 
 #lower-divider {
@@ -134,5 +125,20 @@ div #request-absence-body {
     width: 1139px;
     height: 3px;
     background: #EEEEEE;
+}
 
+.utility-buttons {
+    position: absolute;
+    width: 40px;
+    left: 1100px;
+    top: -33px;
+    border: none;
+    color: #EAE7E2;
+}
+
+.utility-buttons button {
+    font-size: 22px;
+    background: #222931;
+    border: none;
+    height: 30px;
 }
