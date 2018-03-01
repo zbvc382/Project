@@ -1,14 +1,14 @@
 body {
-  background-color: #EAE7E2;
+  background-color: #222931;
   padding-top: 20px;
 }
 
 div#main-container.container {
-    background: #EAE7E2;
+    background: #222931;
 }
 
 .row {
-    background: #EAE7E2;
+    background: #222931;
 }
 .form
 {
@@ -49,9 +49,7 @@ div#main-container.container {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
     background-color: #222931;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border: none;
 }
 .profile-img
 {
