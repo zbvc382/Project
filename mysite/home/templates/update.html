@@ -19,7 +19,9 @@
   <div class="col-xs-6 col-md-2">{{ request.user.department }}</div>
 </div>
 <div id="authorise-absence-body">
+{% if request.status == 'Pending' %}
 <p id="asterisk-help">Indicates required field</p>
+{% endif %}
   <div class="authoriser-request-form">
     <form class="form-horizontal" action="" method="post">
       {% csrf_token %}
@@ -73,7 +75,7 @@
               {% elif request.status == 'Declined' %}
               style="color: #989898;"
               {% endif %}
-              ></textarea>
+              >{% if request.status == 'Approved' or request.status == 'Declined' %}{{ form.comment.value }}{% endif %}</textarea>
             </div>
           </div>
           </fieldset>
