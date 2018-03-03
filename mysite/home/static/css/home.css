@@ -1,21 +1,43 @@
-#left-authoriser span {
-  width: 30px;
+.fa-home {
+    position: relative;
+    bottom: 1px;
+
 }
 
-.details #left-authoriser {
-  position: absolute;
-  top: 29px;
-  left: -1.7%;
-  list-style: none;
+.fa-exclamation-circle {
+    position: relative;
+    bottom: 1px;
+
 }
 
-.details #right {
-  position: absolute;
-  top: 10px;
-  left: 890px;
-  list-style: none;
+.fa-user {
+    position: relative;
+    bottom: 1.2px;
+
 }
 
+.fa-clock {
+    position: relative;
+    bottom: 1px;
+
+}
+
+#welcome-col {
+    color: #ea641b;
+    font-weight: bold;
+}
+
+#pending-col {
+    color: #222931;
+    font-weight: bold;
+}
+
+#auth-col {
+    font-weight: bold;
+}
+#login-col {
+    font-weight: bold;
+}
 .header {
   color: #ea641b;
   position: relative;
@@ -27,10 +49,9 @@
   width: 100%;
   left: -1px;
   top: 20px;
-  height: 130px;
-  background: rgb(234, 231, 226);
-  background: rgba(234, 231, 226, 1.2);
-  padding: 0.9em 0.6em;
+  height: 50px;
+    background: #EEEEEE;
+  padding: 1.1em 0.6em;
   border: 0.5px solid #ea641b;
   border-radius: 5px 5px 0 0;
 }
@@ -45,11 +66,12 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
   width: 100%;
   position: absolute;
-  top: 150px;
+  top: 70px;
   max-width: 100%;
   left: -0.1%;
-  min-height: 382px;
-  max-height: 382px;
+  min-height: 460px;
+    max-height: 460px;
+
 }
 
 .table.table>thead>tr>th {
@@ -300,8 +322,9 @@ table.table th i {
 }
 
 .search-box {
-  position: absolute;
-  left: 8px;
+    position: absolute;
+    left: 8px;
+    top: -2px;
 }
 
 .search-box input {
@@ -355,7 +378,7 @@ table.table th i {
 #footer-info {
   position: relative;
   width: 30%;
-  top: 229px;
+  top: 308px;
   color: #999;
   left: 2px;
   font-size: 8pt;
@@ -366,7 +389,7 @@ table.table th i {
   position: absolute;
   display: inline-block;
   width: 30%;
-  top: 258px;
+  top: 340px;
   left: 0px;
 }
 
@@ -376,5 +399,5 @@ table.table th i {
   display: inline-block;
   top: 117px;
   width: 1169px;
-  height: 264.5px;
+  height: 342.5px;
 }

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var auth_table = $('#authoriser_table').DataTable({
       "lengthMenu": [
         [7],
@@ -8,8 +9,8 @@ $(document).ready(function () {
 
     var req_table = $('#requester_table').DataTable({
       "lengthMenu": [
-        [7],
-        [7]
+        [9],
+        [9]
       ]
     });
 
@@ -60,6 +61,10 @@ $(document).ready(function () {
 
     $("#requester_table_paginate").detach().appendTo('#footer-paginate');
     $("#requester_table_info").detach().appendTo('#footer-info');
-  }
 
+
+
+
+
+  }
 );

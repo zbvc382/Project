@@ -3,22 +3,20 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% if user.is_authenticated %}
-<div class="jumbotron" id="authoriser_jumbatron"></div>
-<div class="details">
-  <ul id="left-authoriser">
-    <li>
-      <p><span class="glyphicon glyphicon-user"></span>{{ user.get_full_name }}</p>
-    </li>
-    <li>
-      <p><span class="glyphicon glyphicon-earphone one"></span>{{ user.phone_number }}</p>
-    </li>
-    <li>
-      <p><span class="glyphicon glyphicon-envelope one"></span>{{ user.email }}</p>
-    </li>
-    <li>
-      <p><span class="glyphicon glyphicon-book"></span>{{ user.department }}</p>
-    </li>
-  </ul>
+<div class="jumbotron" id="authoriser_jumbatron">
+{% if user.is_requester %}
+<div class="row">
+  <div class="col-md-3" id="welcome-col">&nbsp;<i class="fas fa-home"></i>&nbsp;&nbsp;Welcome back
+      {{ request.user.first_name }}.</div>
+  <div class="col-md-3" id="pending-col"><i class="fas fa-exclamation-circle" {% if is_pending == True %}
+      style="color: #C42E2A;" {% elif is_pending == False %} style="color: #439B43;" {% endif %}></i>&nbsp;&nbsp;Pending Requests
+      <span style="color: #ea641b">{{ pending_requests }}</span></div>
+      <div class="col-md-3" id="auth-col"><i class="fas fa-user"></i>&nbsp;&nbsp;Authoriser
+          <span style="color: #ea641b">{{ assigned_authoriser }}</span></div>
+    <div class="col-md-3" id="login-col"><i class="fas fa-clock"></i>&nbsp;&nbsp;Last Login
+        <span style="color: #ea641b">{{ request.user.last_login }}</span></div>
+</div>
+    {% endif %}
 </div>
 <div class="container">
   <div class="table-wrapper">
@@ -70,9 +68,9 @@
           <th>Absence Type</th>
           <th>Absence Start</th>
           <th>Absence End</th>
-          <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
-          <th>Status</th>
-          <th>Action &nbsp;</th>
+          <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          <th>Status&nbsp;</th>
+          <th>Action</th>
           {% endif %}
         </tr>
       </thead>

@@ -21,6 +21,11 @@ class RequesterHomeView(TemplateView):
     def get_context_data(self, **kwargs):
         user = self.request.user
         requester_requests = Request.objects.filter(user=self.request.user)
+        pending_requests = requester_requests.filter(status='Pending')
+        is_pending = False
+
+        if pending_requests.__len__() > 0:
+            is_pending = True
 
         # TODO: Might need exception handling
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
@@ -28,7 +33,9 @@ class RequesterHomeView(TemplateView):
         array = ['pdf', 'jpg', 'txt', 'docx']
 
         context = {'user': user, 'requester_requests': requester_requests,
-                   'assigned_authoriser': assigned_authoriser, 'array': array}
+                   'assigned_authoriser': assigned_authoriser, 'array': array,
+                   'pending_requests': pending_requests.__len__(),
+                   'is_pending': is_pending}
 
         return context
 
