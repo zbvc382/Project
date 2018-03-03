@@ -7,12 +7,28 @@ $(document).ready(function () {
   $('#approve-button').click(function () {
     $("input[name=status]").val("Approved");
     var comment = $("#authoriserComment").val();
+    if(comment.length === 0) {
+        $('#authoriserComment')
+            .after('<span id="helpBlock2" class="help-block">Field required</span>');
+        $('#comment-div').addClass('has-error');
+    }
+
     $("#id_comment").val(comment);
   });
 
   $('#decline-button').click(function () {
     $("input[name=status]").val("Declined");
     var comment = $("#authoriserComment").val();
+
+        if(comment.length === 0) {
+        $('#authoriserComment')
+            .after('<span id="helpBlock2" class="help-block">Field required</span>');
+        $('#comment-div').addClass('has-error');
+    }
     $("#id_comment").val(comment);
   });
+
+
+
+
 });

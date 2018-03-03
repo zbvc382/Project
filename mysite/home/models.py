@@ -32,7 +32,7 @@ class Request(models.Model):
     reason = models.TextField(max_length=200)
     status = models.CharField(max_length=10, default='Pending')
     attachment = models.FileField(upload_to=user_directory_path, null=True, validators=[validate_file_size])
-    comment = models.TextField(max_length=200, blank=True, default="")
+    comment = models.TextField(max_length=200, default="")
 
     def __str__(self):
         return '%s' % self.attachment

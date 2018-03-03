@@ -64,13 +64,12 @@
       </nav>
     </div>
     {% endif %}
-    {% if user.is_requester %}
     {% for message in messages %}
     <div class="alert {{ message.tags }} alert-dismissible fade in text-center" role="alert">
       {{ message }}
     </div>
     {% endfor %}
-    {% endif %}
+
     <div class="container" id="main-container">
       {% block body %}{% endblock %}
     </div>

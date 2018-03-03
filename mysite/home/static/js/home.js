@@ -2,8 +2,8 @@ $(document).ready(function () {
 
     var auth_table = $('#authoriser_table').DataTable({
       "lengthMenu": [
-        [7],
-        [7]
+        [9],
+        [9]
       ]
     });
 

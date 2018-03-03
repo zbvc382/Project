@@ -57,7 +57,7 @@ class RequesterRequestView(CreateView):
         o = form.save(commit=False)
         o.user = self.request.user
         o.save()
-        messages.success(self.request, 'Absence request submitted successfully!')
+        messages.success(self.request, 'Absence request submitted successfully.')
 
         return redirect(reverse('home:home'))
 

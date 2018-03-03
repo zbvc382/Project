@@ -16,6 +16,16 @@
     <div class="col-md-3" id="login-col"><i class="fas fa-clock"></i>&nbsp;&nbsp;Last Login
         <span style="color: #ea641b">{{ request.user.last_login }}</span></div>
 </div>
+    {% elif user.is_authoriser %}
+    <div class="row">
+  <div class="col-md-4" id="welcome-col">&nbsp;<i class="fas fa-home"></i>&nbsp;&nbsp;Welcome back
+      {{ request.user.first_name }}.</div>
+  <div class="col-md-4" id="pending-col"><i class="fas fa-exclamation-circle" {% if is_pending == True %}
+      style="color: #C42E2A;" {% elif is_pending == False %} style="color: #439B43;" {% endif %}></i>&nbsp;&nbsp;Pending Requests
+      <span style="color: #ea641b">{{ pending_requests }}</span></div>
+    <div class="col-md-4" id="login-col"><i class="fas fa-clock"></i>&nbsp;&nbsp;Last Login
+        <span style="color: #ea641b">{{ request.user.last_login }}</span></div>
+</div>
     {% endif %}
 </div>
 <div class="container">

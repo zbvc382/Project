@@ -32,7 +32,8 @@
 div #authorise-absence-body {
   border: 0.5px solid #ea641b;
   background: rgba(234, 231, 226, 1.2);
-  padding-bottom: 0px;
+  padding-bottom: 5px;
+    padding-top: 10px;
   margin-bottom: 0px;
   border-radius: 5px 5px 0 0;
 }
@@ -157,3 +158,23 @@ textarea {
   left: 96px;
   bottom: 23.5px;
 }
+
+#helpBlock2 {
+    position: absolute;
+}
+
+#asterisk-help:before {
+  color: #e32;
+  content: '* ';
+}
+
+#asterisk-help {
+  position: relative;
+  left: 15px;
+  bottom: 5px;
+}
+
+#comment-asterisk {
+    color: #e32;
+}
+
