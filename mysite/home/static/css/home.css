@@ -12,18 +12,6 @@
 
 .fa-user {
     position: relative;
-    bottom: 1.2px;
-
-}
-
-.fa-clock {
-    position: relative;
-    bottom: 1px;
-
-}
-
-#welcome-col {
-    color: #ea641b;
     font-weight: bold;
 }
 
@@ -73,6 +61,8 @@
     max-height: 460px;
 
 }
+
+
 
 .table.table>thead>tr>th {
   padding: 8px;
@@ -201,8 +191,9 @@ table.dataTable thead>tr>td.sorting {
 
 table.table tr th,
 table.table tr td {
-  border-color: #e9e9e9;
+  border-color: rgba(145,152,155,0.2)
 }
+
 
 table.table-striped tbody tr:nth-of-type(odd) {
   background-color: #fcfcfc;
@@ -400,4 +391,12 @@ table.table th i {
   top: 117px;
   width: 1169px;
   height: 342.5px;
+}
+
+.fa-layers-counter {
+    position: absolute;
+    top: -5px;
+
+    background:Tomato;
+    font-size: 34pt;
 }
