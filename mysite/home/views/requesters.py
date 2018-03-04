@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from django.core.mail import send_mail
 from ..decorators import requester_required
 from ..forms import RequestForm
 from ..models import Request, Requester
@@ -56,6 +57,16 @@ class RequesterRequestView(CreateView):
     def form_valid(self, form):
         o = form.save(commit=False)
         o.user = self.request.user
+        assigned_authoriser = Requester.objects.get(user=o.user).assigned_authoriser.user
+        assigned_authoriser_name = assigned_authoriser.first_name
+        assigned_authoriser_email = assigned_authoriser.email
+        email_subject = 'A new absence request application is awaiting decision.'
+        email_body = 'Dear ' + assigned_authoriser_name + ',\n\n' \
+                     'A new absence request application is awaiting decision.\n\nTo make a decision' \
+                     ' please log into the Royal Holloway\'s Absence Management System.\n\n\n' \
+                     '**This is an automatically generated email – please do not reply to it.**'
+        email_from = 'zbvc382@gmail.com'
+        send_mail(email_subject, email_body, email_from, [assigned_authoriser_email], fail_silently=False,)
         o.save()
         messages.success(self.request, 'Absence request submitted successfully.')
 

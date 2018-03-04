@@ -56,7 +56,8 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         email_body = 'Dear ' + request_object.user.first_name\
                      + ',\n\nThe decision of your absence request application #' + str(request_object.id) + ' is now' \
                        ' available to view online.\n\nTo view your decision please log into the Royal Holloway\'s' \
-                       ' Absence Management System.'
+                       ' Absence Management System.\n\n\n**This is an automatically generated email' \
+                       ' – please do not reply to it.**'
         email_from = 'zbvc382@gmail.com'
         email_to = request_object.user.email
         send_mail(email_subject, email_body, email_from, [email_to], fail_silently=False,)
