@@ -29,10 +29,10 @@ class Request(models.Model):
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
-    reason = models.TextField(max_length=200)
+    reason = models.TextField(max_length=500)
     status = models.CharField(max_length=10, default='Pending')
     attachment = models.FileField(upload_to=user_directory_path, null=True, validators=[validate_file_size])
-    comment = models.TextField(max_length=200, default="")
+    comment = models.TextField(max_length=250, default="")
 
     def __str__(self):
         return '%s' % self.attachment

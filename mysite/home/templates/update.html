@@ -76,6 +76,9 @@
               style="color: #989898;"
               {% endif %}
               >{% if request.status == 'Approved' or request.status == 'Declined' %}{{ form.comment.value }}{% endif %}</textarea>
+            {% if request.status == 'Pending' %}
+            <span id="char-limit-mssg" style="position: absolute">Max. 250 characters</span>
+            {% endif %}
             </div>
           </div>
           </fieldset>
