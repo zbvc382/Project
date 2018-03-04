@@ -3,9 +3,10 @@ from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.core.mail import send_mail
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
-from django.urls import reverse_lazy
 
 
 User = get_user_model()
@@ -48,6 +49,19 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
     success_message = 'Absence request status updated successfully.'
     success_url = reverse_lazy('home:home')
+
+    def form_valid(self, form):
+        request_object = self.get_object()
+        email_subject = 'The decision for Absence Request #' + str(request_object.id) + ' is now available.'
+        email_body = 'Dear ' + request_object.user.first_name\
+                     + ',\n\nThe decision of your absence request application #' + str(request_object.id) + ' is now' \
+                       ' available to view online.\n\nTo view your decision please log into the Royal Holloway\'s' \
+                       ' Absence Management System.'
+        email_from = 'zbvc382@gmail.com'
+        email_to = request_object.user.email
+        send_mail(email_subject, email_body, email_from, [email_to], fail_silently=False,)
+
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super(AuthoriserRequestView, self).get_context_data(**kwargs)

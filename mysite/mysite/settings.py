@@ -143,3 +143,13 @@ MEDIA_URL = '/media/'
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'zbvc382@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'DjangoAMS'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True

@@ -40,6 +40,9 @@ class Request(models.Model):
     def get_extension(self):
         return self.__str__().split('.').pop()
 
+    def get_status(self):
+        return '%s' % self.status
+
 
 class RequesterManager(models.Manager):
     def get_authorisers(self):
