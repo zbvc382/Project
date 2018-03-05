@@ -193,7 +193,8 @@
                         {{ request.status }}
                         {% endif %}
                     </td>
-                    <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a></td>
+                    <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
+                        <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span></td>
                 </tr>
                 {% endfor %}
                 {% endif %}

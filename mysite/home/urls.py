@@ -9,7 +9,9 @@ urlpatterns = [
     url(r'^authoriser/$', authorisers.AuthoriserHomeView.as_view(), name='authoriser'),
     url(r'^requester/absence/$', requesters.RequesterRequestView.as_view(), name='absence'),
     url(r'^requester/absence/view/(?P<pk>\d+)/$', requesters.RequesterCheckView.as_view(), name='check'),
-    url(r'^authoriser/request/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
+    url(r'^authoriser/request/view/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
+    url(r'^authoriser/request/view/(?P<pk>\d+)/send/', authorisers.AuthoriserRequestViewEmail.as_view(),
+        name='send'),
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin')
 ]
 

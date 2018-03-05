@@ -18,3 +18,8 @@ class RequestForm(forms.ModelForm):
             'start': TextInput(),
             'end': TextInput()
         }
+
+
+class EmailForm(forms.Form):
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)

@@ -2,15 +2,15 @@ $(document).ready(function () {
 
     var auth_table = $('#authoriser_table').DataTable({
       "lengthMenu": [
-        [9],
-        [9]
+        [8],
+        [8]
       ]
     });
 
     var req_table = $('#requester_table').DataTable({
       "lengthMenu": [
-        [9],
-        [9]
+        [8],
+        [8]
       ]
     });
 

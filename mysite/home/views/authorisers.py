@@ -1,10 +1,14 @@
-from django.views.generic import TemplateView, UpdateView
+from django.views.generic import TemplateView, UpdateView, FormView
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
+from django.template import loader
+from django.core.mail import EmailMultiAlternatives
+from django.core.exceptions import ObjectDoesNotExist
+from ..forms import EmailForm
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
 
@@ -74,3 +78,39 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         context['extension'] = extension
 
         return context
+
+
+@method_decorator([login_required, authoriser_required], name='dispatch')
+class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
+    template_name = 'contact.html'
+    form_class = EmailForm
+    success_url = reverse_lazy('home:home')
+
+    def form_valid(self, form):
+        subject, from_email, to_email = 'hello', 'zbvc382@gmail.com', form.cleaned_data['email']
+        text_content = form.cleaned_data['message']
+        pk = self.kwargs['pk']
+
+        try:
+            request_object = Request.objects.get(id=pk)
+
+            html_content = loader.render_to_string(
+                'email_body.html',
+                {
+                    'leave_type': request_object.leave_type,
+                    'start': request_object.start,
+                    'end': request_object.end,
+                    'reason': request_object.reason,
+                    'status': request_object.status,
+                    'comment': request_object.comment,
+                }
+            )
+
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+
+            return super().form_valid(form)
+
+        except ObjectDoesNotExist:
+            print('Oops')
