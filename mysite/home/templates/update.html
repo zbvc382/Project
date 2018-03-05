@@ -127,11 +127,6 @@
           <div class="form-group button-group">
             <label for="button-group" class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-            {% if request.status == 'Approved' or request.status == 'Declined' %}
-            <button type="submit" value="Update" class="btn btn-success btn-block"
-              id="email-form-button">Email Form</button>
-            {% endif %}
-
               <fieldset {% if request.status == 'Approved' or request.status == 'Declined' %}
               disabled {% endif %}>
               <button type="submit" value="Update" class="btn btn-success btn-block"
@@ -145,6 +140,12 @@
               style="background: #AAAFB4; border-color: #989898" {% endif %}
               >Decline</button>
               </fieldset>
+                <fieldset {% if request.status == 'Pending' %}
+              disabled {% endif %}>
+            <a href="{% url 'home:send' request.pk %}" class="btn btn-success btn-block"
+              id="email-form-button" {% if request.status == 'Pending' %}
+              style="background: #AAAFB4; border: 1px solid #989898;" {% endif %}>Email Form</a>
+                </fieldset>
             </div>
           </div>
         </div>

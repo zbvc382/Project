@@ -96,34 +96,34 @@ input[name=status] {
 
 .col-sm-10 .btn-success {
   background: #ea641b;
-  border: 1px solid #B4B3B1;
+    border: none;
+
 }
 
 .col-sm-10 .btn-danger {
   background: #ea641b;
-  border: 1px solid #B4B3B1;
+    border: none;
+
 }
 
 .col-sm-10 .btn-info {
   background: #ea641b;
-  border: 1px solid #B4B3B1;
+    border: none;
+
   position: relative;
   top: 6px;
 }
 
 .col-sm-10 .btn-success:hover {
   background: #107AA2;
-  border: 1px solid #B4B3B1;
 }
 
 .col-sm-10 .btn-danger:hover {
   background: #107AA2;
-  border: 1px solid #B4B3B1;
 }
 
 .col-sm-10 .btn-info:hover {
   background: #107AA2;
-  border: 1px solid #B4B3B1;
 }
 
 .fa-file-pdf {
@@ -194,8 +194,9 @@ textarea {
 
 #email-form-button {
     position: relative;
-    margin-bottom: 5px;
-    border-color: #B4B3B1;
+    margin-top: 5px;
+border: none;
+    border-radius: 0;
 
 }
 

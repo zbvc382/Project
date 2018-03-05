@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.template import loader
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import EmailMessage
 from ..forms import EmailForm
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
@@ -108,10 +109,12 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
                 }
             )
 
-            send_mail(subject, text_content, from_email, [to_email],
-                      fail_silently=False, html_message=html_content)
+            email = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+            email.attach_alternative(html_content, "text/html")
+            email.attach_file('media/' + request_object.get_attachment())
+            email.send()
 
             return super().form_valid(form)
 
         except ObjectDoesNotExist:
-            print('Oops')
+            print('Request object does not exist.')

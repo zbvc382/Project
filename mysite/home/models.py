@@ -43,6 +43,9 @@ class Request(models.Model):
     def get_status(self):
         return '%s' % self.status
 
+    def get_attachment(self):
+        return '%s' % self.attachment
+
 
 class RequesterManager(models.Manager):
     def get_authorisers(self):

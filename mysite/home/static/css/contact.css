@@ -1,0 +1,52 @@
+.request-form-header {
+  margin-top: 19px;
+  color: #EAE7E2;
+  height: 34px;
+  background: #222931;
+  border: 0.5px solid #ea641b;
+  text-align: center;
+  font-size: 12pt;
+  padding-top: 5px;
+  border-radius: 5px 5px 0 0;
+}
+
+div #request-absence-body {
+  position: relative;
+  width: 1140px;
+  padding-top: 30px;
+  padding-bottom: 25px;
+  border-bottom: 0.5px solid #ea641b;
+  border-left: 0.5px solid #ea641b;
+  border-right: 0.5px solid #ea641b;
+  background: rgba(234, 231, 226, 1.2);
+}
+
+.request-button {
+  position: relative;
+  left: 735px;
+  top: 15px;
+  margin-right: 20px;
+  border-radius: 0;
+}
+
+.btn-success {
+  background: #ea641b;
+  width: 167px;
+  border: 1px solid #EEEEEE;
+}
+
+.btn-success:hover {
+  background: #107AA2;
+  border: 1px solid #EEEEEE;
+}
+
+.btn-info {
+  background: #ea641b;
+  width: 167px;
+  border: 1px solid #EEEEEE;
+}
+
+.btn-info:hover {
+  background: #107AA2;
+  border: 1px solid #EEEEEE;
+}

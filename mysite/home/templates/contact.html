@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %} {% block body %}
+{% load widget_tweaks %} {% load staticfiles %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/request.css' %}">
+{% endblock %}
+<div class="request-form-header">
+  Absence Request Form
+  <div id="upper-right-divider"></div>
+</div>
+<div id="request-absence-body">
+  <form class="form-horizontal" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Send message" />
 </form>
-
-</body>
-</html>
-
+</div>
+<div id="lower-divider"></div>
+<input type="submit" class="btn btn-success request-button" value="Submit">
+<a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
+</form>
+</div>
+</div>
+{% endblock %}
 
 
