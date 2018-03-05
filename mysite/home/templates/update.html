@@ -147,6 +147,11 @@
       {{ form.status }}
       {{ form.comment }}
     </form>
+  {% if request.status == 'Approved' %}
+    <div id="approved-txt">Approved on <span style="color: #ea641b">{{ request.updated_at }}</span></div>
+  {% elif request.status == 'Declined' %}
+    <div id="declined-txt">Declined on <span style="color: #ea641b">{{ request.updated_at }}</span></div>
+  {% endif %}
   </div>
 </div>
 {% endblock %}

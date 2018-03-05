@@ -97,6 +97,8 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
             html_content = loader.render_to_string(
                 'email_body.html',
                 {
+                    'text_content': text_content,
+                    'application_number': request_object.id,
                     'leave_type': request_object.leave_type,
                     'start': request_object.start,
                     'end': request_object.end,
@@ -106,9 +108,8 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
                 }
             )
 
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            send_mail(subject, text_content, from_email, [to_email],
+                      fail_silently=False, html_message=html_content)
 
             return super().form_valid(form)
 

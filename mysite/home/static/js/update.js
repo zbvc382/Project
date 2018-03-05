@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  $("#approved-date-text").hide();
-  $("#declined-date-text").hide();
 
   $(".requester-comment-div").wrapAll("<fieldset />");
 
@@ -49,8 +47,4 @@ $(document).ready(function () {
     }
     $("#id_comment").val(comment);
   });
-
-
-
-
 });

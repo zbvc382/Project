@@ -178,3 +178,18 @@ textarea {
     color: #e32;
 }
 
+#approved-txt {
+    position: absolute;
+    bottom: 2px;
+    left: 20px;
+    font-size: 8pt;
+}
+
+#declined-txt {
+    position: absolute;
+    bottom: 2px;
+    left: 20px;
+    font-size: 8pt;
+}
+
+
