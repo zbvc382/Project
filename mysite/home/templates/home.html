@@ -194,7 +194,12 @@
                         {% endif %}
                     </td>
                     <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
-                        <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span></td>
+                        {% if request.status == 'Approved' or request.status == 'Declined' %}
+                        <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
+                            {% else %}
+                            <span><a class="btn btn-sm email-button-disabled" disabled="disabled">Email</a></span>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
                 {% endif %}

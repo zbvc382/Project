@@ -298,6 +298,15 @@ table.table td .btn.email-button {
   border-radius: 2px;
 }
 
+table.table td .btn.email-button-disabled {
+    position: relative;
+    padding: 2px 10px;
+  width: 50px;
+    background: #C0C2C3;
+  color: #fff;
+  border-radius: 2px;
+}
+
 table.table td .btn.manage:hover {
   background: rgb(234, 100, 27);
   background: rgba(234, 100, 27, 1);
