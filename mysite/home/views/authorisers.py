@@ -8,7 +8,6 @@ from django.core.mail import send_mail
 from django.template import loader
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.mail import EmailMessage
 from ..forms import EmailForm
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
@@ -88,7 +87,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
     success_url = reverse_lazy('home:home')
 
     def form_valid(self, form):
-        subject, from_email, to_email = 'hello', 'zbvc382@gmail.com', form.cleaned_data['email']
+        subject, from_email, to_email = form.cleaned_data['subject'], 'zbvc382@gmail.com', form.cleaned_data['email']
         text_content = form.cleaned_data['message']
         pk = self.kwargs['pk']
 
@@ -111,7 +110,10 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
 
             email = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
             email.attach_alternative(html_content, "text/html")
-            email.attach_file('media/' + request_object.get_attachment())
+
+            if form.cleaned_data['include_attachment'] is True:
+                email.attach_file('media/' + request_object.get_attachment())
+
             email.send()
 
             return super().form_valid(form)

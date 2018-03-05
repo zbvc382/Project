@@ -1,24 +1,47 @@
 {% extends 'base.html' %} {% block body %}
 {% load widget_tweaks %} {% load staticfiles %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/request.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
 {% endblock %}
+    <div class="email-container">
 <div class="request-form-header">
-  Absence Request Form
-  <div id="upper-right-divider"></div>
+    Email Absence Form
+    <div id="upper-right-divider"></div>
 </div>
-<div id="request-absence-body">
-  <form class="form-horizontal" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+<div id="email-form-body">
+    <p id="asterisk-help">Indicates required field</p>
+    <form class="form-horizontal" action="" method="post">{% csrf_token %}
+        <div class="form-group">
+    <label for="{{ form.email.id_for_label }}" id="email-label">Email Address</label>
+            <div class="col-sm-10">
+            {% render_field form.email class="form-control" %}
+            </div>
+  </div>
+                <div class="form-group">
+    <label for="{{ form.subject.id_for_label }}" id="subject-label">Subject</label>
+                    <div class="col-sm-10">
+            {% render_field form.subject class="form-control" %}
+                    </div>
+  </div>
 
-</form>
-</div>
-<div id="lower-divider"></div>
-<input type="submit" class="btn btn-success request-button" value="Submit">
+  <div class="form-check">
+    <label for="{{ form.include_attachment.id_for_label }}" id="attachment-label">Include Attachment</label>
+      <div class="col-sm-10">
+    {% render_field form.include_attachment class="form-check-input" %}
+      </div>
+  </div>
+  <div class="form-group">
+    <label class="form-check-label" for="{{ form.message.id_for_label }}" id="message-label">Message</label>
+      <div class="col-sm-10">
+        {% render_field form.message class="form-control" %}
+          <span id="char-limit-mssg" style="position: absolute">Max. 200 characters</span>
+      </div>
+  </div>
+<div class="form-group button-group">
+    <input type="submit" class="btn btn-success request-button" value="Submit">
 <a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
-</form>
 </div>
+    </form>
 </div>
+    </div>
 {% endblock %}
-
-

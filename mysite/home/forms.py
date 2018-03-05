@@ -21,5 +21,7 @@ class RequestForm(forms.ModelForm):
 
 
 class EmailForm(forms.Form):
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
+    email = forms.EmailField(max_length=50)
+    subject = forms.CharField(widget=forms.TextInput, max_length=50)
+    include_attachment = forms.BooleanField(widget=forms.CheckboxInput, initial=True, required=False)
+    message = forms.CharField(widget=forms.Textarea, max_length=200)

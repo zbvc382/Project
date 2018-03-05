@@ -1,3 +1,9 @@
+.email-container {
+    position: relative;
+    left: 190px;
+}
+
+
 .request-form-header {
   margin-top: 19px;
   color: #EAE7E2;
@@ -8,13 +14,14 @@
   font-size: 12pt;
   padding-top: 5px;
   border-radius: 5px 5px 0 0;
+    width: 750px;
 }
 
-div #request-absence-body {
+div #email-form-body {
   position: relative;
-  width: 1140px;
+  width: 750px;
   padding-top: 30px;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   border-bottom: 0.5px solid #ea641b;
   border-left: 0.5px solid #ea641b;
   border-right: 0.5px solid #ea641b;
@@ -50,3 +57,85 @@ div #request-absence-body {
   background: #107AA2;
   border: 1px solid #EEEEEE;
 }
+
+.form-group {
+    position: relative;
+    left: 210px;
+    width: 500px;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+    font-size: 9pt;
+    position: relative;
+    right: 480px;
+}
+
+#id_message {
+    height: 100px;
+}
+
+#id_include_attachment {
+    position: relative;
+    left: 196px;
+    bottom: 5px;
+}
+
+#email-label {
+    position: relative;
+    right: 88px;
+    top: 25px;
+}
+
+#subject-label {
+    position: relative;
+    right: 466px;
+}
+
+#message-label {
+    position: relative;
+    right: 474px;
+}
+
+#attachment-label {
+    position: relative;
+    right: 547px;
+    bottom: 5px;
+}
+
+.button-group {
+  position: relative;
+    left: -320px;
+    top: 10px;
+}
+
+.btn-success {
+    margin-right: 0px;
+}
+
+#asterisk-help:before {
+  color: #e32;
+  content: '* ';
+}
+
+#asterisk-help {
+    font-size: 9pt;
+  position: relative;
+  left: 15px;
+  bottom: 20px;
+}
+
+.form-group label:after {
+  color: #e32;
+  content: ' *';
+}
+
+#char-limit-mssg {
+    font-size: 9pt;
+}
+
+
+
