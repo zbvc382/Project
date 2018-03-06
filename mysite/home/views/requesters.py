@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from ..decorators import requester_required
 from ..forms import RequestForm
-from ..models import Request, Requester
+from ..models import Request, Requester, Template
 
 
 User = get_user_model()
@@ -99,6 +99,21 @@ class RequesterCheckView(UpdateView):
 @method_decorator([login_required, requester_required], name='dispatch')
 class RequesterCreateTemplate(View):
 
+    def create_template(self):
+        pk = self.kwargs['pk']
+        request_object = Request.objects.get(id=pk)
+
+        Template.objects.create(
+            user=self.request.user,
+            template_name='Bybis',
+            leave_type=request_object.leave_type,
+            start=request_object.start,
+            end=request_object.end,
+            reason=request_object.reason,
+            comment=request_object.comment
+        )
+
     def get(self, request, *args, **kwargs):
 
-        return HttpResponse('Hello, World!')
+        self.create_template()
+        return HttpResponse('Created!')
