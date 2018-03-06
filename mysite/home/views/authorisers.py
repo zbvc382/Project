@@ -86,6 +86,13 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
     form_class = EmailForm
     success_url = reverse_lazy('home:home')
 
+    def get_context_data(self, **kwargs):
+        context = super(AuthoriserRequestViewEmail, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['pk'] = pk
+
+        return context
+
     def form_valid(self, form):
         subject, from_email, to_email = form.cleaned_data['subject'], 'zbvc382@gmail.com', form.cleaned_data['email']
         text_content = form.cleaned_data['message']
