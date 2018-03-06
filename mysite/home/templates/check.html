@@ -12,11 +12,13 @@
   <div class="col-xs-6 col-md-2">
     <div class="utility-buttons">
       <button>
+
       <i class="fas fa-redo-alt"></i>
       </button>
-      <button>
-      <i class="far fa-save"></i>
-      </button>
+
+          <a href="{% url 'home:create' request.pk %}"><i class="far fa-save fa-lg"></i></a>
+
+
     </div>
   </div>
 </div>

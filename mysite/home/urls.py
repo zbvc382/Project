@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^authoriser/request/view/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
     url(r'^authoriser/request/view/(?P<pk>\d+)/send/', authorisers.AuthoriserRequestViewEmail.as_view(),
         name='send'),
+    url(r'^requester/absence/view/(?P<pk>\d+)/create-template', requesters.RequesterCreateTemplate.as_view(), name='create'),
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin')
 ]
 

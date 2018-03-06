@@ -47,6 +47,18 @@ class Request(models.Model):
         return '%s' % self.attachment
 
 
+class Template(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    template_name = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    leave_type = models.CharField(max_length=20)
+    start = models.CharField(max_length=20)
+    end = models.CharField(max_length=20)
+    reason = models.TextField(max_length=500)
+    comment = models.TextField(max_length=250, default="")
+
+
 class RequesterManager(models.Manager):
     def get_authorisers(self):
         queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))

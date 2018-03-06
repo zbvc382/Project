@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
+from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import TemplateView, CreateView, UpdateView
+from django.views.generic import TemplateView, UpdateView, FormView, View
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -42,7 +43,7 @@ class RequesterHomeView(TemplateView):
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequesterRequestView(CreateView):
+class RequesterRequestView(FormView):
     template_name = 'request.html'
     form_class = RequestForm
 
@@ -93,3 +94,11 @@ class RequesterCheckView(UpdateView):
         context['authoriser'] = assigned_authoriser
 
         return context
+
+
+@method_decorator([login_required, requester_required], name='dispatch')
+class RequesterCreateTemplate(View):
+
+    def get(self, request, *args, **kwargs):
+
+        return HttpResponse('Hello, World!')
