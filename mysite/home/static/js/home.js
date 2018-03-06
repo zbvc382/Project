@@ -9,8 +9,8 @@ $(document).ready(function () {
 
     var req_table = $('#requester_table').DataTable({
       "lengthMenu": [
-        [8],
-        [8]
+        [4],
+        [4]
       ]
     });
 
