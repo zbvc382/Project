@@ -50,7 +50,7 @@ class Request(models.Model):
 class Template(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    template_name = models.CharField(max_length=20)
+    template_name = models.CharField(max_length=40)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     leave_type = models.CharField(max_length=20)
     start = models.CharField(max_length=20)
