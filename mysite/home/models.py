@@ -58,8 +58,11 @@ class Template(models.Model):
     reason = models.TextField(max_length=500)
     comment = models.TextField(max_length=250, default="")
 
+
     def __str__(self):
         return '%s' % self.template_name
+
+
 
 
 class RequesterManager(models.Manager):

@@ -1,4 +1,5 @@
 from django.shortcuts import redirect
+from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, UpdateView, FormView, View
@@ -21,9 +22,13 @@ class RequesterHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        requester_requests = Request.objects.filter(user=self.request.user)
+        template_objects = Template.objects.filter(user=user)
+        requester_requests = Request.objects.filter(user=user)
         pending_requests = requester_requests.filter(status='Pending')
         is_pending = False
+
+        if template_objects.__len__() > 3:
+            template_objects = None
 
         if pending_requests.__len__() > 0:
             is_pending = True
@@ -36,7 +41,7 @@ class RequesterHomeView(TemplateView):
         context = {'user': user, 'requester_requests': requester_requests,
                    'assigned_authoriser': assigned_authoriser, 'array': array,
                    'pending_requests': pending_requests.__len__(),
-                   'is_pending': is_pending}
+                   'is_pending': is_pending, 'templates': template_objects}
 
         return context
 
@@ -45,6 +50,24 @@ class RequesterHomeView(TemplateView):
 class RequesterRequestView(FormView):
     template_name = 'request.html'
     form_class = RequestForm
+
+    def get_initial(self):
+        try:
+            template_object = Template.objects.get(id=self.kwargs['template'])
+
+            print(template_object.start)
+
+            return {
+                'created_at': template_object.created_at,
+                'leave_type': template_object.leave_type,
+                'start': template_object.start,
+                'end': template_object.end,
+                'reason': template_object.reason,
+                'status': 'Pending',
+            }
+
+        except ObjectDoesNotExist:
+            print('wtf mate')
 
     def get_context_data(self, **kwargs):
         context = super(RequesterRequestView, self).get_context_data(**kwargs)

@@ -35,6 +35,7 @@
     </div>
     {% endif %}
 </div>
+    {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
         <div class="col-xs-6 col-md-6">Saved Requests</div>
@@ -56,28 +57,19 @@
     </div>
     <div class="right-side">
         <ul class="right-list">
-            <li>
+            {% for template in templates %}
+                        <li>
                 <div class="saved-item">
-                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
-                    <span id="template-name-span">&nbsp;&nbsp;My favoruite template</span>
+                    <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                    <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
                     <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                 </div>
             </li>
-            <li>
-                                <div class="saved-item">
-                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
-                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                </div>
-            </li>
-            <li>
-                                <div class="saved-item">
-                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
-                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
+        {% endif %}
 <div class="container-body">
     <div class="table-wrapper">
         <div class="table-title">
