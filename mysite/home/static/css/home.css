@@ -433,6 +433,7 @@ table.table th i {
 }
 
 .saved-item {
+    position: relative;
     width: 450px;
     height: 30px;
     margin-bottom: 10px;
@@ -472,13 +473,10 @@ table.table th i {
 
 
 #template-name-span {
-    position: relative;
+    position: absolute;
     top: 1px;
     color: #ffffff;
     font-size: 12pt;
-    width: 0;
-    display: inline-block;
-
 }
 
 .col-xs-6.col-md-6 {
