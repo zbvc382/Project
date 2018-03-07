@@ -375,11 +375,86 @@ table.table th i {
 }
 
 .applications {
-    background: #ee3322;
+    background: #EAE7E2;
     width: 1170px;
     position: relative;
     top: 70px;
     right: 16px;
     height: 150px;
-    border: 0.5px solid #107AA2;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+    border-top: none;
+}
+
+.row-appl {
+    background: #EAE7E2;
+    position: absolute;
+    margin-top: 3px;
+    width: 1169px;
+    color: #197BA0;
+    font-size: 11pt;
+
+}
+
+#appl-divider {
+    width: 1px;
+    height: 150px;
+    background: #CECECE;
+    position: absolute;
+    top: 0;
+    left: 584px;
+}
+
+.right-side {
+    position: absolute;
+    left: 580px;
+    bottom: 0;
+    top: 30px;
+}
+
+.left-side {
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    top: 30px;
+}
+
+.btn-default {
+    width: 515px;
+    margin-bottom: 5px;
+}
+
+.right-list {
+    list-style: none;
+}
+
+.left-list {
+    list-style: none;
+}
+
+.saved-item {
+    width: 355px;
+    height: 30px;
+    margin-bottom: 10px;
+    background: #3AB1D3;
+    border-radius: 0;
+    border: 1px solid #189FC5;
+    border-right: none;
+}
+
+.saved-item .btn-success {
+    position: relative;
+    left: 354px;
+    bottom: 1px;
+    border-radius: 0;
+    border-left: none ;
+    border-right: none;
+}
+
+.saved-item .btn-danger {
+    position: relative;
+    left: 350px;
+    bottom: 1px;
+    border-radius: 0;
+    border-left: none;
 }

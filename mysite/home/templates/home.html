@@ -35,7 +35,48 @@
     </div>
     {% endif %}
 </div>
-<div class="applications">BYBIS</div>
+<div class="applications">
+    <div class="row-appl">
+        <div class="col-xs-6 col-md-6" style="text-align: center">Saved Requests</div>
+        <div class="col-xs-6 col-md-6" style="text-align: center">Templates</div>
+    </div>
+    <div id="appl-divider">&nbsp;</div>
+    <div class="left-side">
+        <ul class="left-list">
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+        </ul>
+    </div>
+    <div class="right-side">
+        <ul class="right-list">
+            <li>
+                <div class="saved-item">
+                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </div>
+            </li>
+            <li>
+                                <div class="saved-item">
+                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </div>
+            </li>
+            <li>
+                                <div class="saved-item">
+                    <a href="#" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="container-body">
     <div class="table-wrapper">
         <div class="table-title">
@@ -197,8 +238,8 @@
                     <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
                         {% if request.status == 'Approved' or request.status == 'Declined' %}
                         <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
-                            {% else %}
-                            <span><a class="btn btn-sm email-button-disabled" disabled="disabled">Email</a></span>
+                        {% else %}
+                        <span><a class="btn btn-sm email-button-disabled" disabled="disabled">Email</a></span>
                         {% endif %}
                     </td>
                 </tr>
@@ -206,9 +247,8 @@
                 {% endif %}
             </tbody>
             <div class="table-background"></div>
-                <div id="footer-info"></div>
-                <div id="footer-paginate"></div>
-
+            <div id="footer-info"></div>
+            <div id="footer-paginate"></div>
             </table>
         </div>
     </div>
