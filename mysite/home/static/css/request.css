@@ -124,11 +124,18 @@ div #request-absence-body {
   background: #EEEEEE;
 }
 
+button {
+  background: #222931;
+  border: none;
+  height: 30px;
+}
+
 .utility-buttons {
-  position: absolute;
+  position: relative;
   width: 40px;
-  left: 1100px;
-  top: -33px;
+  left: 1086px;
+  bottom: 26px;
+  background: #222931;
   border: none;
   color: #EAE7E2;
 }
@@ -142,4 +149,8 @@ div #request-absence-body {
 
 textarea {
   resize: none;
+}
+
+.fa-save {
+    font-size: 19pt;
 }

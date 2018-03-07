@@ -57,7 +57,7 @@ class Template(models.Model):
     end = models.CharField(max_length=20)
     reason = models.TextField(max_length=500)
     comment = models.TextField(max_length=250, default="")
-    attachment = models.CharField(max_length=200, default="")
+    attachment = models.FileField(upload_to=user_directory_path, null=True, validators=[validate_file_size])
 
     def __str__(self):
         return '%s' % self.template_name

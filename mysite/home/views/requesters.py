@@ -70,10 +70,18 @@ class RequesterRequestView(FormView):
                 'end': template_object.end,
                 'reason': template_object.reason,
                 'status': 'Pending',
+                'attachment': template_object.attachment
             }
 
         except ObjectDoesNotExist:
             print('Template object does not exist. Reverting back to clean request.')
+
+        request_att = Request.objects.get(user=self.request.user, id=95).attachment
+        return {
+            'attachment': request_att
+        }
+
+
 
     def get_context_data(self, **kwargs):
         context = super(RequesterRequestView, self).get_context_data(**kwargs)
