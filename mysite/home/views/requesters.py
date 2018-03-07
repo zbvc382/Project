@@ -55,7 +55,7 @@ class RequesterRequestView(FormView):
         try:
             template_object = Template.objects.get(id=self.kwargs['template'])
 
-            print(template_object.start)
+            print(template_object.attachment)
 
             return {
                 'created_at': template_object.created_at,
@@ -67,12 +67,23 @@ class RequesterRequestView(FormView):
             }
 
         except ObjectDoesNotExist:
-            print('wtf mate')
+            print('Template object does not exist. Reverting back to clean request.')
 
     def get_context_data(self, **kwargs):
         context = super(RequesterRequestView, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
+
+        is_template = 'false'
+
+        if self.kwargs['template']:
+            is_template = 'true'
+            template_object = Template.objects.get(id=self.kwargs['template'])
+            context['start'] = template_object.start
+            context['end'] = template_object.end
+            print(template_object.start)
+
+        context['is_template'] = is_template
         context['authoriser'] = assigned_authoriser
 
         return context
@@ -133,7 +144,8 @@ class RequesterCreateTemplate(View):
             start=request_object.start,
             end=request_object.end,
             reason=request_object.reason,
-            comment=request_object.comment
+            comment=request_object.comment,
+            attachment=request_object.attachment
         )
 
     def get(self, request, *args, **kwargs):

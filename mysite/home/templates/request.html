@@ -85,4 +85,28 @@
 </form>
 </div>
 </div>
+    <script>
+    $(document).ready(function () {
+        var is_template ={{ is_template }};
+
+        if (is_template) {
+            $('#id_start').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+            $('#id_end').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        }
+
+        $('#id_start').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $('#id_end').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $('#control-leave-attachment').addClass('has-error');
+    });
+    </script>
 {% endblock %}

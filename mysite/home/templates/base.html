@@ -15,6 +15,18 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block style %}
     {% endblock %}
+      <!-- content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/update.js' %}"></script>
+    <script src="{% static 'js/check.js' %}"></script>
+  <script src="{% static 'js/request.js' %}"></script>
   </head>
   {% block head %} {% endblock %}
   <body>
@@ -73,17 +85,5 @@
     <div class="container" id="main-container">
       {% block body %}{% endblock %}
     </div>
-    <!-- content -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <script src="{% static 'js/home.js' %}"></script>
-    <script src="{% static 'js/base.js' %}"></script>
-    <script src="{% static 'js/update.js' %}"></script>
-    <script src="{% static 'js/request.js' %}"></script>
-    <script src="{% static 'js/check.js' %}"></script>
   </body>
 </html>
