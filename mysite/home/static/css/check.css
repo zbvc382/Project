@@ -105,3 +105,69 @@ button {
 textarea {
   resize: none;
 }
+
+.modal-footer a {
+    color: #ffffff;
+}
+
+.modal-footer a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.modal-footer button {
+    background: #ea641b;
+    border-radius: 0;
+    color: #ffffff;
+    border-color: #ea641b;
+    height: 35px;
+}
+
+#myModal {
+    position: absolute;
+    top: 60px;
+
+}
+
+.modal-content {
+    background: #EAE7E2;
+    border: 0.5px solid #ea641b;
+
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+#temp-name {
+    position: absolute;
+    left: 150px;
+    width: 290px;
+    border: 1px solid #CDCDCD;
+    height: 28px;
+}
+
+#temp-name-label {
+    position: absolute;
+    top: 3px;
+    left: 30px;
+    font-size: 10pt;
+}
+
+.input-group-addon {
+    position: relative;
+    right: 87px;
+    bottom: 0px;
+}
+
+.close {
+    font-size: 22pt;
+    position: relative;
+    bottom: 13px;
+    left: 4px;
+}
+

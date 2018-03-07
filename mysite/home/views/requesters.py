@@ -115,6 +115,6 @@ class RequesterCreateTemplate(View):
         )
 
     def get(self, request, *args, **kwargs):
-
+        pk = self.kwargs['pk']
         self.create_template()
-        return HttpResponse('Created!')
+        return redirect(reverse('home:check', args=(pk,)))

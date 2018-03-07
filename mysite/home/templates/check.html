@@ -133,18 +133,23 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title" style="text-align: center">&nbsp;&nbsp;Create Template</h4>
       </div>
       <div class="modal-body">
-        <input id="temp-name" type="text">
+          <div class="input-group margin-bottom-sm">
+              <label for="temp-name" id="temp-name-label">Template Name</label>
+        <input id="temp-name" type="text" placeholder=" Please enter a template name.">
+          <span class="input-group-addon"><i class="fas fa-tags"></i></span>
+          </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
         <button id="save-button" type="button" class="btn btn-primary">
-            <a id="save-template-link" href="{% url 'home:create' request.pk 'template_name' %}">SAVE</a>
+            <a id="save-template-link" href="{% url 'home:create' request.pk 'template_name' %}">Save</a>
         </button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 {% endblock %}
