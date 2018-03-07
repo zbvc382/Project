@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from .models import Request, Requester, Authoriser
+from .models import Request, Requester, Authoriser, Template
 
 User = get_user_model()
 
@@ -65,4 +65,5 @@ class AuthoriserAdmin(admin.ModelAdmin):
 
 admin.site.register(Authoriser, AuthoriserAdmin)
 admin.site.register(Request)
+admin.site.register(Template)
 admin.site.register(Requester, RequesterAdmin)

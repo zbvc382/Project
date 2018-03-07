@@ -101,11 +101,12 @@ class RequesterCreateTemplate(View):
 
     def create_template(self):
         pk = self.kwargs['pk']
+        template_name = self.kwargs['string']
         request_object = Request.objects.get(id=pk)
 
         Template.objects.create(
             user=self.request.user,
-            template_name='Bybis',
+            template_name=template_name,
             leave_type=request_object.leave_type,
             start=request_object.start,
             end=request_object.end,
