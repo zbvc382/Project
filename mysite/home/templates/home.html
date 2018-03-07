@@ -38,7 +38,7 @@
     {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
-        <div class="col-xs-6 col-md-6">Saved Requests</div>
+        <div class="col-xs-6 col-md-6"><b>Saved Requests</b></div>
         <div class="col-xs-6 col-md-6"><b>Templates</b></div>
     </div>
     <div id="appl-divider">&nbsp;</div>
@@ -62,11 +62,15 @@
                 <div class="saved-item">
                     <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
                     <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
-                    <a href="#" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                 </div>
             </li>
             {% endfor %}
         </ul>
+
+    {% if no_templates %}
+        <div id="no-templates">No templates found.</div>
+        {% endif %}
     </div>
 </div>
         {% endif %}
@@ -120,7 +124,9 @@
                     <th>Action &nbsp;</th>
                     {% endif %}
                     {% if user.is_requester %}
+                        <th>#</th>
                     <th>Submission Date</th>
+
                     <th>Absence Type</th>
                     <th>Absence Start</th>
                     <th>Absence End</th>
@@ -145,6 +151,7 @@
                         #DC5154;
                         {% endif %}
                         padding:0;"></td>
+                    <td>{{ request.id }}</td>
                     <td>{{ request.created_at | date:"d/m/Y" }}</td>
                     <td>{{ request.leave_type }}</td>
                     <td>{{ request.start | date:"d/m/Y" }}</td>

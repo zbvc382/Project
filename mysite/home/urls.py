@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^requester/$', requesters.RequesterHomeView.as_view(), name='requester'),
     url(r'^authoriser/$', authorisers.AuthoriserHomeView.as_view(), name='authoriser'),
     url(r'^requester/absence/(?:/(?P<template>\d+)/)?$', requesters.RequesterRequestView.as_view(), name='absence'),
+    url(r'^authoriser/absence/template=(?P<pk>\d+)/delete$', requesters.RequesterDeleteTemplate.as_view(),
+        name='delete'),
     url(r'^requester/absence/view/(?P<pk>\d+)/$', requesters.RequesterCheckView.as_view(), name='check'),
     url(r'^authoriser/request/view/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
     url(r'^authoriser/request/view/(?P<pk>\d+)/send/$', authorisers.AuthoriserRequestViewEmail.as_view(),

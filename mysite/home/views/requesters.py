@@ -2,8 +2,9 @@ from django.shortcuts import redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import TemplateView, UpdateView, FormView, View
+from django.views.generic import TemplateView, UpdateView, FormView, View, DeleteView
 from django.contrib.auth import get_user_model
+from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -26,9 +27,13 @@ class RequesterHomeView(TemplateView):
         requester_requests = Request.objects.filter(user=user)
         pending_requests = requester_requests.filter(status='Pending')
         is_pending = False
+        no_templates = False
 
         if template_objects.__len__() > 3:
             template_objects = None
+
+        if template_objects.__len__() < 1:
+            no_templates = True
 
         if pending_requests.__len__() > 0:
             is_pending = True
@@ -41,7 +46,8 @@ class RequesterHomeView(TemplateView):
         context = {'user': user, 'requester_requests': requester_requests,
                    'assigned_authoriser': assigned_authoriser, 'array': array,
                    'pending_requests': pending_requests.__len__(),
-                   'is_pending': is_pending, 'templates': template_objects}
+                   'is_pending': is_pending, 'templates': template_objects,
+                   'no_templates': no_templates}
 
         return context
 
@@ -115,9 +121,10 @@ class RequesterCheckView(UpdateView):
     success_url = reverse_lazy('home:home')
 
     def get_context_data(self, **kwargs):
+        user = self.request.user
         context = super(RequesterCheckView, self).get_context_data(**kwargs)
-        assigned_authoriser = Requester.objects.get(user=self.request.user)\
-            .assigned_authoriser.user.get_full_name
+        assigned_authoriser = Requester.objects.get(user=user).assigned_authoriser.user.get_full_name()
+        number_of_templates = Template.objects.filter(user=user).__len__()
         array = ['pdf', 'jpg', 'txt', 'docx']
         request_object = self.get_object()
         attachment = request_object.__str__()
@@ -125,6 +132,8 @@ class RequesterCheckView(UpdateView):
         context['array'] = array
         context['extension'] = extension
         context['authoriser'] = assigned_authoriser
+        context['number_of_templates'] = number_of_templates
+
 
         return context
 
@@ -151,4 +160,25 @@ class RequesterCreateTemplate(View):
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         self.create_template()
+        messages.add_message(self.request, messages.SUCCESS, 'Template created successfully.')
         return redirect(reverse('home:check', args=(pk,)))
+
+
+@method_decorator([login_required, requester_required], name='dispatch')
+class RequesterDeleteTemplate(SuccessMessageMixin, View):
+    model = Template
+    success_message = 'Template successfully deleted.'
+    success_url = reverse_lazy('home:home')
+
+    def delete_template(self):
+        pk = self.kwargs['pk']
+        template_object = Template.objects.get(id=pk)
+        template_object.delete()
+
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        template_name = Template.objects.get(id=pk).__str__()
+        self.delete_template()
+        messages.add_message(self.request, messages.INFO,
+                             'Template \'' + template_name + '\' deleted.')
+        return redirect(reverse('home:home'))

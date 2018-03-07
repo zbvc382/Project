@@ -438,7 +438,7 @@ table.table th i {
     margin-bottom: 10px;
     background: #367BB6;
     border-radius: 0;
-    border: 1px solid #2B618F;
+    border: 1px solid #1766A8;
     border-right: none;
     border-left: none;
     cursor: pointer;
@@ -455,7 +455,7 @@ table.table th i {
     position: relative;
     padding-right: 15px;
     padding-left: 10px;
-    left: 359px;
+    left: 356px;
     bottom: 1px;
     border-radius: 0;
     border-left: none;
@@ -485,4 +485,11 @@ table.table th i {
     color: #222931;
     text-align: center;
 
+}
+
+#no-templates {
+    position: relative;
+    left: 235px;
+    top: 30px;
+    color: #99979B;
 }
