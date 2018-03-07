@@ -1,5 +1,4 @@
 from django.shortcuts import redirect
-from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, UpdateView, FormView, View

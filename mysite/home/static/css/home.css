@@ -433,28 +433,44 @@ table.table th i {
 }
 
 .saved-item {
-    width: 355px;
+    width: 450px;
     height: 30px;
     margin-bottom: 10px;
     background: #3AB1D3;
     border-radius: 0;
     border: 1px solid #189FC5;
     border-right: none;
+    border-left: none;
+    cursor: pointer;
 }
 
 .saved-item .btn-success {
     position: relative;
-    left: 354px;
     bottom: 1px;
     border-radius: 0;
-    border-left: none ;
     border-right: none;
 }
 
 .saved-item .btn-danger {
     position: relative;
-    left: 350px;
+    padding-right: 15px;
+    padding-left: 10px;
+    left: 359px;
     bottom: 1px;
     border-radius: 0;
     border-left: none;
+}
+
+#template-name-span {
+    position: absolute;
+    top: 3px;
+    color: #ffffff;
+    font-size: 12pt;
+
+}
+
+.col-xs-6.col-md-6 {
+    color: #222931;
+    text-align: center;
+
 }
