@@ -42,19 +42,31 @@
 {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
-        <div class="col-xs-6 col-md-6"><b>Calendar Constraints</b></div>
+        <div id="calendar-container" class="col-xs-6 col-md-6">
+            <table id="calendar-table" class="table table-condensed">
+    <thead>
+      <tr>
+        <th class="col-md-2">#</th>
+        <th class="col-md-5">From</th>
+        <th class="col-md-5">To</th>
+          <th class="col-md-5">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+          <td>john@example.com</td>
+      </tr>
+
+    </tbody>
+  </table>
+        </div>
         <div class="col-xs-6 col-md-6"><b>Templates</b></div>
     </div>
     <div id="appl-divider">&nbsp;</div>
     <div class="left-side">
-        <ul class="left-list">
-            <li>
-            </li>
-            <li>
-            </li>
-            <li>
-            </li>
-        </ul>
     </div>
     <div class="right-side">
         <ul class="right-list">

@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from ..decorators import requester_required
 from ..forms import RequestForm
-from ..models import Request, Requester, Template
+from ..models import Request, Requester, Template, CalendarRestriction
 
 
 User = get_user_model()

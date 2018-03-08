@@ -485,3 +485,19 @@ table.table th i {
     width: 1169px;
     height: 179.5px;
 }
+
+#calendar-container {
+    height: 150px !important;
+    overflow: scroll;
+}
+
+#calendar-table table,
+#calendar-table thead,
+#calendar-table tbody,
+#calendar-table tfoot,
+#calendar-table tr,
+#calendar-table th,
+#calendar-table td {
+    text-align: left;
+}
+
