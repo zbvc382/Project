@@ -58,6 +58,7 @@ class RequesterRequestView(FormView):
     form_class = RequestForm
 
     def get_initial(self):
+
         try:
             template_object = Template.objects.get(id=self.kwargs['template'])
 
@@ -135,7 +136,6 @@ class RequesterCheckView(UpdateView):
         context['authoriser'] = assigned_authoriser
         context['number_of_templates'] = number_of_templates
 
-
         return context
 
 
@@ -182,4 +182,56 @@ class RequesterDeleteTemplate(SuccessMessageMixin, View):
         self.delete_template()
         messages.add_message(self.request, messages.INFO,
                              'Template \'' + template_name + '\' deleted.')
+        return redirect(reverse('home:home'))
+
+
+@method_decorator([login_required, requester_required], name='dispatch')
+class RequesterRedoView(FormView):
+    template_name = 'request.html'
+    form_class = RequestForm
+
+    def get_initial(self):
+        try:
+            request_object = Request.objects.get(id=self.kwargs['pk'])
+            print(request_object.start)
+
+            return {
+                'created_at': request_object.created_at,
+                'leave_type': request_object.leave_type,
+                'start': request_object.start,
+                'end': request_object.end,
+                'reason': request_object.reason,
+                'status': 'Pending',
+                'attachment': request_object.attachment
+            }
+
+        except ObjectDoesNotExist:
+            print('Request object does not exist. Reverting back to clean request.')
+
+    def get_context_data(self, **kwargs):
+        context = super(RequesterRedoView, self).get_context_data(**kwargs)
+        assigned_authoriser = Requester.objects.get(user=self.request.user)\
+            .assigned_authoriser.user.get_full_name
+        is_redo = 'true'
+        context['is_redo'] = is_redo
+        context['authoriser'] = assigned_authoriser
+
+        return context
+
+    def form_valid(self, form):
+        o = form.save(commit=False)
+        o.user = self.request.user
+        assigned_authoriser = Requester.objects.get(user=o.user).assigned_authoriser.user
+        assigned_authoriser_name = assigned_authoriser.first_name
+        assigned_authoriser_email = assigned_authoriser.email
+        email_subject = 'A new absence request application is awaiting decision.'
+        email_body = 'Dear ' + assigned_authoriser_name + ',\n\n' \
+                     'A new absence request application is awaiting decision.\n\nTo make a decision' \
+                     ' please log into the Royal Holloway\'s Absence Management System.\n\n\n' \
+                     '**This is an automatically generated email – please do not reply to it.**'
+        email_from = 'zbvc382@gmail.com'
+        send_mail(email_subject, email_body, email_from, [assigned_authoriser_email], fail_silently=False,)
+        o.save()
+        messages.success(self.request, 'Absence request submitted successfully.')
+
         return redirect(reverse('home:home'))

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/check.css' %}">
 {% endblock %}
 <div class="row">
-  <div class="col-xs-6 col-md-2">Application Number <span style="color: #ea641b">{{ request.user.id }}</span></div>
+  <div class="col-xs-6 col-md-2">Application Number <span style="color: #ea641b">{{ request.id }}</span></div>
   <div class="col-xs-6 col-md-2"><b></b><span></span></div>
   <div class="col-xs-6 col-md-2">Status <span style="color: #ea641b">{{ request.status }}</span>
   </div>
@@ -13,8 +13,7 @@
 {#      <a href="{% url 'home:create' request.pk %}"><i class="far fa-save fa-lg"></i></a>#}
     <div class="utility-buttons">
       <button>
-
-      <i class="fas fa-redo-alt"></i>
+          <a href="{% url 'home:redo' request.id %}"><i class="fas fa-redo-alt"></i></a>
       </button>
         <button id="template-button" data-toggle="modal" data-target="#myModal">
             <i class="far fa-copy"></i>
@@ -150,6 +149,11 @@
 </div>
     <script>
         $(document).ready(function () {
+
+            jQuery('.far').tipso({
+                size: 'tiny'
+            });
+
             var number ={{ number_of_templates }};
 
             $('#template-button').click(function () {

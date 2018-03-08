@@ -172,3 +172,14 @@ textarea {
     left: 4px;
 }
 
+.fa-copy:hover {
+    color: #ea641b;
+}
+
+.fa-redo-alt:hover {
+    color: #ea641b;
+}
+
+.fa-redo-alt {
+    color: #EAE7E2;
+}
