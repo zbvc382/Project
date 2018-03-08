@@ -81,24 +81,13 @@
 </div>
     <script>
     $(document).ready(function () {
-        var is_template ={{ is_template }};
-        var is_redo ={{ is_redo }};
-
-        if (is_template || is_redo) {
-            $('#id_start').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-            $('#id_end').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-        }
 
         $('#id_start').datetimepicker({
-            format: 'DD/MM/YYYY'
+            format: 'YYYY-MM-DD'
         });
 
         $('#id_end').datetimepicker({
-            format: 'DD/MM/YYYY'
+            format: 'YYYY-MM-DD'
         });
 
         $('#control-leave-attachment').addClass('has-error');

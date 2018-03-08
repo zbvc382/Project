@@ -51,15 +51,14 @@
   border-bottom: 0.5px solid #ea641b;
   background: #222931;
     margin-top: 10px;
-  margin: 0px 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
   width: 100%;
   position: absolute;
-  top: 70px;
+  top: 60px;
   max-width: 100%;
   left: -0.1%;
-  min-height: 300px;
-    max-height: 300px;
+  min-height: 320px;
+    max-height: 320px;
 
 }
 
@@ -215,7 +214,7 @@ table.table-striped tbody tr:nth-of-type(odd) {
 }
 
 .table-title {
-  margin-bottom: -22px;
+  margin-bottom: -5px;
   padding: 15px 30px;
 }
 
@@ -340,9 +339,9 @@ table.table th i {
 }
 
 #footer-info {
-  position: relative;
+  position: absolute;
+    bottom: 0px;
   width: 30%;
-  top: 247px;
   color: #999;
   left: 2px;
   font-size: 8pt;
@@ -353,18 +352,10 @@ table.table th i {
   position: absolute;
   display: inline-block;
   width: 30%;
-  top: 305px;
+  top: 315px;
   left: 0px;
 }
 
-.table-background {
-  background: #EAE7E2;
-  position: absolute;
-  display: inline-block;
-  top: 140px;
-  width: 1169px;
-  height: 159.5px;
-}
 
 .fa-layers-counter {
     position: absolute;
@@ -390,7 +381,7 @@ table.table th i {
     background: #EAE7E2;
     position: absolute;
     margin-top: 3px;
-    width: 1169px;
+    width: 1168px;
     color: #197BA0;
     font-size: 11pt;
 
@@ -434,7 +425,7 @@ table.table th i {
 
 .saved-item {
     position: relative;
-    width: 450px;
+    width: 515px;
     height: 30px;
     margin-bottom: 10px;
     background: #367BB6;
@@ -443,6 +434,7 @@ table.table th i {
     border-right: none;
     border-left: none;
     cursor: pointer;
+    box-shadow: 3px 2px #888888;
 }
 
 .saved-item .btn-success {
@@ -490,4 +482,14 @@ table.table th i {
     left: 235px;
     top: 30px;
     color: #99979B;
+}
+
+.table-background {
+  background: #EAE7E2;
+  position: absolute;
+  display: inline-block;
+  top: 140px;
+    left: 0;
+  width: 1169px;
+  height: 179.5px;
 }

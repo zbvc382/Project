@@ -62,8 +62,6 @@ class RequesterRequestView(FormView):
         try:
             template_object = Template.objects.get(id=self.kwargs['template'])
 
-            print(template_object.attachment)
-
             return {
                 'created_at': template_object.created_at,
                 'leave_type': template_object.leave_type,
@@ -82,16 +80,6 @@ class RequesterRequestView(FormView):
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
 
-        is_template = 'false'
-
-        if self.kwargs['template']:
-            is_template = 'true'
-            template_object = Template.objects.get(id=self.kwargs['template'])
-            context['start'] = template_object.start
-            context['end'] = template_object.end
-            print(template_object.start)
-
-        context['is_template'] = is_template
         context['authoriser'] = assigned_authoriser
 
         return context
@@ -193,7 +181,6 @@ class RequesterRedoView(FormView):
     def get_initial(self):
         try:
             request_object = Request.objects.get(id=self.kwargs['pk'])
-            print(request_object.start)
 
             return {
                 'created_at': request_object.created_at,
@@ -212,8 +199,7 @@ class RequesterRedoView(FormView):
         context = super(RequesterRedoView, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
-        is_redo = 'true'
-        context['is_redo'] = is_redo
+
         context['authoriser'] = assigned_authoriser
 
         return context
