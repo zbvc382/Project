@@ -1,6 +1,6 @@
 body {
-  background-color: #222931;
-  padding-top: 20px;
+    background-color: #222931;
+    padding-top: 20px;
 }
 
 div#main-container.container {
@@ -10,19 +10,19 @@ div#main-container.container {
 .row {
     background: #222931;
 }
-.form
-{
+
+.form {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
-.form .form-heading, .form .checkbox
-{
+
+.form .form-heading,
+.form .checkbox {
     margin-bottom: 10px;
 }
 
-.form .form-control
-{
+.form .form-control {
     position: relative;
     font-size: 16px;
     height: auto;
@@ -32,25 +32,24 @@ div#main-container.container {
     box-sizing: border-box;
 }
 
-.form input[type="text"]
-{
+.form input[type="text"] {
     border-radius: 0;
     margin-bottom: 10px;
 }
-.form input[type="password"]
-{
+
+.form input[type="password"] {
     border-radius: 0;
     margin-bottom: 10px;
 }
-.account-wall
-{
+
+.account-wall {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
     background-color: #222931;
     border: none;
 }
-.profile-img
-{
+
+.profile-img {
     width: 256px;
     height: 157px;
     margin: 0 auto 10px;
@@ -58,7 +57,6 @@ div#main-container.container {
 }
 
 .btn {
-
     background: #ea641b;
     border: none;
 }

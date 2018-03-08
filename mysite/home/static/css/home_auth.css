@@ -1,13 +1,11 @@
 .fa-home {
     position: relative;
     bottom: 1px;
-
 }
 
 .fa-exclamation-circle {
     position: relative;
     bottom: 1px;
-
 }
 
 .fa-user {
@@ -23,161 +21,160 @@
 #auth-col {
     font-weight: bold;
 }
+
 #login-col {
     font-weight: bold;
 }
+
 .header {
-  color: #ea641b;
-  position: relative;
-  left: 1.2%;
+    color: #ea641b;
+    position: relative;
+    left: 1.2%;
 }
 
 #authoriser_jumbatron {
-  position: absolute;
-  width: 100%;
-  left: -1px;
-  top: 20px;
-  height: 50px;
+    position: absolute;
+    width: 100%;
+    left: -1px;
+    top: 20px;
+    height: 50px;
     background: #EEEEEE;
-  padding: 1.1em 0.6em;
-  border: 0.5px solid #ea641b;
-  border-radius: 5px 5px 0 0;
+    padding: 1.1em 0.6em;
+    border: 0.5px solid #ea641b;
+    border-radius: 5px 5px 0 0;
 }
 
 .table-wrapper {
-  border-left: 0.5px solid #ea641b;
-  border-right: 0.5px solid #ea641b;
-  border-bottom: 0.5px solid #ea641b;
-  background: #222931;
-  padding-bottom: 190px;
-  margin: 0px 0;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-  width: 100%;
-  position: absolute;
-  top: 70px;
-  max-width: 100%;
-  left: -0.1%;
-  min-height: 460px;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+    border-bottom: 0.5px solid #ea641b;
+    background: #222931;
+    padding-bottom: 190px;
+    margin: 0px 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    max-width: 100%;
+    left: -0.1%;
+    min-height: 460px;
     max-height: 460px;
-
 }
 
-
-
 .table.table>thead>tr>th {
-  padding: 8px;
-  line-height: 1.428571429;
-  font-weight: 600;
-  text-transform: none;
-  vertical-align: bottom;
-  border-bottom: 1px solid #DDD;
-  text-align: left;
+    padding: 8px;
+    line-height: 1.428571429;
+    font-weight: 600;
+    text-transform: none;
+    vertical-align: bottom;
+    border-bottom: 1px solid #DDD;
+    text-align: left;
 }
 
 .table.table>tbody>tr>td {
-  padding: 8px;
-  line-height: 1.428571429;
-  vertical-align: top;
-  border-top: 1px solid #DDD;
-  cursor: pointer;
-  white-space: nowrap;
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #DDD;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 td:only-child {
-  width: 100%;
-  position: relative;
+    width: 100%;
+    position: relative;
 }
 
 td:only-child:not(:empty)::after {
-  /* Prevent row from collapsing vertically if the first column is empty */
-  content: '';
-  display: inline-block;
+    /* Prevent row from collapsing vertically if the first column is empty */
+    content: '';
+    display: inline-block;
 }
 
 td:only-child>span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .jumbotron .glyphicon {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .jumbotron .container p {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .col-md-3 .calendar_month tbody {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .calendar_month {
-  width: 100%;
+    width: 100%;
 }
 
 .calendar_month td {
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .calendar_month thead {
-  text-align: center;
-  font-weight: bolder;
+    text-align: center;
+    font-weight: bolder;
 }
 
 div.month_container {
-  height: 250px;
+    height: 250px;
 }
 
 td.calendar_cell {
-  width: 15px !important;
-  min-width: 15px !important;
-  max-width: 15px !important;
-  position: relative;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    width: 15px !important;
+    min-width: 15px !important;
+    max-width: 15px !important;
+    position: relative;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 td.calendar_cell span {
-  position: relative;
-  left: 7px;
-  top: -1px;
-  display: block;
-  text-align: center;
-  z-index: 10;
+    position: relative;
+    left: 7px;
+    top: -1px;
+    display: block;
+    text-align: center;
+    z-index: 10;
 }
 
 td.current_day_cell {
-  background: #e25440;
-  color: #ffffff;
+    background: #e25440;
+    color: #ffffff;
 }
 
 td.weekend_cell {
-  background: rgb(234, 100, 27);
-  background: rgba(234, 100, 27, 0.1)
+    background: rgb(234, 100, 27);
+    background: rgba(234, 100, 27, 0.1)
 }
 
 td.leave_cell {
-  background: #9fbb58;
-  color: #ffffff;
+    background: #9fbb58;
+    color: #ffffff;
 }
 
 td.leave_cell_pended {
-  background: #FFCBA4;
-  color: #61686b;
+    background: #FFCBA4;
+    color: #61686b;
 }
 
 .sub-header {
-  color: #ea641b;
+    color: #ea641b;
 }
 
 .dataTable>thead>tr>th[class*="sort"]:after {
-  content: "" !important;
+    content: "" !important;
 }
 
 table.dataTable thead>tr>th.sorting_asc,
@@ -186,158 +183,157 @@ table.dataTable thead>tr>th.sorting,
 table.dataTable thead>tr>td.sorting_asc,
 table.dataTable thead>tr>td.sorting_desc,
 table.dataTable thead>tr>td.sorting {
-  padding-right: inherit;
+    padding-right: inherit;
 }
 
 table.table tr th,
 table.table tr td {
-  border-color: rgba(145,152,155,0.2)
+    border-color: rgba(145, 152, 155, 0.2)
 }
 
-
 table.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #fcfcfc;
+    background-color: #fcfcfc;
 }
 
 .pagination {
-  margin: 10px 0 5px;
+    margin: 10px 0 5px;
 }
 
 .pagination li a {
-  border: none;
-  min-width: 30px;
-  min-height: 25px;
-  color: #999;
-  margin: 0 2px;
-  line-height: 25px;
-  border-radius: 0px !important;
-  text-align: center;
-  padding: 0;
+    border: none;
+    min-width: 30px;
+    min-height: 25px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 25px;
+    border-radius: 0px !important;
+    text-align: center;
+    padding: 0;
 }
 
 .pagination li a:hover {
-  color: #666;
+    color: #666;
 }
 
 .pagination li.active a,
 .pagination li.active a.page-link {
-  background: #ea641b;
+    background: #ea641b;
 }
 
 .pagination li.active a:hover {
-  background: #ea641b;
+    background: #ea641b;
 }
 
 .pagination li:first-child a,
 .pagination li:last-child a {
-  padding: 0 10px;
+    padding: 0 10px;
 }
 
 .pagination li.disabled a {
-  color: #ccc;
+    color: #ccc;
 }
 
 .pagination li i {
-  font-size: 17px;
-  position: relative;
-  top: 1px;
-  margin: 0 2px;
+    font-size: 17px;
+    position: relative;
+    top: 1px;
+    margin: 0 2px;
 }
 
 .table {
-  padding-bottom: 300px;
-  background: rgb(234, 231, 226);
-  background: rgba(234, 231, 226, 1.2);
+    padding-bottom: 300px;
+    background: rgb(234, 231, 226);
+    background: rgba(234, 231, 226, 1.2);
 }
 
 .table.table td {
-  background: rgb(234, 231, 226);
-  background: rgba(234, 231, 226, 1.2);
+    background: rgb(234, 231, 226);
+    background: rgba(234, 231, 226, 1.2);
 }
 
 .table-title .btn-group {
-  float: right;
+    float: right;
 }
 
 .table-title .btn {
-  min-width: 50px;
-  border-radius: 2px;
-  border: none;
-  padding: 6px 12px;
-  font-size: 95%;
-  outline: none !important;
-  height: 30px;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    padding: 6px 12px;
+    font-size: 95%;
+    outline: none !important;
+    height: 30px;
 }
 
 .table-title {
-  margin-bottom: -20px;
-  padding: 15px 30px;
+    margin-bottom: -20px;
+    padding: 15px 30px;
 }
 
-table.table th:last-of-type{
+table.table th:last-of-type {
     width: 50px;
 }
 
 table.table td .btn.manage {
     position: relative;
     padding: 2px 10px;
-  width: 50px;
-  background: rgb(234, 100, 27);
-  background: rgba(234, 100, 27, .8);
-  color: #fff;
-  border-radius: 2px;
+    width: 50px;
+    background: rgb(234, 100, 27);
+    background: rgba(234, 100, 27, .8);
+    color: #fff;
+    border-radius: 2px;
 }
 
 table.table td .btn.email-button {
     position: relative;
     padding: 2px 10px;
-  width: 50px;
-  background: rgb(234, 100, 27);
-  background: rgba(234, 100, 27, .8);
-  color: #fff;
-  border-radius: 2px;
+    width: 50px;
+    background: rgb(234, 100, 27);
+    background: rgba(234, 100, 27, .8);
+    color: #fff;
+    border-radius: 2px;
 }
 
 table.table td .btn.email-button-disabled {
     position: relative;
     padding: 2px 10px;
-  width: 50px;
+    width: 50px;
     background: #C0C2C3;
-  color: #fff;
-  border-radius: 2px;
+    color: #fff;
+    border-radius: 2px;
 }
 
 table.table td .btn.manage:hover {
-  background: rgb(234, 100, 27);
-  background: rgba(234, 100, 27, 1);
+    background: rgb(234, 100, 27);
+    background: rgba(234, 100, 27, 1);
 }
 
 table.table td .btn.email-button:hover {
-  background: rgb(234, 100, 27);
-  background: rgba(234, 100, 27, 1);
+    background: rgb(234, 100, 27);
+    background: rgba(234, 100, 27, 1);
 }
 
 .table.table {
-  width: 100%;
-  padding-bottom: 0px;
+    width: 100%;
+    padding-bottom: 0px;
 }
 
 table.table>th {
-  width: 0px;
+    width: 0px;
 }
 
 table.table th i {
-  font-size: 13px;
-  margin: 0 5px;
-  cursor: pointer;
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
 }
 
 .dataTables_filter {
-  display: none;
+    display: none;
 }
 
 .dataTables_length label {
-  display: none;
+    display: none;
 }
 
 .search-box {
@@ -347,84 +343,83 @@ table.table th i {
 }
 
 .search-box input {
-  height: 34px;
-  border-radius: 2px !important;
-  padding-left: 35px;
-  border-color: #ddd;
-  box-shadow: none;
-  outline: none !important;
+    height: 34px;
+    border-radius: 2px !important;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+    outline: none !important;
 }
 
 .search-box input:focus {
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-  border-color: #ddd;
-  mso-border-shadow: no;
-  outline: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    border-color: #ddd;
+    mso-border-shadow: no;
+    outline: none !important;
 }
 
 .search-box i {
-  color: #a0a5b1;
-  position: absolute;
-  font-size: 19px;
-  top: 8px;
-  left: 10px;
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 19px;
+    top: 8px;
+    left: 10px;
 }
 
 .table-hover tbody tr:hover td,
 .table-hover tbody tr:hover th {
-  background: rgb(234, 231, 226);
-  background: rgba(234, 231, 226, 0.5);
+    background: rgb(234, 231, 226);
+    background: rgba(234, 231, 226, 0.5);
 }
 
 .status {
-  font-size: 30px;
-  margin: 2px 2px 0 0;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 10px;
+    font-size: 30px;
+    margin: 2px 2px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 10px;
 }
 
 .text-success {
-  color: #10c469;
+    color: #10c469;
 }
 
 .text-warning {
-  color: #FFC107;
+    color: #FFC107;
 }
 
 #footer-info {
-  position: relative;
-  width: 30%;
-  top: 405px;
-  color: #999;
-  left: 2px;
-  font-size: 8pt;
+    position: relative;
+    width: 30%;
+    top: 405px;
+    color: #999;
+    left: 2px;
+    font-size: 8pt;
 }
 
 #footer-paginate {
-  color: #CBCBCB;
-  position: absolute;
-  display: inline-block;
-  width: 30%;
-  top: 455px;
-  left: 0px;
+    color: #CBCBCB;
+    position: absolute;
+    display: inline-block;
+    width: 30%;
+    top: 455px;
+    left: 0px;
 }
 
 .table-background {
-  background: #EAE7E2;
-  position: absolute;
-  display: inline-block;
-  top: 117px;
-  width: 1169px;
-  height: 342.5px;
+    background: #EAE7E2;
+    position: absolute;
+    display: inline-block;
+    top: 117px;
+    width: 1169px;
+    height: 342.5px;
 }
 
 .fa-layers-counter {
     position: absolute;
     top: -5px;
-
-    background:Tomato;
+    background: Tomato;
     font-size: 34pt;
 }

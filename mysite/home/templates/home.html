@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 {% endblock %} {% block body %}    {% load staticfiles %}{% block style %}
 {% if user.is_requester %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    {% elif user.is_authoriser %}
-    <link rel="stylesheet" href="{% static 'css/home_auth.css' %}">
-    {% endif %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% elif user.is_authoriser %}
+<link rel="stylesheet" href="{% static 'css/home_auth.css' %}">
+{% endif %}
 {% endblock %}
 {% if user.is_authenticated %}
 <div class="jumbotron" id="authoriser_jumbatron">
@@ -39,7 +39,7 @@
     </div>
     {% endif %}
 </div>
-    {% if user.is_requester %}
+{% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
         <div class="col-xs-6 col-md-6"><b>Calendar Constraints</b></div>
@@ -49,20 +49,17 @@
     <div class="left-side">
         <ul class="left-list">
             <li>
-
             </li>
             <li>
-
             </li>
             <li>
-
             </li>
         </ul>
     </div>
     <div class="right-side">
         <ul class="right-list">
             {% for template in templates %}
-                        <li>
+            <li>
                 <div class="saved-item">
                     <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
                     <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
@@ -71,13 +68,12 @@
             </li>
             {% endfor %}
         </ul>
-
-    {% if no_templates %}
+        {% if no_templates %}
         <div id="no-templates">No templates found.</div>
         {% endif %}
     </div>
 </div>
-        {% endif %}
+{% endif %}
 <div class="container-body">
     <div class="table-wrapper">
         <div class="table-title">
@@ -128,9 +124,8 @@
                     <th>Action &nbsp;</th>
                     {% endif %}
                     {% if user.is_requester %}
-                        <th>#</th>
+                    <th>#</th>
                     <th>Submission Date</th>
-
                     <th>Absence Type</th>
                     <th>Absence Start</th>
                     <th>Absence End</th>

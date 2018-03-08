@@ -3,171 +3,168 @@
 <link rel="stylesheet" href="{% static 'css/check.css' %}">
 {% endblock %}
 <div class="row">
-  <div class="col-xs-6 col-md-2">Application Number <span style="color: #ea641b">{{ request.id }}</span></div>
-  <div class="col-xs-6 col-md-2"><b></b><span></span></div>
-  <div class="col-xs-6 col-md-2">Status <span style="color: #ea641b">{{ request.status }}</span>
-  </div>
-  <div class="col-xs-6 col-md-2"><b></b><span></span></div>
-  <div class="col-xs-6 col-md-2">Authoriser <span style="color: #ea641b">{{ authoriser }}</span></div>
-  <div class="col-xs-6 col-md-2">
-{#      <a href="{% url 'home:create' request.pk %}"><i class="far fa-save fa-lg"></i></a>#}
-    <div class="utility-buttons">
-      <button>
-          <a href="{% url 'home:redo' request.id %}"><i class="fas fa-redo-alt"></i></a>
-      </button>
-        <button id="template-button" data-toggle="modal" data-target="#myModal">
-            <i class="far fa-copy"></i>
-        </button>
-
+    <div class="col-xs-6 col-md-2">Application Number <span style="color: #ea641b">{{ request.id }}</span></div>
+    <div class="col-xs-6 col-md-2"><b></b><span></span></div>
+    <div class="col-xs-6 col-md-2">Status <span style="color: #ea641b">{{ request.status }}</span>
     </div>
-  </div>
+    <div class="col-xs-6 col-md-2"><b></b><span></span></div>
+    <div class="col-xs-6 col-md-2">Authoriser <span style="color: #ea641b">{{ authoriser }}</span></div>
+    <div class="col-xs-6 col-md-2">
+        {#      <a href="{% url 'home:create' request.pk %}"><i class="far fa-save fa-lg"></i></a>#}
+        <div class="utility-buttons">
+            <button>
+            <a href="{% url 'home:redo' request.id %}"><i class="fas fa-redo-alt"></i></a>
+            </button>
+            <button id="template-button" data-toggle="modal" data-target="#myModal">
+            <i class="far fa-copy"></i>
+            </button>
+        </div>
+    </div>
 </div>
 <div id="authorise-absence-body">
-  <div class="authoriser-request-form">
-    <form class="form-horizontal" action="" method="post">
-      {% csrf_token %}
-      <div class="form-group form-group-sm">
-        <!-- left column -->
-        <div class="col-sm-6">
-          <div class="form-group">
-            <fieldset disabled>
-              <label for="disabledDateFrom" class="col-sm-2 control-label">Date From
-              </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="disabledDateFrom"
-                placeholder= {{ request.start|date:"d/m/Y" }}>
-              </div>
-            </fieldset>
-          </div>
-          <div class="form-group">
-            <fieldset disabled>
-              <label for="disabledReasonForAbsence" class="col-sm-2 control-label">Reason
-              </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="disabledReasonForAbsence"
-                  placeholder= {{ request.leave_type }}>
-              </div>
-            </fieldset>
-          </div>
-          <div class="form-group">
-            <fieldset disabled>
-              <label for="disabledStatement" class="col-sm-2 control-label">Statement
-              </label>
-              <div class="col-sm-10">
-                <textarea class="form-control" rows="5" id="disabledStatement" style="color: #989898" >{{ request.reason }}
-                </textarea>
-              </div>
-            </fieldset>
-          </div>
-        </div>
-        <!-- right column -->
-        <div class="col-sm-6">
-          <div class="form-group">
-            <fieldset disabled>
-              <label for="disabledDateTo" class="col-sm-2 control-label">Date To
-              </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="disabledDateTo"
-                placeholder= {{ request.end|date:"d/m/Y" }}>
-              </div>
-            </fieldset>
-          </div>
-          <div class="form-group">
-            <fieldset disabled>
-              <label for="disabledRequestSubmissionDate" class="col-sm-2 control-label">Submission
-              </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="disabledRequestSubmissionDate"
-                placeholder= {{ request.created_at|date:"d/m/Y" }}>
-              </div>
-            </fieldset>
-          </div>
-          <div class="form-group icon-group">
-            <label for="disabledStatement" class="col-sm-2 control-label">Attachment
-            </label>
-            <div class="col-sm-10" id="icon-div">
-              <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-              {% if array.0 == extension %}
-              <i class="far fa-file-pdf fa-2x"></i>
-              {% elif array.1 == extension %}
-              <i class="far fa-file-image fa-2x"></i>
-              {% elif array.2 == extension %}
-              <i class="far fa-file-alt fa-2x"></i>
-              {% elif array.3 == extension %}
-              <i class="far fa-file-word fa-2x"></i>
-              {% else %}
-              <i class="far fa-file-alt fa-2x"></i>
-              {% endif %}
-              </a>
+    <div class="authoriser-request-form">
+        <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+            <div class="form-group form-group-sm">
+                <!-- left column -->
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <label for="disabledDateFrom" class="col-sm-2 control-label">Date From
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="disabledDateFrom"
+                                placeholder= {{ request.start|date:"d/m/Y" }}>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <label for="disabledReasonForAbsence" class="col-sm-2 control-label">Reason
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="disabledReasonForAbsence"
+                                    placeholder= {{ request.leave_type }}>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <label for="disabledStatement" class="col-sm-2 control-label">Statement
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="disabledStatement" style="color: #989898" >{{ request.reason }}
+                                </textarea>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <!-- right column -->
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <label for="disabledDateTo" class="col-sm-2 control-label">Date To
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="disabledDateTo"
+                                placeholder= {{ request.end|date:"d/m/Y" }}>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <label for="disabledRequestSubmissionDate" class="col-sm-2 control-label">Submission
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="disabledRequestSubmissionDate"
+                                placeholder= {{ request.created_at|date:"d/m/Y" }}>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group icon-group">
+                        <label for="disabledStatement" class="col-sm-2 control-label">Attachment
+                        </label>
+                        <div class="col-sm-10" id="icon-div">
+                            <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
+                            {% if array.0 == extension %}
+                            <i class="far fa-file-pdf fa-2x"></i>
+                            {% elif array.1 == extension %}
+                            <i class="far fa-file-image fa-2x"></i>
+                            {% elif array.2 == extension %}
+                            <i class="far fa-file-alt fa-2x"></i>
+                            {% elif array.3 == extension %}
+                            <i class="far fa-file-word fa-2x"></i>
+                            {% else %}
+                            <i class="far fa-file-alt fa-2x"></i>
+                            {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+        </form>
+    </div>
 </div>
 {% if request.status == 'Approved' or request.status == 'Declined' %}
 <div id="comment-header">
-  Authoriser Comment
-  <div id="update-text">{% if request.status == 'Approved' %}
-    Approved {% elif request.status == 'Declined' %}
-    Declined {% endif %} on {{ request.updated_at }}
-  </div>
+    Authoriser Comment
+    <div id="update-text">{% if request.status == 'Approved' %}
+        Approved {% elif request.status == 'Declined' %}
+        Declined {% endif %} on {{ request.updated_at }}
+    </div>
 </div>
 <div id="comment-body">
-  <fieldset disabled>
-    <textarea class="form-control" rows="5" id="authoriserComment"
-      form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
-  </fieldset>
+    <fieldset disabled>
+        <textarea class="form-control" rows="5" id="authoriserComment"
+            form="form-horizontal" style="color: #989898;">{{ request.comment }}</textarea>
+    </fieldset>
 </div>
 {% endif %}
 {% endif %}
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" style="text-align: center">&nbsp;&nbsp;New Template</h4>
-      </div>
-      <div class="modal-body">
-          <div class="input-group margin-bottom-sm">
-              <label for="temp-name" id="temp-name-label">Template Name</label>
-        <input id="temp-name" type="text" placeholder=" Please enter a template name.">
-          <span class="input-group-addon"><i class="fas fa-tags"></i></span>
-          </div>
-      </div>
-      <div class="modal-footer">
-
-        <button id="save-button" type="button" class="btn btn-primary">
-            <a id="save-template-link" href="{% url 'home:create' request.pk 'template_name' %}">Create</a>
-        </button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: center">&nbsp;&nbsp;New Template</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group margin-bottom-sm">
+                    <label for="temp-name" id="temp-name-label">Template Name</label>
+                    <input id="temp-name" type="text" placeholder=" Please enter a template name.">
+                    <span class="input-group-addon"><i class="fas fa-tags"></i></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-button" type="button" class="btn btn-primary">
+                <a id="save-template-link" href="{% url 'home:create' request.pk 'template_name' %}">Create</a>
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
 
-            var number ={{ number_of_templates }};
+        var number ={{ number_of_templates }};
 
-            $('#template-button').click(function () {
-                if (number >= 3 ) {
-                    alert('Number of templates allowed is 3.' +
-                        ' Please delete at least one template and try again.');
-                    return false
-                }
-            });
-
-
-             $('#save-button').click(function () {
-
-        var template_name = $('#temp-name').val();
-        $('#save-template-link').attr('href',function() {
-            this.href = this.href.replace('template_name', template_name);
+        $('#template-button').click(function () {
+            if (number >= 3 ) {
+                alert('Number of templates allowed is 3.' +
+                    ' Please delete at least one template and try again.');
+                return false
+            }
         });
+
+
+         $('#save-button').click(function () {
+
+    var template_name = $('#temp-name').val();
+    $('#save-template-link').attr('href',function() {
+        this.href = this.href.replace('template_name', template_name);
     });
-        });
-    </script>
+    });
+    });
+</script>
 {% endblock %}

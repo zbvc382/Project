@@ -1,154 +1,154 @@
 .request-form-header {
-  margin-top: 19px;
-  color: #EAE7E2;
-  height: 34px;
-  background: #222931;
-  border: 0.5px solid #ea641b;
-  text-align: center;
-  font-size: 12pt;
-  padding-top: 5px;
-  border-radius: 5px 5px 0 0;
+    margin-top: 19px;
+    color: #EAE7E2;
+    height: 34px;
+    background: #222931;
+    border: 0.5px solid #ea641b;
+    text-align: center;
+    font-size: 12pt;
+    padding-top: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 div #request-absence-body {
-  position: relative;
-  width: 1140px;
-  padding-top: 30px;
-  padding-bottom: 25px;
-  border-bottom: 0.5px solid #ea641b;
-  border-left: 0.5px solid #ea641b;
-  border-right: 0.5px solid #ea641b;
-  background: rgba(234, 231, 226, 1.2);
+    position: relative;
+    width: 1140px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    border-bottom: 0.5px solid #ea641b;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+    background: rgba(234, 231, 226, 1.2);
 }
 
 #absence-label-from {
-  position: relative;
-  display: inline-block;
-  width: 150px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
 }
 
 #absence-label-to {
-  position: relative;
-  display: inline-block;
-  width: 150px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
 }
 
 #absence-label-type {
-  position: relative;
-  display: inline-block;
-  width: 150px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
 }
 
 #absence-label-attachment {
-  position: relative;
-  display: inline-block;
-  width: 150px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
 }
 
 #absence-label-statement {
-  position: relative;
-  display: inline-block;
-  width: 98px;
+    position: relative;
+    display: inline-block;
+    width: 98px;
 }
 
 #control-statement {
-  position: relative;
-  left: 52px;
+    position: relative;
+    left: 52px;
 }
 
 #control-leave-type {
-  position: relative;
+    position: relative;
 }
 
 #control-leave-attachment {
-  position: relative;
+    position: relative;
 }
 
 .col-xs-8 p {
-  margin-top: 5px;
-  position: relative;
-  font-size: 10pt;
+    margin-top: 5px;
+    position: relative;
+    font-size: 10pt;
 }
 
 .form-group label:after {
-  color: #e32;
-  content: ' *';
+    color: #e32;
+    content: ' *';
 }
 
 #asterisk-help:before {
-  color: #e32;
-  content: '* ';
+    color: #e32;
+    content: '* ';
 }
 
 #asterisk-help {
-  position: relative;
-  left: 15px;
-  bottom: 25px;
+    position: relative;
+    left: 15px;
+    bottom: 25px;
 }
 
 .request-button {
-  position: relative;
-  left: 735px;
-  top: 15px;
-  margin-right: 20px;
-  border-radius: 0;
+    position: relative;
+    left: 735px;
+    top: 15px;
+    margin-right: 20px;
+    border-radius: 0;
 }
 
 .btn-success {
-  background: #ea641b;
-  width: 167px;
-  border: 1px solid #EEEEEE;
+    background: #ea641b;
+    width: 167px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-success:hover {
-  background: #107AA2;
-  border: 1px solid #EEEEEE;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info {
-  background: #ea641b;
-  width: 167px;
-  border: 1px solid #EEEEEE;
+    background: #ea641b;
+    width: 167px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info:hover {
-  background: #107AA2;
-  border: 1px solid #EEEEEE;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
 #lower-divider {
-  position: absolute;
-  right: 0px;
-  width: 1139px;
-  height: 3px;
-  background: #EEEEEE;
+    position: absolute;
+    right: 0px;
+    width: 1139px;
+    height: 3px;
+    background: #EEEEEE;
 }
 
 button {
-  background: #222931;
-  border: none;
-  height: 30px;
+    background: #222931;
+    border: none;
+    height: 30px;
 }
 
 .utility-buttons {
-  position: relative;
-  width: 40px;
-  left: 1086px;
-  bottom: 26px;
-  background: #222931;
-  border: none;
-  color: #EAE7E2;
+    position: relative;
+    width: 40px;
+    left: 1086px;
+    bottom: 26px;
+    background: #222931;
+    border: none;
+    color: #EAE7E2;
 }
 
 .utility-buttons button {
-  font-size: 22px;
-  background: #222931;
-  border: none;
-  height: 30px;
+    font-size: 22px;
+    background: #222931;
+    border: none;
+    height: 30px;
 }
 
 textarea {
-  resize: none;
+    resize: none;
 }
 
 .fa-save {

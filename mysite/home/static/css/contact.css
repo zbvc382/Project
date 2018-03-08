@@ -3,59 +3,58 @@
     left: 190px;
 }
 
-
 .request-form-header {
-  margin-top: 19px;
-  color: #EAE7E2;
-  height: 34px;
-  background: #222931;
-  border: 0.5px solid #ea641b;
-  text-align: center;
-  font-size: 12pt;
-  padding-top: 5px;
-  border-radius: 5px 5px 0 0;
+    margin-top: 19px;
+    color: #EAE7E2;
+    height: 34px;
+    background: #222931;
+    border: 0.5px solid #ea641b;
+    text-align: center;
+    font-size: 12pt;
+    padding-top: 5px;
+    border-radius: 5px 5px 0 0;
     width: 750px;
 }
 
 div #email-form-body {
-  position: relative;
-  width: 750px;
-  padding-top: 30px;
-  padding-bottom: 15px;
-  border-bottom: 0.5px solid #ea641b;
-  border-left: 0.5px solid #ea641b;
-  border-right: 0.5px solid #ea641b;
-  background: rgba(234, 231, 226, 1.2);
+    position: relative;
+    width: 750px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    border-bottom: 0.5px solid #ea641b;
+    border-left: 0.5px solid #ea641b;
+    border-right: 0.5px solid #ea641b;
+    background: rgba(234, 231, 226, 1.2);
 }
 
 .request-button {
-  position: relative;
-  left: 735px;
-  top: 15px;
-  margin-right: 20px;
-  border-radius: 0;
+    position: relative;
+    left: 735px;
+    top: 15px;
+    margin-right: 20px;
+    border-radius: 0;
 }
 
 .btn-success {
-  background: #ea641b;
-  width: 167px;
-  border: 1px solid #EEEEEE;
+    background: #ea641b;
+    width: 167px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-success:hover {
-  background: #107AA2;
-  border: 1px solid #EEEEEE;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info {
-  background: #ea641b;
-  width: 167px;
-  border: 1px solid #EEEEEE;
+    background: #ea641b;
+    width: 167px;
+    border: 1px solid #EEEEEE;
 }
 
 .btn-info:hover {
-  background: #107AA2;
-  border: 1px solid #EEEEEE;
+    background: #107AA2;
+    border: 1px solid #EEEEEE;
 }
 
 .form-group {
@@ -65,7 +64,7 @@ div #email-form-body {
 }
 
 textarea {
-  resize: none;
+    resize: none;
 }
 
 label {
@@ -108,7 +107,7 @@ label {
 }
 
 .button-group {
-  position: relative;
+    position: relative;
     left: -320px;
     top: 10px;
 }
@@ -118,20 +117,20 @@ label {
 }
 
 #asterisk-help:before {
-  color: #e32;
-  content: '* ';
+    color: #e32;
+    content: '* ';
 }
 
 #asterisk-help {
     font-size: 9pt;
-  position: relative;
-  left: 15px;
-  bottom: 20px;
+    position: relative;
+    left: 15px;
+    bottom: 20px;
 }
 
 .form-group label:after {
-  color: #e32;
-  content: ' *';
+    color: #e32;
+    content: ' *';
 }
 
 #char-limit-mssg {
@@ -150,6 +149,3 @@ label {
     right: 5px;
     color: #ea641b;
 }
-
-
-
