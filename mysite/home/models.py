@@ -47,6 +47,13 @@ class Request(models.Model):
         return '%s' % self.attachment
 
 
+class RequesterManager(models.Manager):
+    def get_authorisers(self):
+        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))
+
+        return queryset
+
+
 class Template(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
@@ -66,13 +73,6 @@ class Template(models.Model):
         return '%s' % self.attachment
 
 
-class RequesterManager(models.Manager):
-    def get_authorisers(self):
-        queryset = list(User.objects.filter(user_role='Authoriser').values_list('id', 'username'))
-
-        return queryset
-
-
 class Authoriser(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -86,6 +86,13 @@ class Requester(models.Model):
 
     def __str__(self):
         return '%s' % self.user
+
+
+class CalendarRestriction(models.Model):
+    user = models.ForeignKey(Requester, on_delete=models.CASCADE, null=True, blank=True)
+    from_date = models.DateField()
+    to_date = models.DateField()
+    description = models.CharField(max_length=250, default="")
 
 
 # creates a requester model object if created user's role is 'Requester'

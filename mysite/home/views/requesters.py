@@ -26,6 +26,7 @@ class RequesterHomeView(TemplateView):
         template_objects = Template.objects.filter(user=user)
         requester_requests = Request.objects.filter(user=user)
         pending_requests = requester_requests.filter(status='Pending')
+
         is_pending = False
         no_templates = False
 

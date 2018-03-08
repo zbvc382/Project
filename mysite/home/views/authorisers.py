@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.views.generic import TemplateView, UpdateView, FormView
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
@@ -122,6 +123,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
                 email.attach_file('media/' + request_object.get_attachment())
 
             email.send()
+            messages.add_message(self.request, messages.SUCCESS, 'Email sent.')
 
             return super().form_valid(form)
 
