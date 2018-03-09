@@ -63,16 +63,17 @@
           </td>
       </tr>
     {% endfor %}
-    </div>
-</div>
     </tbody>
-  </table>
-        </div>
+            </table>
+    </div>
+
+
+
+
             {% if not calendar_objects %}
         <div id="no-restrictions">No constraints found.</div>
     {% endif %}
         <div class="col-xs-6 col-md-6"><b>Templates</b></div>
-    </div>
     <div id="appl-divider">&nbsp;</div>
 
     <div class="right-side">
@@ -90,6 +91,7 @@
         {% if no_templates %}
         <div id="no-templates">No templates found.</div>
         {% endif %}
+    </div>
     </div>
 </div>
 {% endif %}

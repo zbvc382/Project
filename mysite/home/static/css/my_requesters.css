@@ -3,12 +3,17 @@
     color: #222931;
 }
 
+.table {
+    border-radius: 12px;
+}
+
 .container-body {
     margin-top: 20px;
     background: #EAE7E2;
     border: 0.5px solid #ea641b;
     box-shadow: 3px 2px #888888;
     height: 520px;
+    border-radius: 7.5px;
 }
 
 .manage {
@@ -24,4 +29,22 @@
     background: rgb(234, 100, 27);
     background: rgba(234, 100, 27, 1);
     color: #ffffff;
+}
+
+.table-curved {
+   border-collapse: separate;
+   border-radius: 6px;
+}
+
+.table-curved > :first-child > :first-child > :first-child {
+    border-radius: 6px 0 0 0;
+}
+.table-curved > :first-child > :first-child > :last-child {
+    border-radius: 0 6px 0 0;
+}
+.table-curved > :last-child > :last-child > :first-child {
+    border-radius: 0 0 0 6px;
+}
+.table-curved > :last-child > :last-child > :last-child {
+    border-radius: 0 0 6px 0;
 }

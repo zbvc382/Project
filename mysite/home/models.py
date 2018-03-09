@@ -92,7 +92,7 @@ class Restriction(models.Model):
     user = models.ForeignKey(Requester, on_delete=models.CASCADE, null=True, blank=True)
     from_date = models.DateField()
     to_date = models.DateField()
-    reason = models.CharField(max_length=250, default="")
+    reason = models.TextField(max_length=500)
 
     def __str__(self):
         return '%s' % self.id

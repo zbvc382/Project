@@ -1,18 +1,85 @@
 {% extends 'base.html' %} {% block body %}
 {% load widget_tweaks %} {% load staticfiles %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/request.css' %}">
+<link rel="stylesheet" href="{% static 'css/restriction_form.css' %}">
 {% endblock %}
-<div class="request-form-header">
-    Absence Request Form
+<div class="row header">
+    <div class="col-xs-6 col-md-1">ID</div>
+    <div class="col-xs-6 col-md-3">Username</div>
+    <div class="col-xs-6 col-md-3">Name</div>
+    <div class="col-xs-6 col-md-3">Email</div>
+    <div class="col-xs-6 col-md-2">Department</div>
 </div>
-<div id="request-absence-body">
+<div class="row header-body">
+    <div class="col-xs-6 col-md-1">{{ requester.user.id }}</div>
+    <div class="col-xs-6 col-md-3">{{ requester.user.username }}</div>
+    <div class="col-xs-6 col-md-3">{{ requester.user.get_full_name }}</div>
+    <div class="col-xs-6 col-md-3">{{ requester.user.email }}</div>
+    <div class="col-xs-6 col-md-2">{{ requester.user.department }}</div>
+</div>
+<div class="title">Calendar Constraints&nbsp;&nbsp;</div>
+<div class="body" id="calendar-restriction">
+
     <form class="form-horizontal" action="" method="post">{% csrf_token %}
-        {{ form.as_p }}
+        <div id="calendar-body-left" class="col-xs-6 col-md-6">
+            <table id="calendar-table" class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th class="col-md-2">#</th>
+        <th class="col-md-5">From</th>
+        <th class="col-md-5">To</th>
+          <th class="col-md-5">Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for restriction in restrictions %}
+      <tr>
+        <td>{{ restriction.id }}</td>
+        <td>{{ restriction.from_date }}</td>
+        <td>{{ restriction.to_date }}</td>
+          <td><button class="btn btn-sm manage view-reason" id="{{ restriction.id }}" data-toggle="modal"
+                      data-target="#myModal" value="{{ restriction.reason }}">View</button>
+          </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+            </table>
+        </div>
+        <div id="divider">&nbsp;</div>
+        <div id="calendar-body-right" class="col-xs-6 col-md-6">
+            <div id="new-constraint-text-box"><p id="constraint-text">New Constraint</p></div>
+                <div class="form-group">
+                    <label for="{{ form.from_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date From</label>
+                    <div class="col-md-8">
+                        <div class='input-group date' id='datetimepicker3'>
+                            {% render_field form.from_date class="form-control input-sm" %}
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                            <div class="form-group">
+                    <label for="{{ form.to_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date To</label>
+                    <div class="col-md-8">
+                        <div class='input-group date' id='datetimepicker3'>
+                            {% render_field form.to_date class="form-control input-sm" %}
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                            <div class="form-group" id="reason-text-area">
+                    <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Reason</label>
+                    <div class="col-xs-8">
+                        {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
+                    </div>
+                </div>
+        </div>
 
 
-<input type="submit" class="btn btn-success request-button" value="Submit">
-<a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
-</form>
+        <input type="submit" class="btn btn-success" value="Submit">
+    </form>
 </div>
 {% endblock %}
