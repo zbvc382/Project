@@ -46,7 +46,7 @@
         <td>{{ restriction.id }}</td>
         <td>{{ restriction.from_date }}</td>
         <td>{{ restriction.to_date }}</td>
-          <td><button class="btn btn-sm manage view-reason" id="{{ restriction.id }}" data-toggle="modal"
+          <td><button class="btn btn-sm manage view-reason" formnovalidate="formnovalidate" id="{{ restriction.id }}" data-toggle="modal"
                       data-target="#myModal" value="{{ restriction.reason }}">View</button>
           </td>
       </tr>
@@ -133,6 +133,14 @@
         $("#id_to_date").on("dp.change", function (e) {
             $('#id_from_date').data("DateTimePicker").maxDate(e.date);
         });
+            $('.view-reason').click(function () {
+        var reason = $(this).val();
+        $('.modal-body').append('<p>' + reason + '</p>');
+    });
+
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        $('.modal-body').empty();
+    });
     });
 </script>
 {% endblock %}
