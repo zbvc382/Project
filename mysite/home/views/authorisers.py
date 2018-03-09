@@ -129,3 +129,19 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
 
         except ObjectDoesNotExist:
             print('Request object does not exist.')
+
+
+@method_decorator([login_required, authoriser_required], name='dispatch')
+class AuthoriserMyRequestersView(TemplateView):
+    template_name = 'my_requesters.html'
+
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        authoriser_object = Authoriser.objects.filter(user=user)
+        requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
+
+        context = {
+            'requesters': requester_objects
+        }
+
+        return context

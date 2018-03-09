@@ -18,6 +18,8 @@ urlpatterns = [
         requesters.RequesterCreateTemplate.as_view(), name='create'),
     url(r'^authoriser/absence/redo=(?P<pk>\d+)/$', requesters.RequesterRedoView.as_view(),
         name='redo'),
+    url(r'^authoriser/my_requesters/$', authorisers.AuthoriserMyRequestersView.as_view(),
+        name='my_requesters'),
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin')
 ]
 
