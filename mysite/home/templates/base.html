@@ -51,18 +51,8 @@
                         <li class="inactive links"><a href="{% url 'home:authoriser' %}">Home</a></li>
                         {% endif %}
                         {% if user.is_requester %}
-                        <li class="inactive links"><a href="{% url 'home:absence' %}">Request</a></li>
+                        <li class="inactive links"><a href="{% url 'home:absence' %}">New Absence</a></li>
                         {% endif %}
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Settings <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Button 1</a></li>
-                                <li><a href="#">Button 2</a></li>
-                                <li><a href="#">Button 3</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Button 4</a></li>
-                            </ul>
-                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'accounts:logout' %}">Logout</a></li>

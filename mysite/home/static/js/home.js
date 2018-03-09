@@ -62,5 +62,13 @@ $(document).ready(function () {
     $("#requester_table_paginate").detach().appendTo('#footer-paginate');
     $("#requester_table_info").detach().appendTo('#footer-info');
 
+    $('.view-reason').click(function () {
+        var reason = $(this).val();
+        $('.modal-body').append('<p>' + reason + '</p>');
+    });
+
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        $('.modal-body').empty();
+    });
 
 });

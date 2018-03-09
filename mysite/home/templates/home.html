@@ -42,7 +42,7 @@
 {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
-        <div id="calendar-container" class="col-xs-6 col-md-6">
+        <div id="calendar-container" class="col-xs-6 col-md-6"><b>Calendar Constraints</b>
             <table id="calendar-table" class="table table-condensed table-hover">
     <thead>
       <tr>
@@ -58,14 +58,13 @@
         <td>{{ calendar.id }}</td>
         <td>{{ calendar.from_date }}</td>
         <td>{{ calendar.to_date }}</td>
-          <td><a class="btn btn-sm manage" id="template-button" data-toggle="modal" data-target="#myModal{{ calendar.id }}">View</a>
-    </div>
-</div>
-
+          <td><button class="btn btn-sm manage view-reason" id="{{ calendar.id }}" data-toggle="modal"
+                      data-target="#myModal" value="{{ calendar.reason }}">View</button>
           </td>
       </tr>
     {% endfor %}
-
+    </div>
+</div>
     </tbody>
   </table>
         </div>
@@ -269,8 +268,7 @@
             </table>
         </div>
     </div>
-{% for calendar in calendar_objects %}
-          <div class="modal fade" id="myModal{{ calendar.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -278,13 +276,11 @@
                 <h4 class="modal-title" style="text-align: center">&nbsp;&nbsp;Reason</h4>
             </div>
             <div class="modal-body">
-                <p>{{ calendar.reason }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
-    {% endfor %}
 </div>
 </div>
 {% endif %}

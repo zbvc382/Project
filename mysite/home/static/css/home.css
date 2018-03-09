@@ -525,9 +525,9 @@ table.table th i {
     height: 35px;
 }
 
-.modal {
+#myModal {
     position: relative;
-    top: -42px;
+    top: -50px;
 
 }
 
@@ -542,4 +542,9 @@ table.table th i {
 
 .modal-footer {
     border-top: none;
+}
+
+.modal-body {
+    margin-left: 40px;
+    margin-right: 40px;
 }

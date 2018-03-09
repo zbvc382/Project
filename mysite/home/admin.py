@@ -65,12 +65,16 @@ class AuthoriserAdmin(admin.ModelAdmin):
 
 class RestrictionAdmin(admin.ModelAdmin):
     model = Restriction
-    list_display = ['get_username', 'from_date', 'to_date']
+    list_display = ['get_number', 'get_username', 'from_date', 'to_date']
 
     def get_username(self, obj):
         return obj.user.user.username
 
+    def get_number(self, obj):
+        return obj.id
+
     get_username.short_description = 'USERNAME'
+    get_number.short_description = '#'
 
 
 admin.site.register(Request)
