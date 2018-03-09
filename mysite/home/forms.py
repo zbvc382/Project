@@ -1,5 +1,5 @@
 from django import forms
-from .models import Request
+from .models import Request, Restriction
 
 
 class DateInput(forms.DateInput):
@@ -17,6 +17,16 @@ class RequestForm(forms.ModelForm):
         widgets = {
             'start': TextInput(),
             'end': TextInput()
+        }
+
+
+class RestricionForm(forms.ModelForm):
+    class Meta:
+        model = Restriction
+        fields = ['from_date', 'to_date', 'reason']
+        widgets = {
+            'from_date': TextInput(),
+            'to_date': TextInput()
         }
 
 

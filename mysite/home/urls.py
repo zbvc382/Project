@@ -20,6 +20,8 @@ urlpatterns = [
         name='redo'),
     url(r'^authoriser/my_requesters/$', authorisers.AuthoriserMyRequestersView.as_view(),
         name='my_requesters'),
+    url(r'^authoriser/my_requesters/user=(?P<pk>\d+)/create_restriction$', authorisers.AuthoriserCreateRestrictionView.as_view(),
+        name='create_restriction'),
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin')
 ]
 

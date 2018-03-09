@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block body %}
+{% load widget_tweaks %} {% load staticfiles %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/request.css' %}">
+{% endblock %}
+<div class="request-form-header">
+    Absence Request Form
+</div>
+<div id="request-absence-body">
+    <form class="form-horizontal" action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+
+
+<input type="submit" class="btn btn-success request-button" value="Submit">
+<a href="{% url 'home:home' %}" class="btn btn-info request-button" role="button">Cancel</a>
+</form>
+</div>
+{% endblock %}

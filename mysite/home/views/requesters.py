@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import TemplateView, UpdateView, FormView, View, DeleteView
+from django.views.generic import TemplateView, UpdateView, FormView, View
 from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator

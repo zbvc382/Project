@@ -4,15 +4,16 @@ from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.core.mail import send_mail
+from django.urls import reverse
 from django.template import loader
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
-from ..forms import EmailForm
+from django.urls import reverse_lazy
+from ..forms import EmailForm, RestricionForm
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
-
 
 User = get_user_model()
 
@@ -145,3 +146,19 @@ class AuthoriserMyRequestersView(TemplateView):
         }
 
         return context
+
+
+@method_decorator([login_required, authoriser_required], name='dispatch')
+class AuthoriserCreateRestrictionView(FormView):
+    template_name = 'restriction_form.html'
+    form_class = RestricionForm
+
+
+    def form_valid(self, form):
+        pk = self.kwargs['pk']
+        form_user = Requester.objects.get(id=pk)
+        o = form.save()
+        o.user = form_user
+        o.save()
+
+        return redirect(reverse('home:home'))
