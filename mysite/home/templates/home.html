@@ -71,13 +71,12 @@
         <div class="col-xs-6 col-md-6"><b>Templates</b></div>
     </div>
     <div id="appl-divider">&nbsp;</div>
-    <div class="left-side">
-    </div>
+
     <div class="right-side">
-        <ul class="right-list">
+        <ul class="right-list" id="sortable">
             {% for template in templates %}
             <li>
-                <div class="saved-item">
+                <div class="saved-item ui-widget-content" id="draggable">
                     <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
                     <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
                     <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>

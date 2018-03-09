@@ -71,4 +71,6 @@ $(document).ready(function () {
         $('.modal-body').empty();
     });
 
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
 });
