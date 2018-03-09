@@ -11,7 +11,7 @@ from django.template import loader
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse_lazy
-from ..forms import EmailForm, RestricionForm
+from ..forms import EmailForm, RestricionForm, Restriction
 from ..models import Requester, Request, Authoriser
 from ..decorators import authoriser_required
 
@@ -153,6 +153,16 @@ class AuthoriserCreateRestrictionView(FormView):
     template_name = 'restriction_form.html'
     form_class = RestricionForm
 
+    def get_context_data(self, **kwargs):
+        context = super(AuthoriserCreateRestrictionView, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        requester = Requester.objects.get(id=pk)
+        restrictions = Restriction.objects.filter(user=requester)
+
+        context['requester'] = requester
+        context['restrictions'] = restrictions
+
+        return context
 
     def form_valid(self, form):
         pk = self.kwargs['pk']
