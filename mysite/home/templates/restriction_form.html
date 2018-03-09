@@ -49,10 +49,10 @@
         <div id="calendar-body-right" class="col-xs-6 col-md-6">
             <div id="new-constraint-text-box"><p id="constraint-text">New Constraint</p></div>
                 <div class="form-group">
-                    <label for="{{ form.from_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date From</label>
-                    <div class="col-md-9">
+                    <label for="{{ form.from_date.id_for_label }}" class="col-md-2 control-label" id="absence-label-from">From</label>
+                    <div class="col-md-8">
                         <div class='input-group date' id='datetimepicker3'>
-                            {% render_field form.from_date class="form-control input-sm" %}
+                            {% render_field form.from_date class="form-control input-sm" placeholder="Click here to select the start date" %}
                             <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -60,10 +60,10 @@
                     </div>
                 </div>
                             <div class="form-group">
-                    <label for="{{ form.to_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date To</label>
-                    <div class="col-md-9">
+                    <label for="{{ form.to_date.id_for_label }}" class="col-md-2 control-label" id="absence-label-from">To</label>
+                    <div class="col-md-8">
                         <div class='input-group date' id='datetimepicker3'>
-                            {% render_field form.to_date class="form-control input-sm" %}
+                            {% render_field form.to_date class="form-control input-sm" placeholder="Click here to select the end date" %}
                             <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -72,8 +72,8 @@
                 </div>
                             <div class="form-group" id="reason-text-area">
                     <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Reason</label>
-                    <div class="col-xs-10">
-                        {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
+                    <div class="col-xs-8">
+                        {% render_field form.reason class="form-control" placeholder="Please provide a reason here." %}
                     </div>
                 </div>
         </div>
@@ -82,4 +82,46 @@
         <input type="submit" class="btn btn-success" value="Submit">
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+        var dateArray = Array();
+
+        function getDates(startDate, stopDate) {
+            var currentDate = startDate;
+
+            while (currentDate <= stopDate) {
+                dateArray.push(currentDate);
+                currentDate = moment(currentDate, "YYYY-MM-DD").add(1, 'd').format('YYYY-MM-DD');
+            }
+        }
+
+        {% for restriction in restrictions %}
+            var from_date = '{{ restriction.get_from_date }}';
+            var to_date = '{{ restriction.get_to_date }}';
+
+            getDates(from_date, to_date);
+        {% endfor %}
+
+
+
+        $('#id_from_date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            disabledDates: dateArray,
+            useCurrent: false //Important!
+        });
+
+        $('#id_to_date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            disabledDates: dateArray
+        });
+
+        $("#id_from_date").on("dp.change", function (e) {
+            $('#id_to_date').data("DateTimePicker").minDate(e.date);
+        });
+
+        $("#id_to_date").on("dp.change", function (e) {
+            $('#id_from_date').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
 {% endblock %}

@@ -33,6 +33,7 @@
     border: 0.5px solid #ea641b;
     background: rgba(234, 231, 226, 1.2);
     height: 400px;
+
 }
 
 .title {
@@ -98,15 +99,15 @@
 }
 
 .btn-success {
-    position: relative;
+    position: absolute;
     margin-top: 5px;
     background: #5FB760;
     width: 583.5px;
-    bottom: 38px;
+    bottom: 1px;
     height: 32px;
     border: none;
     border-radius: 0;
-    left: 555.5px;
+    left: 571px;
 
 }
 
@@ -116,4 +117,8 @@ textarea {
 
 .form-horizontal{
     height: 90%;
+}
+
+#id_reason {
+    height: 170px;
 }
