@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from .models import Request, Requester, Authoriser, Template, CalendarRestriction
+from .models import Request, Requester, Authoriser, Template, Restriction
 
 User = get_user_model()
 
@@ -63,8 +63,18 @@ class AuthoriserAdmin(admin.ModelAdmin):
     search_fields = ('user__username',)
 
 
+class RestrictionAdmin(admin.ModelAdmin):
+    model = Restriction
+    list_display = ['get_username', 'from_date', 'to_date']
+
+    def get_username(self, obj):
+        return obj.user.user.username
+
+    get_username.short_description = 'USERNAME'
+
+
 admin.site.register(Request)
 admin.site.register(Template)
-admin.site.register(CalendarRestriction)
+admin.site.register(Restriction, RestrictionAdmin)
 admin.site.register(Authoriser, AuthoriserAdmin)
 admin.site.register(Requester, RequesterAdmin)

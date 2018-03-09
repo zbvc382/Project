@@ -59,13 +59,14 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('username', 'user_role', 'email', 'date_of_birth', 'is_admin', 'is_active')
+    list_display = ('username', 'user_role', 'email', 'department', 'date_of_birth', 'is_admin', 'is_active')
     list_filter = ('is_admin', 'is_active')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'date_of_birth', 'phone_number')}),
         ('Permissions', {'fields': ('is_admin', 'is_active')}),
-        ('Royal Holloway University', {'fields': ('user_role', 'department')}),
+        ('User Role', {'fields': ('user_role',)}),
+        ('Personal Information', {'fields': ('first_name', 'last_name', 'date_of_birth', 'phone_number', 'department',),
+                                  'classes': ['collapse in', ]}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -75,8 +76,8 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('username', 'user_role', 'first_name', 'last_name', 'date_of_birth',
                        'email', 'phone_number', 'department', 'password1', 'password2')}),
     )
-    search_fields = ('email',)
-    ordering = ('email',)
+    search_fields = ('username',)
+    ordering = ('username',)
     filter_horizontal = ()
 
 

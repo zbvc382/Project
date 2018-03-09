@@ -88,11 +88,14 @@ class Requester(models.Model):
         return '%s' % self.user
 
 
-class CalendarRestriction(models.Model):
+class Restriction(models.Model):
     user = models.ForeignKey(Requester, on_delete=models.CASCADE, null=True, blank=True)
     from_date = models.DateField()
     to_date = models.DateField()
-    description = models.CharField(max_length=250, default="")
+    reason = models.CharField(max_length=250, default="")
+
+    def __str__(self):
+        return '%s' % self.id
 
 
 # creates a requester model object if created user's role is 'Requester'

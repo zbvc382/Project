@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from ..decorators import requester_required
 from ..forms import RequestForm
-from ..models import Request, Requester, Template, CalendarRestriction
+from ..models import Request, Requester, Template, Restriction
 
 
 User = get_user_model()
@@ -23,9 +23,11 @@ class RequesterHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
+        requester_object = Requester.objects.filter(user=user)
         template_objects = Template.objects.filter(user=user)
         requester_requests = Request.objects.filter(user=user)
         pending_requests = requester_requests.filter(status='Pending')
+        calendar_objects = Restriction.objects.filter(user=requester_object)
 
         is_pending = False
         no_templates = False
@@ -48,7 +50,7 @@ class RequesterHomeView(TemplateView):
                    'assigned_authoriser': assigned_authoriser, 'array': array,
                    'pending_requests': pending_requests.__len__(),
                    'is_pending': is_pending, 'templates': template_objects,
-                   'no_templates': no_templates}
+                   'no_templates': no_templates, 'calendar_objects': calendar_objects}
 
         return context
 

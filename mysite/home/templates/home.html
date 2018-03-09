@@ -43,22 +43,28 @@
 <div class="applications">
     <div class="row-appl">
         <div id="calendar-container" class="col-xs-6 col-md-6">
-            <table id="calendar-table" class="table table-condensed">
+            <table id="calendar-table" class="table table-condensed table-hover">
     <thead>
       <tr>
         <th class="col-md-2">#</th>
         <th class="col-md-5">From</th>
         <th class="col-md-5">To</th>
-          <th class="col-md-5">Description</th>
+          <th class="col-md-5">Reason</th>
       </tr>
     </thead>
     <tbody>
+    {% for calendar in calendar_objects %}
       <tr>
-        <td>1</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-          <td>john@example.com</td>
+        <td>{{ calendar.id }}</td>
+        <td>{{ calendar.from_date }}</td>
+        <td>{{ calendar.to_date }}</td>
+          <td><a class="btn btn-sm manage" id="template-button" data-toggle="modal" data-target="#myModal{{ calendar.id }}">View</a>
+    </div>
+</div>
+
+          </td>
       </tr>
+    {% endfor %}
 
     </tbody>
   </table>
@@ -263,6 +269,23 @@
             </table>
         </div>
     </div>
+{% for calendar in calendar_objects %}
+          <div class="modal fade" id="myModal{{ calendar.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: center">&nbsp;&nbsp;Reason</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ calendar.reason }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 </div>
 {% endif %}
 {% endblock %}
