@@ -17,7 +17,16 @@
     <div class="col-xs-6 col-md-3">{{ requester.user.email }}</div>
     <div class="col-xs-6 col-md-2">{{ requester.user.department }}</div>
 </div>
-<div class="title">Calendar Constraints&nbsp;&nbsp;</div>
+<div class="title">
+<div class="row">
+    <div class="col-md-6">
+        Calendar Constraints
+    </div>
+        <div class="col-md-6">
+        New Constraint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</div>
+</div>
 <div class="body" id="calendar-restriction">
 
     <form class="form-horizontal" action="" method="post">{% csrf_token %}
@@ -44,10 +53,12 @@
     {% endfor %}
     </tbody>
             </table>
+                    {% if not calendar_objects %}
+        <div id="no-restrictions">No constraints found.</div>
+    {% endif %}
         </div>
         <div id="divider">&nbsp;</div>
         <div id="calendar-body-right" class="col-xs-6 col-md-6">
-            <div id="new-constraint-text-box"><p id="constraint-text">New Constraint</p></div>
                 <div class="form-group">
                     <label for="{{ form.from_date.id_for_label }}" class="col-md-2 control-label" id="absence-label-from">From</label>
                     <div class="col-md-8">
@@ -79,7 +90,7 @@
         </div>
 
 
-        <input type="submit" class="btn btn-success" value="Submit">
+        <input type="submit" class="btn btn-success" value="Create">
     </form>
 </div>
 <script>

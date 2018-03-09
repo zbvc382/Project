@@ -33,6 +33,7 @@
     border: 0.5px solid #ea641b;
     background: rgba(234, 231, 226, 1.2);
     height: 400px;
+    border-top: none;
 
 }
 
@@ -50,10 +51,10 @@
 
 #divider {
     width: 1px;
-    height: 399px;
+    height: 431.5px;
     background: #CECECE;
     position: absolute;
-    top: 140px;
+    top: 107.5px;
     left: 570px;
 }
 
@@ -80,21 +81,29 @@
 #new-constraint-text-box {
     position: relative;
     margin-top: 5px;
-    background: #3AB1D3;
+    background: #222931;
     width: 583.5px;
     right: 29px;
     bottom: 5px;
     height: 32px;
     border-bottom: 2px solid #DEDCDF;
-    margin-bottom: 9px;
+    border-top: 0.5px solid #ea641b;
+
 }
 
 #constraint-text {
     position: relative;
     top: 5px;
     left: 240px;
-    color: #ffffff;
+    color: #EAE7E2;
     width: 100px;
+
+}
+
+#calendar-constraint-text {
+    top: 5px;
+    position: relative;
+    right: 290px;
 
 }
 
@@ -103,7 +112,7 @@
     margin-top: 5px;
     background: #5FB760;
     width: 583.5px;
-    bottom: 1px;
+    bottom: 0.5px;
     height: 32px;
     border: none;
     border-radius: 0;
@@ -121,4 +130,17 @@ textarea {
 
 #id_reason {
     height: 170px;
+}
+
+.form-group {
+    position: relative;
+    top: 30px;
+}
+
+#no-restrictions {
+    position: relative;
+    color: #99979B;
+    top: 130px;
+    left: 190px;
+    font-size: 10.5pt;
 }
