@@ -79,7 +79,7 @@
 #new-constraint-text-box {
     position: relative;
     margin-top: 5px;
-    background: #E87D51;
+    background: #3AB1D3;
     width: 583.5px;
     right: 29px;
     bottom: 5px;
@@ -93,6 +93,7 @@
     top: 5px;
     left: 240px;
     color: #ffffff;
+    width: 100px;
 
 }
 
@@ -111,4 +112,8 @@
 
 textarea {
     resize: none;
+}
+
+.form-horizontal{
+    height: 90%;
 }

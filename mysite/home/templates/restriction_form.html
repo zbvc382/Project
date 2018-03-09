@@ -50,7 +50,7 @@
             <div id="new-constraint-text-box"><p id="constraint-text">New Constraint</p></div>
                 <div class="form-group">
                     <label for="{{ form.from_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date From</label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class='input-group date' id='datetimepicker3'>
                             {% render_field form.from_date class="form-control input-sm" %}
                             <span class="input-group-addon">
@@ -61,7 +61,7 @@
                 </div>
                             <div class="form-group">
                     <label for="{{ form.to_date.id_for_label }}" class="col-md-3 control-label" id="absence-label-from">Date To</label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class='input-group date' id='datetimepicker3'>
                             {% render_field form.to_date class="form-control input-sm" %}
                             <span class="input-group-addon">
@@ -72,7 +72,7 @@
                 </div>
                             <div class="form-group" id="reason-text-area">
                     <label for="{{ form.reason.id_for_label }}" class="col-sm-2 control-label" id="absence-label-statement">Reason</label>
-                    <div class="col-xs-8">
+                    <div class="col-xs-10">
                         {% render_field form.reason class="form-control" placeholder="Please provide a statement detaling the reasons for the absence" %}
                     </div>
                 </div>
