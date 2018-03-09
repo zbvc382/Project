@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^authoriser/request/view/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
     url(r'^authoriser/request/view/(?P<pk>\d+)/send/$', authorisers.AuthoriserRequestViewEmail.as_view(),
         name='send'),
-    url(r'^requester/absence/view/(?P<pk>\d+)/create-template/name=(?P<string>[\w\s]+)/$',
+    url(r'^requester/absence/view/(?P<pk>\d+)/create-template/name=(?P<string>[\w.,\s]+)/$',
         requesters.RequesterCreateTemplate.as_view(), name='create'),
     url(r'^authoriser/absence/redo=(?P<pk>\d+)/$', requesters.RequesterRedoView.as_view(),
         name='redo'),

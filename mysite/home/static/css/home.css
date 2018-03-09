@@ -548,3 +548,11 @@ table.table th i {
     margin-left: 40px;
     margin-right: 40px;
 }
+
+#no-restrictions {
+    position: relative;
+    color: #99979B;
+    top: 67px;
+    right: 360px;
+    font-size: 10.5pt;
+}
