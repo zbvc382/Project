@@ -79,11 +79,15 @@ class RequesterRequestView(FormView):
             print('Template object does not exist. Reverting back to clean request.')
 
     def get_context_data(self, **kwargs):
+        user = self.request.user
         context = super(RequesterRequestView, self).get_context_data(**kwargs)
-        assigned_authoriser = Requester.objects.get(user=self.request.user)\
+        assigned_authoriser = Requester.objects.get(user=user)\
             .assigned_authoriser.user.get_full_name
+        requester_object = Requester.objects.filter(user=user)
+        calendar_objects = Restriction.objects.filter(user=requester_object)
 
         context['authoriser'] = assigned_authoriser
+        context['calendar_objects'] = calendar_objects
 
         return context
 

@@ -97,6 +97,12 @@ class Restriction(models.Model):
     def __str__(self):
         return '%s' % self.id
 
+    def get_from_date(self):
+        return '%s' % self.from_date
+
+    def get_to_date(self):
+        return '%s' % self.to_date
+
 
 # creates a requester model object if created user's role is 'Requester'
 @receiver(post_save, sender=User)

@@ -81,16 +81,45 @@
 </div>
 <script>
     $(document).ready(function () {
+        $('#control-leave-attachment').addClass('has-error');
+        var dateArray = Array();
+
+        function getDates(startDate, stopDate) {
+            var currentDate = startDate;
+
+            while (currentDate <= stopDate) {
+                dateArray.push(currentDate);
+                currentDate = moment(currentDate, "YYYY-MM-DD").add(1, 'd').format('YYYY-MM-DD');
+            }
+        }
+
+        {% for calendar in calendar_objects %}
+            var from_date = '{{ calendar.get_from_date }}';
+            var to_date = '{{ calendar.get_to_date }}';
+
+            getDates(from_date, to_date);
+        {% endfor %}
+
+
 
         $('#id_start').datetimepicker({
-            format: 'YYYY-MM-DD'
+            format: 'YYYY-MM-DD',
+            disabledDates: dateArray,
+            useCurrent: false //Important!
         });
 
         $('#id_end').datetimepicker({
-            format: 'YYYY-MM-DD'
+            format: 'YYYY-MM-DD',
+            disabledDates: dateArray
         });
 
-        $('#control-leave-attachment').addClass('has-error');
+        $("#id_start").on("dp.change", function (e) {
+            $('#id_end').data("DateTimePicker").minDate(e.date);
+        });
+
+        $("#id_end").on("dp.change", function (e) {
+            $('#id_start').data("DateTimePicker").maxDate(e.date);
+        });
     });
 </script>
 {% endblock %}
