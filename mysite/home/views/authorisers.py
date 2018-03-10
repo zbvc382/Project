@@ -52,7 +52,7 @@ class AuthoriserHomeView(TemplateView):
 class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
     model = Request
     fields = ['comment', 'status']
-    template_name = 'update.html'
+    template_name = 'Authoriser/update.html'
     success_message = 'Absence request status updated successfully.'
     success_url = reverse_lazy('home:home')
 
@@ -84,7 +84,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
 class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
-    template_name = 'contact.html'
+    template_name = 'Authoriser/contact.html'
     form_class = EmailForm
     success_url = reverse_lazy('home:home')
 
@@ -104,7 +104,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
             request_object = Request.objects.get(id=pk)
 
             html_content = loader.render_to_string(
-                'email_body.html',
+                'Authoriser/email_body.html',
                 {
                     'text_content': text_content,
                     'application_number': request_object.id,
@@ -134,7 +134,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
 class AuthoriserMyRequestersView(TemplateView):
-    template_name = 'my_requesters.html'
+    template_name = 'Authoriser/my_requesters.html'
 
     def get_context_data(self, **kwargs):
         user = self.request.user
@@ -150,7 +150,7 @@ class AuthoriserMyRequestersView(TemplateView):
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
 class AuthoriserCreateRestrictionView(FormView):
-    template_name = 'restriction_form.html'
+    template_name = 'Authoriser/restriction_form.html'
     form_class = RestricionForm
 
     def get_context_data(self, **kwargs):

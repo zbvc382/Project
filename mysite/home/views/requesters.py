@@ -57,7 +57,7 @@ class RequesterHomeView(TemplateView):
 
 @method_decorator([login_required, requester_required], name='dispatch')
 class RequesterRequestView(FormView):
-    template_name = 'request.html'
+    template_name = 'Requester/request.html'
     form_class = RequestForm
 
     def get_initial(self):
@@ -114,7 +114,7 @@ class RequesterRequestView(FormView):
 class RequesterCheckView(UpdateView):
     model = Request
     fields = ['status']
-    template_name = 'check.html'
+    template_name = 'Requester/check.html'
     success_url = reverse_lazy('home:home')
 
     def get_context_data(self, **kwargs):
@@ -182,7 +182,7 @@ class RequesterDeleteTemplate(SuccessMessageMixin, View):
 
 @method_decorator([login_required, requester_required], name='dispatch')
 class RequesterRedoView(FormView):
-    template_name = 'request.html'
+    template_name = 'Requester/request.html'
     form_class = RequestForm
 
     def get_initial(self):
