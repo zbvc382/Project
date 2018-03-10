@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.views.generic import TemplateView, UpdateView, FormView
+from django.views.generic import TemplateView, UpdateView, FormView, View
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -170,5 +170,26 @@ class AuthoriserCreateRestrictionView(FormView):
         o = form.save()
         o.user = form_user
         o.save()
+        messages.add_message(self.request, messages.SUCCESS, 'Calendar constraint created.')
 
-        return redirect(reverse('home:home'))
+        return redirect(reverse('home:create_restriction', args=(form_user.id,)))
+
+
+@method_decorator([login_required, authoriser_required], name='dispatch')
+class AuthoriserRemoveRestriction(SuccessMessageMixin, View):
+    model = Restriction
+
+    def delete_restriction(self):
+        pk = self.kwargs['pk']
+        restriction_object = Restriction.objects.get(id=pk)
+        restriction_object.delete()
+
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        restriction_object = Restriction.objects.get(id=pk)
+        requester_object = restriction_object.user
+        self.delete_restriction()
+        messages.add_message(self.request, messages.WARNING,
+                             'Calendar constraint #' + restriction_object.id.__str__() + ' removed.')
+
+        return redirect(reverse('home:create_restriction', args=(requester_object.id,)))

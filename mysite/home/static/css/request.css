@@ -154,3 +154,9 @@ textarea {
 .fa-save {
     font-size: 19pt;
 }
+
+#char-limit-mssg {
+    position: relative;
+    left: 165px;
+    top: 240px;
+}

@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^requester/$', requesters.RequesterHomeView.as_view(), name='requester'),
     url(r'^authoriser/$', authorisers.AuthoriserHomeView.as_view(), name='authoriser'),
     url(r'^requester/absence/(?:(?P<template>\d+)/)?$', requesters.RequesterRequestView.as_view(), name='absence'),
-    url(r'^authoriser/absence/template=(?P<pk>\d+)/delete/$', requesters.RequesterDeleteTemplate.as_view(),
+    url(r'^requester/absence/template=(?P<pk>\d+)/delete/$', requesters.RequesterDeleteTemplate.as_view(),
         name='delete'),
     url(r'^requester/absence/view/(?P<pk>\d+)/$', requesters.RequesterCheckView.as_view(), name='check'),
     url(r'^authoriser/request/view/(?P<pk>\d+)/$', authorisers.AuthoriserRequestView.as_view(), name='request'),
@@ -22,6 +22,8 @@ urlpatterns = [
         name='my_requesters'),
     url(r'^authoriser/my_requesters/user=(?P<pk>\d+)/create_restriction$', authorisers.AuthoriserCreateRestrictionView.as_view(),
         name='create_restriction'),
+    url(r'^authoriser/my_requesters/restriction=(?P<pk>\d+)/remove_restriction$', authorisers.AuthoriserRemoveRestriction.as_view(),
+        name='remove_restriction'),
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin')
 ]
 
