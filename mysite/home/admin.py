@@ -77,8 +77,57 @@ class RestrictionAdmin(admin.ModelAdmin):
     get_number.short_description = '#'
 
 
-admin.site.register(Request)
-admin.site.register(Template)
+class TemplateAdmin(admin.ModelAdmin):
+    model = Template
+    list_display = ['get_number', 'get_username', 'get_template_name', 'get_created_at']
+
+    def get_username(self, obj):
+        return obj.user.username
+
+    def get_number(self, obj):
+        return obj.id
+
+    def get_template_name(self, obj):
+        return obj.template_name
+
+    def get_created_at(self, obj):
+        return obj.created_at
+
+    get_username.short_description = 'USERNAME'
+    get_number.short_description = '#'
+    get_template_name.short_description = 'TEMPLATE NAME'
+    get_created_at.short_description = 'CREATE DATE'
+
+
+class RequestAdmin(admin.ModelAdmin):
+    model = Template
+    list_display = ['get_username', 'get_leave_type', 'get_start_date', 'get_end_date',
+                    'get_created_at']
+
+    def get_username(self, obj):
+        return obj.user.username
+
+    def get_leave_type(self, obj):
+        return obj.leave_type
+
+    def get_start_date(self, obj):
+        return obj.start
+
+    def get_end_date(self, obj):
+        return obj.end
+
+    def get_created_at(self, obj):
+        return obj.created_at
+
+    get_username.short_description = 'USERNAME'
+    get_leave_type.short_description = 'LEAVE TYPE'
+    get_start_date.short_description = 'START DATE'
+    get_end_date.short_description = 'END DATE'
+    get_created_at.short_description = 'CREATE DATE'
+
+
+admin.site.register(Request, RequestAdmin)
+admin.site.register(Template, TemplateAdmin)
 admin.site.register(Restriction, RestrictionAdmin)
 admin.site.register(Authoriser, AuthoriserAdmin)
 admin.site.register(Requester, RequesterAdmin)

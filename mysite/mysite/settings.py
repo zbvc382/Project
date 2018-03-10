@@ -153,3 +153,5 @@ EMAIL_HOST_PASSWORD = 'DjangoAMS'
 EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
+
+ADMIN_SITE_HEADER = "Absence Management Administration"
