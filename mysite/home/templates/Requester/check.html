@@ -10,7 +10,6 @@
     <div class="col-xs-6 col-md-2"><b></b><span></span></div>
     <div class="col-xs-6 col-md-2">Authoriser <span style="color: #ea641b">{{ authoriser }}</span></div>
     <div class="col-xs-6 col-md-2">
-
         <div class="utility-buttons">
             <button>
             <a href="{% url 'home:redo' request.id %}"><i class="fas fa-redo-alt"></i></a>
@@ -164,7 +163,7 @@
     $('#save-template-link').attr('href',function() {
         this.href = this.href.replace('template_name', template_name);
     });
-    });
+         });
     });
 </script>
 {% endblock %}

@@ -27,7 +27,6 @@ class AuthoriserHomeView(TemplateView):
         authoriser_requests = []
         pending_requests_only = []
 
-        # TODO: variable name changes
         authoriser_object = Authoriser.objects.filter(user=user)
         requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 
@@ -129,6 +128,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
             return super().form_valid(form)
 
         except ObjectDoesNotExist:
+
             print('Request object does not exist.')
 
 

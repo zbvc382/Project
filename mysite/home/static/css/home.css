@@ -499,12 +499,11 @@ table.table th i {
 #calendar-table th,
 #calendar-table td {
     text-align: left;
-
 }
 
 #calendar-table tbody tr:hover td,
 #calendar-table tbody tr:hover th {
-        background: rgb(234, 231, 226);
+    background: rgb(234, 231, 226);
     background: rgba(234, 231, 226, 0.5);
 }
 
@@ -528,7 +527,6 @@ table.table th i {
 #myModal {
     position: relative;
     top: -50px;
-
 }
 
 .modal-content {

@@ -42,237 +42,233 @@
 {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
-        <div id="calendar-container" class="col-xs-6 col-md-6"><b>Calendar Constraints</b>
+        <div id="calendar-container" class="col-xs-6 col-md-6">
+            <b>Calendar Constraints</b>
             <table id="calendar-table" class="table table-condensed table-hover">
-    <thead>
-      <tr>
-        <th class="col-md-2">#</th>
-        <th class="col-md-5">From</th>
-        <th class="col-md-5">To</th>
-          <th class="col-md-5">Reason</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for calendar in calendar_objects %}
-      <tr>
-        <td>{{ calendar.id }}</td>
-        <td>{{ calendar.from_date }}</td>
-        <td>{{ calendar.to_date }}</td>
-          <td><button class="btn btn-sm manage view-reason" id="{{ calendar.id }}" data-toggle="modal"
-                      data-target="#myModal" value="{{ calendar.reason }}">View</button>
-          </td>
-      </tr>
-    {% endfor %}
-    </tbody>
+                <thead>
+                    <tr>
+                        <th class="col-md-2">#</th>
+                        <th class="col-md-5">From</th>
+                        <th class="col-md-5">To</th>
+                        <th class="col-md-5">Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for calendar in calendar_objects %}
+                    <tr>
+                        <td>{{ calendar.id }}</td>
+                        <td>{{ calendar.from_date }}</td>
+                        <td>{{ calendar.to_date }}</td>
+                        <td><button class="btn btn-sm manage view-reason" id="{{ calendar.id }}" data-toggle="modal"
+                            data-target="#myModal" value="{{ calendar.reason }}">View</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
-    </div>
-
-
-
-
-            {% if not calendar_objects %}
+        </div>
+        {% if not calendar_objects %}
         <div id="no-restrictions">No constraints found.</div>
-    {% endif %}
-        <div class="col-xs-6 col-md-6"><b>Templates</b></div>
-    <div id="appl-divider">&nbsp;</div>
-
-    <div class="right-side">
-        <ul class="right-list" id="sortable">
-            {% for template in templates %}
-            <li>
-                <div class="saved-item ui-widget-content" id="draggable">
-                    <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
-                    <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
-                    <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        {% if no_templates %}
-        <div id="no-templates">No templates found.</div>
         {% endif %}
-    </div>
+        <div class="col-xs-6 col-md-6"><b>Templates</b></div>
+        <div id="appl-divider">&nbsp;</div>
+        <div class="right-side">
+            <ul class="right-list" id="sortable">
+                {% for template in templates %}
+                <li>
+                    <div class="saved-item ui-widget-content" id="draggable">
+                        <a href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                        <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
+                        <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if no_templates %}
+            <div id="no-templates">No templates found.</div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endif %}
 <div class="container-body">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="search-box">
-                        <i class="material-icons">&#xE8B6;</i>
-                        <input type="text" class="form-control" id="searchbox" placeholder="Search">
-                    </div>
+<div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="search-box">
+                    <i class="material-icons">&#xE8B6;</i>
+                    <input type="text" class="form-control" id="searchbox" placeholder="Search">
                 </div>
-                <div class="col-sm-6">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-info">
-                        <input type="radio" name="status" id="button-all" value=""> All
-                        </label>
-                        <label class="btn btn-warning active">
-                        <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
-                        {% if is_pending == True %}
-                        <span class="fa-layers-counter">{{ pending_requests }}</span>
-                        {% endif %}
-                        </label>
-                        <label class="btn btn-success">
-                        <input type="radio" name="status" id="button-approved" value="Approved"> Approved
-                        </label>
-                        <label class="btn btn-danger">
-                        <input type="radio" name="status" id="button-declined" value="Declined"> Declined
-                        </label>
-                    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-info">
+                    <input type="radio" name="status" id="button-all" value=""> All
+                    </label>
+                    <label class="btn btn-warning active">
+                    <input type="radio" name="status" id="button-pending" value="Pending" checked> Pending
+                    {% if is_pending == True %}
+                    <span class="fa-layers-counter">{{ pending_requests }}</span>
+                    {% endif %}
+                    </label>
+                    <label class="btn btn-success">
+                    <input type="radio" name="status" id="button-approved" value="Approved"> Approved
+                    </label>
+                    <label class="btn btn-danger">
+                    <input type="radio" name="status" id="button-declined" value="Declined"> Declined
+                    </label>
                 </div>
             </div>
         </div>
-        <div class="table-container">
-            <table class="table table-striped table-bordered table-hover"
-            {% if user.is_authoriser %} id="authoriser_table"> {% endif %}
-            {% if user.is_requester %} id="requester_table"> {% endif %}
-            <thead>
-                <tr>
-                    <th style="width: 5px; padding:0; border: none"></th>
-                    {% if user.is_authoriser %}
-                    <th>Submission Date </th>
-                    <th>Number</th>
-                    <th>Staff Name</th>
-                    <th>Staff ID</th>
-                    <th>Department</th>
-                    <th>Absence Type</th>
-                    <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
-                    <th>Status</th>
-                    <th>Action &nbsp;</th>
-                    {% endif %}
-                    {% if user.is_requester %}
-                    <th>#</th>
-                    <th>Submission Date</th>
-                    <th>Absence Type</th>
-                    <th>Absence Start</th>
-                    <th>Absence End</th>
-                    <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>Status&nbsp;</th>
-                    <th>Action</th>
-                    {% endif %}
-                </tr>
-            </thead>
-            <tbody id="stud">
+    </div>
+    <div class="table-container">
+        <table class="table table-striped table-bordered table-hover"
+        {% if user.is_authoriser %} id="authoriser_table"> {% endif %}
+        {% if user.is_requester %} id="requester_table"> {% endif %}
+        <thead>
+            <tr>
+                <th style="width: 5px; padding:0; border: none"></th>
+                {% if user.is_authoriser %}
+                <th>Submission Date </th>
+                <th>Number</th>
+                <th>Staff Name</th>
+                <th>Staff ID</th>
+                <th>Department</th>
+                <th>Absence Type</th>
+                <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;</th>
+                <th>Status</th>
+                <th>Action &nbsp;</th>
+                {% endif %}
                 {% if user.is_requester %}
-                {% for request in requester_requests %}
-                <tr id="row-height">
-                    <td style="background-color:
-                        {% if request.status == 'Pending' %}
-                        #ECAD55;
-                        {% endif %}
-                        {% if request.status == 'Approved' %}
-                        #62B65F;
-                        {% endif %}
-                        {% if request.status == 'Declined' %}
-                        #DC5154;
-                        {% endif %}
-                        padding:0;"></td>
-                    <td>{{ request.id }}</td>
-                    <td>{{ request.created_at | date:"d/m/Y" }}</td>
-                    <td>{{ request.leave_type }}</td>
-                    <td>{{ request.start | date:"d/m/Y" }}</td>
-                    <td>{{ request.end | date:"d/m/Y" }}</td>
-                    <td>
-                        <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-                        {% if array.0 == request.get_extension %}
-                        <i class="far fa-file-pdf fa-lg"></i>
-                        {% elif array.1 == request.get_extension %}
-                        <i class="far fa-file-image fa-lg"></i>
-                        {% elif array.2 == request.get_extension %}
-                        <i class="far fa-file-alt fa-lg"></i>
-                        {% elif array.3 == request.get_extension %}
-                        <i class="far fa-file-word fa-lg"></i>
-                        {% else %}
-                        <i class="far fa-file-alt fa-lg"></i>
-                        {% endif %}
-                        </a>
-                    </td>
-                    <td> {% if request.status == 'Approved' %}
-                        <span class="status text-success">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                        {% if request.status == 'Pending' %}
-                        <span class="status text-warning">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                        {% if request.status == 'Declined' %}
-                        <span class="status text-danger">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                    </td>
-                    <td><a href="{% url 'home:check' request.pk %}" class="btn btn-sm manage">View</a></td>
-                    {% endfor %}
+                <th>#</th>
+                <th>Submission Date</th>
+                <th>Absence Type</th>
+                <th>Absence Start</th>
+                <th>Absence End</th>
+                <th><i class="fas fa-paperclip fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>Status&nbsp;</th>
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody id="stud">
+            {% if user.is_requester %}
+            {% for request in requester_requests %}
+            <tr id="row-height">
+                <td style="background-color:
+                    {% if request.status == 'Pending' %}
+                    #ECAD55;
                     {% endif %}
-                    {% if user.is_authoriser %}
-                    {% for request in authoriser_requests %}
-                <tr id="row-height">
-                    <td style="background-color:
-                        {% if request.status == 'Pending' %}
-                        #ECAD55;
-                        {% endif %}
-                        {% if request.status == 'Approved' %}
-                        #62B65F;
-                        {% endif %}
-                        {% if request.status == 'Declined' %}
-                        #DC5154;
-                        {% endif %}
-                        padding:0;"></td>
-                    <td>{{ request.created_at | date:"d/m/Y" }}</td>
-                    <td>{{ request.id }}</td>
-                    <td>{{ request.user.get_full_name }}</td>
-                    <td>{{ request.user.username }}</td>
-                    <td>{{ request.user.department }}</td>
-                    <td>{{ request.leave_type }}</td>
-                    <td>
-                        <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
-                        {% if array.0 == request.get_extension %}
-                        <i class="far fa-file-pdf fa-lg"></i>
-                        {% elif array.1 == request.get_extension %}
-                        <i class="far fa-file-image fa-lg"></i>
-                        {% elif array.2 == request.get_extension %}
-                        <i class="far fa-file-alt fa-lg"></i>
-                        {% elif array.3 == request.get_extension %}
-                        <i class="far fa-file-word fa-lg"></i>
-                        {% else %}
-                        <i class="far fa-file-alt fa-lg"></i>
-                        {% endif %}
-                        </a>
-                    </td>
-                    <td> {% if request.status == 'Approved' %}
-                        <span class="status text-success">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                        {% if request.status == 'Pending' %}
-                        <span class="status text-warning">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                        {% if request.status == 'Declined' %}
-                        <span class="status text-danger">&bull;</span>
-                        {{ request.status }}
-                        {% endif %}
-                    </td>
-                    <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
-                        {% if request.status == 'Approved' or request.status == 'Declined' %}
-                        <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
-                        {% else %}
-                        <span><a class="btn btn-sm email-button-disabled" disabled="disabled">Email</a></span>
-                        {% endif %}
-                    </td>
-                </tr>
+                    {% if request.status == 'Approved' %}
+                    #62B65F;
+                    {% endif %}
+                    {% if request.status == 'Declined' %}
+                    #DC5154;
+                    {% endif %}
+                    padding:0;"></td>
+                <td>{{ request.id }}</td>
+                <td>{{ request.created_at | date:"d/m/Y" }}</td>
+                <td>{{ request.leave_type }}</td>
+                <td>{{ request.start | date:"d/m/Y" }}</td>
+                <td>{{ request.end | date:"d/m/Y" }}</td>
+                <td>
+                    <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
+                    {% if array.0 == request.get_extension %}
+                    <i class="far fa-file-pdf fa-lg"></i>
+                    {% elif array.1 == request.get_extension %}
+                    <i class="far fa-file-image fa-lg"></i>
+                    {% elif array.2 == request.get_extension %}
+                    <i class="far fa-file-alt fa-lg"></i>
+                    {% elif array.3 == request.get_extension %}
+                    <i class="far fa-file-word fa-lg"></i>
+                    {% else %}
+                    <i class="far fa-file-alt fa-lg"></i>
+                    {% endif %}
+                    </a>
+                </td>
+                <td> {% if request.status == 'Approved' %}
+                    <span class="status text-success">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                    {% if request.status == 'Pending' %}
+                    <span class="status text-warning">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                    {% if request.status == 'Declined' %}
+                    <span class="status text-danger">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'home:check' request.pk %}" class="btn btn-sm manage">View</a></td>
                 {% endfor %}
                 {% endif %}
-            </tbody>
-            <div class="table-background"></div>
-            <div id="footer-info"></div>
-            <div id="footer-paginate"></div>
-            </table>
-        </div>
+                {% if user.is_authoriser %}
+                {% for request in authoriser_requests %}
+            <tr id="row-height">
+                <td style="background-color:
+                    {% if request.status == 'Pending' %}
+                    #ECAD55;
+                    {% endif %}
+                    {% if request.status == 'Approved' %}
+                    #62B65F;
+                    {% endif %}
+                    {% if request.status == 'Declined' %}
+                    #DC5154;
+                    {% endif %}
+                    padding:0;"></td>
+                <td>{{ request.created_at | date:"d/m/Y" }}</td>
+                <td>{{ request.id }}</td>
+                <td>{{ request.user.get_full_name }}</td>
+                <td>{{ request.user.username }}</td>
+                <td>{{ request.user.department }}</td>
+                <td>{{ request.leave_type }}</td>
+                <td>
+                    <a id="att-img" href="{% url 'home:home' %}media/{{ request.attachment }}">
+                    {% if array.0 == request.get_extension %}
+                    <i class="far fa-file-pdf fa-lg"></i>
+                    {% elif array.1 == request.get_extension %}
+                    <i class="far fa-file-image fa-lg"></i>
+                    {% elif array.2 == request.get_extension %}
+                    <i class="far fa-file-alt fa-lg"></i>
+                    {% elif array.3 == request.get_extension %}
+                    <i class="far fa-file-word fa-lg"></i>
+                    {% else %}
+                    <i class="far fa-file-alt fa-lg"></i>
+                    {% endif %}
+                    </a>
+                </td>
+                <td> {% if request.status == 'Approved' %}
+                    <span class="status text-success">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                    {% if request.status == 'Pending' %}
+                    <span class="status text-warning">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                    {% if request.status == 'Declined' %}
+                    <span class="status text-danger">&bull;</span>
+                    {{ request.status }}
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
+                    {% if request.status == 'Approved' or request.status == 'Declined' %}
+                    <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
+                    {% else %}
+                    <span><a class="btn btn-sm email-button-disabled" disabled="disabled">Email</a></span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+        <div class="table-background"></div>
+        <div id="footer-info"></div>
+        <div id="footer-paginate"></div>
+        </table>
     </div>
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -285,7 +281,7 @@
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
-</div>
+    </div>
 </div>
 {% endif %}
 {% endblock %}

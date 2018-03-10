@@ -51,7 +51,7 @@
                         {% endif %}
                         {% if user.is_authoriser %}
                         <li class="inactive links"><a href="{% url 'home:authoriser' %}">Home</a></li>
-                            <li class="inactive links"><a href="{% url 'home:my_requesters' %}">My Requesters</a></li>
+                        <li class="inactive links"><a href="{% url 'home:my_requesters' %}">My Requesters</a></li>
                         {% endif %}
                         {% if user.is_requester %}
                         <li class="inactive links"><a href="{% url 'home:absence' %}">New Absence</a></li>

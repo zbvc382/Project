@@ -3,31 +3,30 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/my_requesters.css' %}">
 {% endblock %}
-    <div class="container-body">
-<table class="table table-hover table-curved">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Department</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for requester in requesters %}
-      <tr>
-          <td class="col-md-1">{{ requester.user.id }}</td>
-          <td class="col-md-2">{{ requester.user.username }}</td>
-          <td class="col-md-3">{{ requester.user.get_full_name }}</td>
-          <td class="col-md-3">{{ requester.user.email }}</td>
-          <td class="col-md-2">{{ requester.user.department }}</td>
-          <td class="col-md-1"><a href="{% url 'home:create_restriction' requester.id %}" class="btn btn-sm manage">Manage</a></td>
-      </tr>
-    {% endfor %}
-    </tbody>
-</table>
-    </div>
-
+<div class="container-body">
+    <table class="table table-hover table-curved">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for requester in requesters %}
+            <tr>
+                <td class="col-md-1">{{ requester.user.id }}</td>
+                <td class="col-md-2">{{ requester.user.username }}</td>
+                <td class="col-md-3">{{ requester.user.get_full_name }}</td>
+                <td class="col-md-3">{{ requester.user.email }}</td>
+                <td class="col-md-2">{{ requester.user.department }}</td>
+                <td class="col-md-1"><a href="{% url 'home:create_restriction' requester.id %}" class="btn btn-sm manage">Manage</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
