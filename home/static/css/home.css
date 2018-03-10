@@ -472,18 +472,18 @@ table.table th i {
 #no-templates {
     position: relative;
     left: 235px;
-    top: 30px;
+    top: 25px;
     color: #99979B;
+    font-size: 10.5pt;
 }
 
 .table-background {
     background: #EAE7E2;
     position: absolute;
     display: inline-block;
-    top: 140px;
-    left: 0;
+    top: 135px;
     width: 1169px;
-    height: 179.5px;
+    height: 184.5px;
 }
 
 #calendar-container {
@@ -553,4 +553,9 @@ table.table th i {
     top: 67px;
     right: 360px;
     font-size: 10.5pt;
+}
+
+#template-header-text {
+    position: relative;
+    bottom: 22px;
 }
