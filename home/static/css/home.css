@@ -587,3 +587,8 @@ table.table th i {
 .fa-rss-square:hover {
     color: #367BB6;
 }
+
+.tooltip-inner {
+    width: 200px;
+}
+

@@ -73,4 +73,6 @@ $(document).ready(function () {
 
     $("#sortable").sortable();
     $("#sortable").disableSelection();
+
+    $('[data-toggle="tooltip"]').tooltip();
 });

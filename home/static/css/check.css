@@ -186,3 +186,7 @@ textarea {
     position: relative;
     top: 5px;
 }
+
+.tooltip-inner {
+    min-width: 150px;
+}

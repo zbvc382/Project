@@ -109,7 +109,8 @@
             <div class="col-sm-2">
                 <p id="calendar-text">Calendar</p>
                 <button id="calendar-button">
-                    <a href="{% url 'home:feed' %}"><i class="fas fa-rss-square fa-2x"></i></a>
+                    <a href="{% url 'home:feed' %}" data-toggle="tooltip" data-placement="right"
+                       title="Export absences to external calendars"><i class="fas fa-rss-square fa-2x"></i></a>
                 </button>
             </div>
             {% endif %}

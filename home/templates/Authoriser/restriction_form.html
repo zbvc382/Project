@@ -67,7 +67,7 @@
                     <div class='input-group date' id='datetimepicker3'>
                         {% render_field form.from_date class="form-control input-sm" placeholder="Click here to select the start date" %}
                         <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span id="from-calendar" class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class='input-group date' id='datetimepicker3'>
                         {% render_field form.to_date class="form-control input-sm" placeholder="Click here to select the end date" %}
                         <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span id="to-calendar" class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
                 </div>
@@ -133,6 +133,14 @@
 
         $("#id_to_date").on("dp.change", function (e) {
             $('#id_from_date').data("DateTimePicker").maxDate(e.date);
+        });
+
+        $('#from-calendar').click(function () {
+            $('#id_from_date').data("DateTimePicker").show();
+        });
+
+        $('#to-calendar').click(function () {
+            $('#id_to_date').data("DateTimePicker").show();
         });
     });
 </script>
