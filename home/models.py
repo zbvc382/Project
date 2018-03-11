@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .validators import validate_file_size
 
-
 User = get_user_model()
 
 
@@ -45,6 +44,9 @@ class Request(models.Model):
 
     def get_attachment(self):
         return '%s' % self.attachment
+
+    def get_leave_type(self):
+        return '%s' % self.leave_type
 
 
 class RequesterManager(models.Manager):
@@ -102,6 +104,20 @@ class Restriction(models.Model):
 
     def get_to_date(self):
         return '%s' % self.to_date
+
+
+class Event(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+    link = models.CharField(max_length=50)
+    start = models.DateField(null=True, blank=True)
+    end = models.DateField(null=True, blank=True)
+    organizer = models.CharField(max_length=50)
+    modified = models.DateTimeField(auto_now=True, null=True, blank=True)
+
+    def get_id(self):
+        return '%s' % self.id
 
 
 # creates a requester model object if created user's role is 'Requester'

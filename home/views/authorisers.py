@@ -11,8 +11,10 @@ from django.template import loader
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse_lazy
+from datetime import datetime
+import pytz
 from ..forms import EmailForm, RestricionForm, Restriction
-from ..models import Requester, Request, Authoriser
+from ..models import Requester, Request, Authoriser, Event
 from ..decorators import authoriser_required
 
 User = get_user_model()
@@ -57,6 +59,13 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
 
     def form_valid(self, form):
         request_object = self.get_object()
+        decision = form.cleaned_data['status']
+        comment = form.cleaned_data['comment']
+        link = 'rhul.herokuapp.com' + reverse('home:check', args=(request_object.id,))
+
+
+
+
         email_subject = 'The decision for Absence Request #' + str(request_object.id) + ' is now available.'
         email_body = 'Dear ' + request_object.user.first_name\
                      + ',\n\nThe decision of your absence request application #' + str(request_object.id) + ' is now' \
@@ -66,7 +75,6 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         email_from = 'zbvc382@gmail.com'
         email_to = request_object.user.email
         send_mail(email_subject, email_body, email_from, [email_to], fail_silently=False,)
-
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

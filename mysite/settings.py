@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'home',
     'widget_tweaks',
+    'django_ical'
 ]
 
 MIDDLEWARE = [

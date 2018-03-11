@@ -157,6 +157,7 @@ class RequesterCreateTemplate(View):
         pk = self.kwargs['pk']
         self.create_template()
         messages.add_message(self.request, messages.SUCCESS, 'Template created successfully.')
+        print(reverse('home:check', args=(pk,)))
         return redirect(reverse('home:check', args=(pk,)))
 
 
