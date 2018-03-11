@@ -9,6 +9,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
+from django_ical.views import ICalFeed
+from ..models import Event
 from ..decorators import requester_required
 from ..forms import RequestForm
 from ..models import Request, Requester, Template, Restriction
@@ -229,3 +231,35 @@ class RequesterRedoView(FormView):
         messages.success(self.request, 'Absence request submitted successfully.')
 
         return redirect(reverse('home:home'))
+
+
+@method_decorator([login_required, requester_required], name='__call__')
+class RequesterCalendarEventFeed(ICalFeed):
+    product_id = 'rhul.herokuapp.com'
+    timezone = 'UTC'
+    file_name = "Absences.ics"
+
+    def items(self):
+        return Event.objects.all().order_by('-start')
+
+    def item_guid(self, item):
+        return "{}{}".format(item.id, "@rhul.herokuapp.com")
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.description
+
+    def item_start_datetime(self, item):
+        return item.start
+
+    def item_end_datetime(self, item):
+        return item.end
+
+    def item_link(self, item):
+        return item.link
+
+    def __call__(self, request, *args, **kwargs):
+        self.request = request
+        return super(RequesterCalendarEventFeed, self).__call__(request, *args, **kwargs)

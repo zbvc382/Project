@@ -23,6 +23,8 @@ urlpatterns = [
 
     url(r'^requester/absence/redo=(?P<pk>\d+)/$', requesters.RequesterRedoView.as_view(), name='redo'),
 
+    url(r'^requester/calendar/feed.ics$', requesters.RequesterCalendarEventFeed(), name='feed'),
+
     # Authoriser url patterns
 
     url(r'^authoriser/$', authorisers.AuthoriserHomeView.as_view(), name='authoriser'),
@@ -40,8 +42,6 @@ urlpatterns = [
         authorisers.AuthoriserRemoveRestriction.as_view(), name='remove_restriction'),
 
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin'),
-
-    url(r'^requester/latest/feed.ics$', calendar.EventFeed()),
 ]
 
 if settings.DEBUG is True:
