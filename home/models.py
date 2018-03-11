@@ -23,8 +23,8 @@ class Request(models.Model):
     )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateField(auto_now=True, null=True, blank=True)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
@@ -48,6 +48,9 @@ class Request(models.Model):
     def get_leave_type(self):
         return '%s' % self.leave_type
 
+    def get_updated_at(self):
+        return '%s' % self.updated_at
+
 
 class RequesterManager(models.Manager):
     def get_authorisers(self):
@@ -60,7 +63,7 @@ class Template(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     template_name = models.CharField(max_length=40)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
     leave_type = models.CharField(max_length=20)
     start = models.CharField(max_length=20)
     end = models.CharField(max_length=20)
@@ -108,12 +111,12 @@ class Restriction(models.Model):
 
 class Event(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=50)
-    link = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    link = models.CharField(max_length=100)
     start = models.DateField(null=True, blank=True)
     end = models.DateField(null=True, blank=True)
-    organizer = models.CharField(max_length=50)
+    organizer = models.CharField(max_length=100)
     modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def get_id(self):

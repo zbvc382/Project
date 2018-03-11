@@ -63,18 +63,30 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         comment = form.cleaned_data['comment']
         link = 'rhul.herokuapp.com' + reverse('home:check', args=(request_object.id,))
 
-
-
+        if decision == 'Approved':
+            event = Event(user=request_object.user,
+                          title=request_object.get_leave_type(),
+                          description='Approved on: ' + request_object.get_updated_at() + '\n' +
+                          'Comment: ' + comment,
+                          link=link,
+                          start=datetime(request_object.start.year, request_object.start.month,
+                                         request_object.start.day, tzinfo=pytz.UTC),
+                          end=datetime(request_object.end.year, request_object.end.month,
+                                       request_object.end.day, tzinfo=pytz.UTC),
+                          organizer=request_object.user.username
+                          )
+            event.save()
 
         email_subject = 'The decision for Absence Request #' + str(request_object.id) + ' is now available.'
         email_body = 'Dear ' + request_object.user.first_name\
                      + ',\n\nThe decision of your absence request application #' + str(request_object.id) + ' is now' \
-                       ' available to view online.\n\nTo view your decision please log into the Royal Holloway\'s' \
-                       ' Absence Management System.\n\n\n**This is an automatically generated email' \
-                       ' – please do not reply to it.**'
+                     ' available to view online.\n\nTo view your decision please click here: ' + link + '\n\n\n' + \
+                     '**This is an automatically generated email' \
+                     ' – please do not reply to it.**'
         email_from = 'zbvc382@gmail.com'
         email_to = request_object.user.email
         send_mail(email_subject, email_body, email_from, [email_to], fail_silently=False,)
+
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
