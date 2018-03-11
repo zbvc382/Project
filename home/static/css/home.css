@@ -556,6 +556,34 @@ table.table th i {
 }
 
 #template-header-text {
-    position: relative;
-    bottom: 22px;
+    position: absolute;
+    right: 250px;
+    bottom: 2px;
+}
+
+#calendar-text {
+    position: absolute;
+    right: 350px;
+    font-size: 16pt;
+    color: #EAE7E2;
+    border: none;
+}
+
+#calendar-button {
+    position: absolute;
+    height: 31px;
+    width: 40px;
+    right: 310px;
+    background: #222931;
+    border: none;
+    top: -3.5px;
+}
+
+.fa-rss-square {
+    color: #ea641b;
+    border: none;
+}
+
+.fa-rss-square:hover {
+    color: #367BB6;
 }

@@ -27,7 +27,7 @@
     {% elif user.is_authoriser %}
     <div class="row">
         <div class="col-md-4" id="welcome-col">&nbsp;<i class="fas fa-home"></i>&nbsp;&nbsp;Welcome back
-            {{ request.user.first_name }}.
+            {{ request.user.first_name }}
         </div>
         <div class="col-md-4" id="pending-col"><i class="fas fa-exclamation-circle" {% if is_pending == True %}
             style="color: #C42E2A;" {% elif is_pending == False %} style="color: #439B43;" {% endif %}></i>&nbsp;&nbsp;Pending Requests
@@ -95,13 +95,29 @@
 <div class="table-wrapper">
     <div class="table-title">
         <div class="row">
-            <div class="col-sm-6">
+        {% if user.is_requester %}
+            <div class="col-sm-5">
+            {% elif user.is_authoriser %}
+                <div class="col-sm-6">
+                    {% endif %}
                 <div class="search-box">
                     <i class="material-icons">&#xE8B6;</i>
                     <input type="text" class="form-control" id="searchbox" placeholder="Search">
                 </div>
             </div>
-            <div class="col-sm-6">
+        {% if user.is_requester %}
+            <div class="col-sm-2">
+                <p id="calendar-text">Calendar</p>
+                <button id="calendar-button">
+                    <a href="{% url 'home:feed' %}"><i class="fas fa-rss-square fa-2x"></i></a>
+                </button>
+            </div>
+            {% endif %}
+        {% if user.is_requester %}
+            <div class="col-sm-5">
+            {% elif user.is_authoriser %}
+                <div class="col-sm-6">
+                    {% endif %}
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-info">
                     <input type="radio" name="status" id="button-all" value=""> All

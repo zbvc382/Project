@@ -181,3 +181,8 @@ textarea {
 .fa-redo-alt {
     color: #EAE7E2;
 }
+
+#row-auth-col {
+    position: relative;
+    top: 5px;
+}

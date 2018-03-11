@@ -240,7 +240,7 @@ class RequesterCalendarEventFeed(ICalFeed):
     file_name = "Absences.ics"
 
     def items(self):
-        return Event.objects.all().order_by('-start')
+        return Event.objects.filter(user=self.request.user).order_by('-start')
 
     def item_guid(self, item):
         return "{}{}".format(item.id, "@rhul.herokuapp.com")
