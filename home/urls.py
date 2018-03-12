@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import home, requesters, authorisers, calendar
+from .views import home, requesters, authorisers
 
 urlpatterns = [
     url(r'^$', home.home, name='home'),

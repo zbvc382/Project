@@ -66,8 +66,8 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         if decision == 'Approved':
             event = Event(user=request_object.user,
                           title=request_object.get_leave_type(),
-                          description='Approved on: ' + request_object.get_updated_at() + '\n' +
-                          'Comment: ' + comment,
+                          description='Approved on: ' + request_object.updated_at.strftime('%Y-%m-%d %H:%M')
+                                      + '\n' + 'Comment: ' + comment,
                           link=link,
                           start=datetime(request_object.start.year, request_object.start.month,
                                          request_object.start.day, tzinfo=pytz.UTC),
