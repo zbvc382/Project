@@ -61,7 +61,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         request_object = self.get_object()
         decision = form.cleaned_data['status']
         comment = form.cleaned_data['comment']
-        link = reverse('home:check', args=(request_object.id,))
+        link = 'rhul.herokuapp.com' + reverse('home:check', args=(request_object.id,))
 
         if decision == 'Approved':
             event = Event(user=request_object.user,
@@ -77,7 +77,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
                           )
             event.save()
 
-        email_subject = 'The decision for Absence Request #' + str(request_object.id) + ' is now available.'
+        email_subject = 'The decision for absence request number ' + str(request_object.id) + ' is now available.'
         email_from = 'zbvc382@gmail.com'
         email_to = request_object.user.email
 
