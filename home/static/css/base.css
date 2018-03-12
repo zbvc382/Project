@@ -155,15 +155,20 @@ body {
     color: rgba(34, 41, 49, 0.8);
 }
 
+.alerts {
+  position: absolute;
+    top: -10px;
+  left: 750px;
+}
+
 .alert {
-    position: fixed;
-    top: 50px;
+    margin-bottom: 5px;
+    height: 45px;
+    width: 470px;
+    font-size: 11pt;
     left: 0;
     right: 0;
-    z-index: 7000;
-    margin-bottom: 1px;
-    height: 30px;
-    line-height: 30px;
+    line-height: 42px;
     padding: 0 15px;
-    border-radius: 0;
 }
+

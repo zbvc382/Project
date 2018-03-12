@@ -54,7 +54,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
     model = Request
     fields = ['comment', 'status']
     template_name = 'Authoriser/update.html'
-    success_message = 'Absence request status updated successfully.'
+    success_message = 'Absence request status updated'
     success_url = reverse_lazy('home:home')
 
     def form_valid(self, form):
@@ -150,7 +150,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
                 email.attach_file('media/' + request_object.get_attachment())
 
             email.send()
-            messages.add_message(self.request, messages.SUCCESS, 'Email sent.')
+            messages.add_message(self.request, messages.SUCCESS, 'Email sent')
 
             return super().form_valid(form)
 
@@ -197,7 +197,7 @@ class AuthoriserCreateRestrictionView(FormView):
         o = form.save()
         o.user = form_user
         o.save()
-        messages.add_message(self.request, messages.SUCCESS, 'Calendar constraint created.')
+        messages.add_message(self.request, messages.SUCCESS, 'Calendar constraint created')
 
         return redirect(reverse('home:create_restriction', args=(form_user.id,)))
 
@@ -216,7 +216,7 @@ class AuthoriserRemoveRestriction(SuccessMessageMixin, View):
         restriction_object = Restriction.objects.get(id=pk)
         requester_object = restriction_object.user
         self.delete_restriction()
-        messages.add_message(self.request, messages.WARNING,
-                             'Calendar constraint #' + restriction_object.id.__str__() + ' removed.')
+        messages.add_message(self.request, messages.ERROR,
+                             'Calendar constraint removed')
 
         return redirect(reverse('home:create_restriction', args=(requester_object.id,)))

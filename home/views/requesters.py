@@ -37,15 +37,15 @@ class RequesterHomeView(TemplateView):
 
         if not_seen_approved_requests is not None:
             for request in not_seen_approved_requests:
-                messages.add_message(self.request, messages.SUCCESS, "Absence request application number "
-                                     + request.id.__str__() + " has been approved.", extra_tags="approved")
+                messages.add_message(self.request, messages.SUCCESS, "Your absence request application number "
+                                     + request.id.__str__() + " has been approved", extra_tags="approved")
                 request.seen = True
                 request.save()
 
         if not_seen_declined_requests is not None:
             for request in not_seen_declined_requests:
-                messages.add_message(self.request, messages.ERROR, "Absence request application number "
-                                     + request.id.__str__() + " has been declined.", extra_tags="declined")
+                messages.add_message(self.request, messages.ERROR, "Your absence request application number "
+                                     + request.id.__str__() + " has been declined", extra_tags="declined")
                 request.seen = True
                 request.save()
 
@@ -122,7 +122,7 @@ class RequesterRequestView(FormView):
         email_from = 'zbvc382@gmail.com'
         send_mail(email_subject, email_body, email_from, [assigned_authoriser_email], fail_silently=False,)
         o.save()
-        messages.success(self.request, 'Absence request submitted successfully.')
+        messages.success(self.request, 'Absence request submitted successfully')
 
         return redirect(reverse('home:home'))
 
@@ -173,7 +173,7 @@ class RequesterCreateTemplate(View):
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         self.create_template()
-        messages.add_message(self.request, messages.SUCCESS, 'Template created successfully.')
+        messages.add_message(self.request, messages.SUCCESS, 'Template created')
         print(reverse('home:check', args=(pk,)))
         return redirect(reverse('home:check', args=(pk,)))
 
@@ -181,7 +181,6 @@ class RequesterCreateTemplate(View):
 @method_decorator([login_required, requester_required], name='dispatch')
 class RequesterDeleteTemplate(SuccessMessageMixin, View):
     model = Template
-    success_message = 'Template successfully deleted.'
     success_url = reverse_lazy('home:home')
 
     def delete_template(self):
@@ -193,8 +192,8 @@ class RequesterDeleteTemplate(SuccessMessageMixin, View):
         pk = self.kwargs['pk']
         template_name = Template.objects.get(id=pk).__str__()
         self.delete_template()
-        messages.add_message(self.request, messages.INFO,
-                             'Template \'' + template_name + '\' deleted.')
+        messages.add_message(self.request, messages.WARNING,
+                             'Template \'' + template_name + '\' deleted')
         return redirect(reverse('home:home'))
 
 
@@ -243,7 +242,7 @@ class RequesterRedoView(FormView):
         email_from = 'zbvc382@gmail.com'
         send_mail(email_subject, email_body, email_from, [assigned_authoriser_email], fail_silently=False,)
         o.save()
-        messages.success(self.request, 'Absence request submitted successfully.')
+        messages.success(self.request, 'Absence request application submitted')
 
         return redirect(reverse('home:home'))
 
