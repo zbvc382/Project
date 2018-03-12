@@ -69,10 +69,26 @@
         </div>
         {% endif %}
         {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade in text-center" role="alert">
-            {{ message }}
-        </div>
+            {% if message.extra_tags == 'approved' %}
+                <div class="alert {{ message.tags }} alert-dismissible fade in text-center" id="notification" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% if message.extra_tags == 'declined' %}
+                <div class="alert {{ message.tags }} alert-dismissible fade in text-center" id="notification" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% if message.extra_tags|default_if_none:"Empty" == 'Empty'%}
+            <div class="alert {{ message.tags }} alert-dismissible fade in text-center" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
         {% endfor %}
+        <div class="alert alert-success" role="alert">...</div>
+<div class="alert alert-info" role="alert">...</div>
+<div class="alert alert-warning" role="alert">...</div>
+<div class="alert alert-danger" role="alert">...</div>
         <div class="container" id="main-container">
             {% block body %}{% endblock %}
         </div>

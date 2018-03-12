@@ -23,8 +23,8 @@ class Request(models.Model):
     )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
-    updated_at = models.DateField(auto_now=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
     start = models.DateField()
     end = models.DateField()
@@ -32,6 +32,7 @@ class Request(models.Model):
     status = models.CharField(max_length=10, default='Pending')
     attachment = models.FileField(upload_to=user_directory_path, null=True, validators=[validate_file_size])
     comment = models.TextField(max_length=250, default="")
+    seen = models.BooleanField(default=False)
 
     def __str__(self):
         return '%s' % self.attachment

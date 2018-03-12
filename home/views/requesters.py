@@ -25,14 +25,29 @@ class RequesterHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
+        is_pending = False
+        no_templates = False
         requester_object = Requester.objects.filter(user=user)
         template_objects = Template.objects.filter(user=user)
         requester_requests = Request.objects.filter(user=user)
         pending_requests = requester_requests.filter(status='Pending')
         calendar_objects = Restriction.objects.filter(user=requester_object)
+        not_seen_approved_requests = Request.objects.filter(user=user, seen=False, status='Approved')
+        not_seen_declined_requests = Request.objects.filter(user=user, seen=False, status='Declined')
 
-        is_pending = False
-        no_templates = False
+        if not_seen_approved_requests is not None:
+            for request in not_seen_approved_requests:
+                messages.add_message(self.request, messages.SUCCESS, "Absence request application number "
+                                     + request.id.__str__() + " has been approved.", extra_tags="approved")
+                request.seen = True
+                request.save()
+
+        if not_seen_declined_requests is not None:
+            for request in not_seen_declined_requests:
+                messages.add_message(self.request, messages.ERROR, "Absence request application number "
+                                     + request.id.__str__() + " has been declined.", extra_tags="declined")
+                request.seen = True
+                request.save()
 
         if template_objects.__len__() > 3:
             template_objects = None
