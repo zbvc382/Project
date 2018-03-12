@@ -78,14 +78,21 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
             event.save()
 
         email_subject = 'The decision for Absence Request #' + str(request_object.id) + ' is now available.'
-        email_body = 'Dear ' + request_object.user.first_name\
-                     + ',\n\nThe decision of your absence request application #' + str(request_object.id) + ' is now' \
-                     ' available to view online.\n\nTo view your decision please click here: ' + link + '\n\n\n' + \
-                     '**This is an automatically generated email' \
-                     ' – please do not reply to it.**'
         email_from = 'zbvc382@gmail.com'
         email_to = request_object.user.email
-        send_mail(email_subject, email_body, email_from, [email_to], fail_silently=False,)
+
+        html_content = loader.render_to_string(
+            'Authoriser/update_auto_email_body.html',
+            {
+                'name': request_object.user.first_name,
+                'id': str(request_object.id),
+                'link': link,
+            }
+        )
+
+        email = EmailMultiAlternatives(email_subject, "", email_from, [email_to])
+        email.attach_alternative(html_content, "text/html")
+        email.send()
 
         return super().form_valid(form)
 
