@@ -55,7 +55,7 @@
                         <li class="inactive links"><a href="{% url 'home:my_requesters' %}">My Requesters</a></li>
                         {% endif %}
                         {% if user.is_requester %}
-                        <li class="inactive links"><a href="{% url 'home:absence' %}">New Absence</a></li>
+                            <li id="absence-link" class="inactive links"><a href="{% url 'home:absence' %}">New Absence</a></li>
                         {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -92,4 +92,35 @@
             </div>
         </div>
     </body>
+<script>
+    $(document).ready(function () {
+
+    $(".links").each(function () {
+        console.log($('a', this).attr("href"));
+        console.log(window.location.pathname);
+
+        try {
+            if ($('a', this).attr("href") + {{ template_id }} + '/' === window.location.pathname) {
+                $(this).removeClass('inactive').addClass('active');
+            }
+        }
+
+        catch (err) {
+            if ($('a', this).attr("href") === window.location.pathname) {
+                $(this).removeClass('inactive').addClass('active');
+            }
+        }
+    });
+
+
+    //console.log(window.location.pathname);
+
+     //$('a', this).attr("href") === window.location.pathname+  + '/')
+
+    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(5000).fadeOut( 400 );
+
+    $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
+
+});
+</script>
 </html>

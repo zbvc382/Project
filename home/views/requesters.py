@@ -103,6 +103,13 @@ class RequesterRequestView(FormView):
         requester_object = Requester.objects.filter(user=user)
         calendar_objects = Restriction.objects.filter(user=requester_object)
 
+        try:
+            template_id = str(self.kwargs['template'])
+            context['template_id'] = template_id
+
+        except KeyError:
+            print('No pk found. New request not from template.')
+
         context['authoriser'] = assigned_authoriser
         context['calendar_objects'] = calendar_objects
 
