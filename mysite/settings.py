@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
 SECRET_KEY = '7af9u&p0860$bup6a=rc#a1nbd3ba^_w^ze3-=1z_oh4*1m*7v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
@@ -165,7 +165,7 @@ STATICFILES_DIRS = [
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['rhul.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['rhul.herokuapp.com', '127.0.0.1']
 
 import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
