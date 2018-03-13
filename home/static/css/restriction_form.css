@@ -102,15 +102,10 @@
 }
 
 .btn-success {
-    position: absolute;
-    margin-top: 5px;
     background: #5FB760;
-    width: 583.5px;
-    bottom: 0.5px;
-    height: 32px;
     border: none;
     border-radius: 0;
-    left: 571px;
+    width: 100%;
 }
 
 textarea {
@@ -155,7 +150,14 @@ textarea {
 }
 
 #char-limit-mssg {
-    position: relative;
+    position: absolute;
     top: 330px;
     left: 110px;
+}
+
+#submit-button-div {
+    margin-top: 11.6%;
+    margin-left: -8.2%;
+    width: 113.8%;
+    margin-bottom: 0;
 }
