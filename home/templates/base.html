@@ -61,7 +61,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
                         <li>
-                            <a></a>
+                            <a id="empty-a"></a>
                         </li>
                     </ul>
                 </div>
@@ -74,17 +74,17 @@
             <div class="alerts">
                         {% for message in messages %}
             {% if message.extra_tags == 'approved' %}
-                <div class="alert {{ message.tags }} alert-dismissible fade in text-center" id="notification" role="alert">
+                <div class="alert {{ message.tags }} alert-dismissible text-center notification1" role="alert">
                     {{ message }}
                 </div>
             {% endif %}
             {% if message.extra_tags == 'declined' %}
-                <div class="alert {{ message.tags }} alert-dismissible fade in text-center" id="notification" role="alert">
+                <div class="alert {{ message.tags }} alert-dismissible text-center notification1" role="alert">
                     {{ message }}
                 </div>
             {% endif %}
             {% if message.extra_tags|default_if_none:"Empty" == 'Empty'%}
-            <div class="alert {{ message.tags }} alert-dismissible fade in text-center" role="alert">
+            <div class="alert {{ message.tags }} alert-dismissible text-center notification2 " role="alert">
                 {{ message }}
             </div>
             {% endif %}

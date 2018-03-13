@@ -558,7 +558,7 @@ table.table th i {
 #template-header-text {
     position: absolute;
     right: 250px;
-    bottom: 2px;
+    top: 0;
 }
 
 #calendar-text {

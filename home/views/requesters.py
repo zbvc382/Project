@@ -192,7 +192,7 @@ class RequesterDeleteTemplate(SuccessMessageMixin, View):
         pk = self.kwargs['pk']
         template_name = Template.objects.get(id=pk).__str__()
         self.delete_template()
-        messages.add_message(self.request, messages.WARNING,
+        messages.add_message(self.request, messages.ERROR,
                              'Template \'' + template_name + '\' deleted')
         return redirect(reverse('home:home'))
 

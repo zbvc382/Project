@@ -6,7 +6,8 @@ $(document).ready(function () {
         }
     });
 
-    setTimeout(function () {
-        $(".alert").fadeOut("slow");
-    }, 5000);
+    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(4000).fadeOut( 400 );
+
+    $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
+
 });

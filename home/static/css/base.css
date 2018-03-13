@@ -3,6 +3,10 @@ body {
     padding-top: 20px;
 }
 
+#empty-a:hover {
+    background-color: #222931;
+}
+
 #main-container {
     position: relative;
     top: 50px;
@@ -162,6 +166,7 @@ body {
 }
 
 .alert {
+
     margin-bottom: 5px;
     height: 45px;
     width: 470px;
@@ -170,5 +175,13 @@ body {
     right: 0;
     line-height: 42px;
     padding: 0 15px;
+}
+
+.notification1 {
+    display: none;
+}
+
+.notification2 {
+    display: none;
 }
 
