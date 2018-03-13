@@ -6,7 +6,7 @@ $(document).ready(function () {
         }
     });
 
-    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(4000).fadeOut( 400 );
+    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(5000).fadeOut( 400 );
 
     $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
 

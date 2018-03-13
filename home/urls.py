@@ -18,7 +18,7 @@ urlpatterns = [
 
     url(r'^requester/absence/view/(?P<pk>\d+)/$', requesters.RequesterCheckView.as_view(), name='check'),
 
-    url(r'^requester/absence/view/(?P<pk>\d+)/create-template/name=(?P<string>[\w.,\s]+)/$',
+    url(r'^requester/absence/view/(?P<pk>\d+)/create-template/name=(?P<string>[\w.,;:!?@£$%&*^()_±/~`<>\s]+)/$',
         requesters.RequesterCreateTemplate.as_view(), name='create'),
 
     url(r'^requester/absence/redo=(?P<pk>\d+)/$', requesters.RequesterRedoView.as_view(), name='redo'),

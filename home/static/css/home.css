@@ -556,9 +556,9 @@ table.table th i {
 }
 
 #template-header-text {
-    position: absolute;
-    right: 250px;
-    top: 0;
+    position: fixed;
+    top: 134px;
+    right: 310px;
 }
 
 #calendar-text {

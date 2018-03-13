@@ -14,18 +14,30 @@ def user_directory_path(instance, filename):
 
 class Request(models.Model):
 
-    HOLIDAY = 'Holiday'
     SICK_LEAVE = 'Sick Leave'
+    COMPASSIONATE_LEAVE = 'Compassionate Leave'
+    DEPENDANT_LEAVE = 'Dependant Leave'
+    PARENTAL_LEAVE = 'Parental Leave'
+    STUDY_LEAVE = 'Study Leave'
+    OTHER_PAID_LEAVE = 'Other paid leave'
+    OTHER_UNPAID_LEAVE = 'Other unpaid leave'
+    SABBATICAL_LEAVE = 'Sabbatical Leave'
 
     LEAVE_TYPE = (
-        (HOLIDAY, 'Holiday'),
-        (SICK_LEAVE, 'Sick Leave')
+        (SICK_LEAVE, 'Sick Leave'),
+        (COMPASSIONATE_LEAVE, 'Compassionate Leave'),
+        (DEPENDANT_LEAVE, 'Dependant Leave'),
+        (PARENTAL_LEAVE, 'Parental Leave'),
+        (STUDY_LEAVE, 'Study Leave'),
+        (OTHER_PAID_LEAVE, 'Other paid leave'),
+        (OTHER_UNPAID_LEAVE, 'Other unpaid leave'),
+        (SABBATICAL_LEAVE, 'Sabbatical Leave'),
     )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
-    leave_type = models.CharField(max_length=10, choices=LEAVE_TYPE, default=HOLIDAY)
+    leave_type = models.CharField(max_length=40, choices=LEAVE_TYPE, default=SICK_LEAVE)
     start = models.DateField()
     end = models.DateField()
     reason = models.TextField(max_length=500)
