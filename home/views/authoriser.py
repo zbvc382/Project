@@ -23,28 +23,45 @@ User = get_user_model()
 class AuthoriserHome(TemplateView):
     template_name = 'home.html'
 
+    ''' 
+    The purpose of this function is to return a dictionary representing the
+    the template context. The keyword arguments provided make up the returned context.
+    '''
     def get_context_data(self, **kwargs):
         user = self.request.user
         authoriser_requests = []
         pending_requests_only = []
         is_pending = False
 
-        authoriser_object = Authoriser.objects.filter(user=user)
-        requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
+        try:
+            # Gets the current user's authoriser object
+            authoriser_object = Authoriser.objects.get(user=user)
 
-        for requester in requester_objects:
-            authoriser_requests += Request.objects.filter(user=requester.user)
-            pending_requests_only += Request.objects.filter(user=requester.user, status='Pending')
+            # Retrieves a query set of requester objects that are assigned to the current user
+            requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 
-        if pending_requests_only.__len__() > 0:
-            is_pending = True
+            for requester in requester_objects:
 
-        array = ['pdf', 'jpg', 'txt', 'docx']
-        context = {'authoriser_requests': authoriser_requests, 'array': array,
-                   'is_pending': is_pending,
-                   'pending_requests': pending_requests_only.__len__()}
+                # Retrieves a query set of request objects that belong users that are assigned
+                # to the current authoriser
+                authoriser_requests += Request.objects.filter(user=requester.user)
 
-        return context
+                # Retrieves a query set of request objects that have a 'Pending' status
+                pending_requests_only += Request.objects.filter(user=requester.user, status='Pending')
+
+            if pending_requests_only.__len__() > 0:
+                is_pending = True
+
+            # An array of possible extensions
+            array = ['pdf', 'jpg', 'txt', 'docx']
+            context = {'authoriser_requests': authoriser_requests, 'array': array,
+                       'is_pending': is_pending,
+                       'pending_requests': pending_requests_only.__len__()}
+
+            return context
+
+        except ObjectDoesNotExist:
+            print('Error. Authoriser object does not exist.')
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
@@ -55,13 +72,24 @@ class AuthoriserViewRequest(SuccessMessageMixin, UpdateView):
     success_message = 'Absence request status updated'
     success_url = reverse_lazy('home:home')
 
+    '''
+    This method is called when valid form data has been POSTed.
+    '''
     def form_valid(self, form):
         request_object = self.get_object()
+
+        # Gets the user's filled out decision field data
         decision = form.cleaned_data['status']
+
+        # Gets the user's filled out comment field data
         comment = form.cleaned_data['comment']
+
+        # Gets the absolute url of requester view page plus the request object id as an
+        # additional argument
         event_link = reverse('home:requester_view', args=(request_object.id,))
         email_link = 'rhul.herokuapp.com' + reverse('home:requester_view', args=(request_object.id,))
 
+        # Creates an event object if request is approved
         if decision == 'Approved':
             event = Event(user=request_object.user,
                           title=request_object.get_leave_type(),
@@ -74,6 +102,8 @@ class AuthoriserViewRequest(SuccessMessageMixin, UpdateView):
                                        request_object.end.day, tzinfo=pytz.UTC),
                           organizer=request_object.user.username
                           )
+
+            # Saves the object to the database
             event.save()
 
         email_subject = 'The decision for absence request number ' + str(request_object.id) + ' is now available.'
@@ -95,12 +125,22 @@ class AuthoriserViewRequest(SuccessMessageMixin, UpdateView):
 
         return super().form_valid(form)
 
+    ''' 
+    The purpose of this function is to return a dictionary representing the
+    the template context. The keyword arguments provided make up the returned context.
+    '''
     def get_context_data(self, **kwargs):
         context = super(AuthoriserViewRequest, self).get_context_data(**kwargs)
         array = ['pdf', 'jpg', 'txt', 'docx']
         request_object = self.get_object()
+
+        # Calls the _str_ function defined in the Request model
+        # and retrieves a string representation of attachment
         attachment = request_object.__str__()
+
+        # Removes and returns the tail of the string
         extension = attachment.split('.').pop()
+
         context['array'] = array
         context['extension'] = extension
 
@@ -113,13 +153,22 @@ class AuthoriserSendEmail(SuccessMessageMixin, FormView):
     form_class = EmailForm
     success_url = reverse_lazy('home:home')
 
+    ''' 
+    The purpose of this function is to return a dictionary representing the
+    the template context. The keyword arguments provided make up the returned context.
+    '''
     def get_context_data(self, **kwargs):
         context = super(AuthoriserSendEmail, self).get_context_data(**kwargs)
+
+        # Gets value of pk passed in through the url
         pk = self.kwargs['pk']
         context['pk'] = pk
 
         return context
 
+    '''
+    This method is called when valid form data has been POSTed.
+    '''
     def form_valid(self, form):
         subject, from_email, to_email = form.cleaned_data['subject'], 'zbvc382@gmail.com', form.cleaned_data['email']
         text_content = form.cleaned_data['message']
@@ -145,6 +194,9 @@ class AuthoriserSendEmail(SuccessMessageMixin, FormView):
             email = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
             email.attach_alternative(html_content, "text/html")
 
+            # Checks whether the user has selected to include an attachment
+            # and if so calls attach_file function with the media folder location
+            # as the first argument and attachment file name as the second
             if form.cleaned_data['include_attachment'] is True:
                 email.attach_file('media/' + request_object.get_attachment())
 
@@ -155,23 +207,33 @@ class AuthoriserSendEmail(SuccessMessageMixin, FormView):
 
         except ObjectDoesNotExist:
 
-            print('Request object does not exist.')
+            print('Error. Request object does not exist.')
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
 class AuthoriserViewRequesters(TemplateView):
     template_name = 'Authoriser/authoriser_view_requestors.html'
 
+    ''' 
+    The purpose of this function is to return a dictionary representing the
+    the template context. The keyword arguments provided make up the returned context.
+    '''
     def get_context_data(self, **kwargs):
         user = self.request.user
-        authoriser_object = Authoriser.objects.filter(user=user)
-        requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
 
-        context = {
-            'requesters': requester_objects
-        }
+        try:
+            # Gets the current user's authoriser object
+            authoriser_object = Authoriser.objects.get(user=user)
 
-        return context
+            # Retrieves a query set of requester objects that are assigned to the current user
+            requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
+
+            context = {'requesters': requester_objects}
+
+            return context
+
+        except ObjectDoesNotExist:
+            print('Error. Object does not exist')
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
@@ -179,6 +241,10 @@ class AuthoriserCreateRestriction(FormView):
     template_name = 'Authoriser/authoriser_create_restriction.html'
     form_class = RestricionForm
 
+    ''' 
+    The purpose of this function is to return a dictionary representing the
+    the template context. The keyword arguments provided make up the returned context.
+    '''
     def get_context_data(self, **kwargs):
         context = super(AuthoriserCreateRestriction, self).get_context_data(**kwargs)
         pk = self.kwargs['pk']
@@ -190,12 +256,22 @@ class AuthoriserCreateRestriction(FormView):
 
         return context
 
+    '''
+    This method is called when valid form data has been POSTed.
+    '''
     def form_valid(self, form):
         pk = self.kwargs['pk']
+
+        # Retrieves a requester object that matches the pk provided
         form_user = Requester.objects.get(id=pk)
         o = form.save()
+
+        # Form user assigned
         o.user = form_user
+
+        # Form user saved
         o.save()
+
         messages.add_message(self.request, messages.SUCCESS, 'Calendar constraint created')
 
         return redirect(reverse('home:restriction', args=(form_user.id,)))
@@ -205,6 +281,9 @@ class AuthoriserCreateRestriction(FormView):
 class AuthoriserRenameRestriction(SuccessMessageMixin, View):
     model = Restriction
 
+    '''
+    This function deletes the restriction object
+    '''
     def delete_restriction(self):
         pk = self.kwargs['pk']
         restriction_object = Restriction.objects.get(id=pk)
@@ -212,9 +291,17 @@ class AuthoriserRenameRestriction(SuccessMessageMixin, View):
 
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
+
+        # In order redirect the page back to the restriction page
+        # a requester id needs to be retrieved. This is done by running a query
+        # to get the current restriction object before calling the delete function.
+        # A requester object is assigned by accessing the restriction object user
         restriction_object = Restriction.objects.get(id=pk)
         requester_object = restriction_object.user
+
+        # Delete function can now be called safely
         self.delete_restriction()
+
         messages.add_message(self.request, messages.ERROR,
                              'Calendar constraint removed')
 

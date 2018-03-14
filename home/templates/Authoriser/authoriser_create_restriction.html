@@ -98,8 +98,12 @@
 </div>
 <script>
     $(document).ready(function () {
+
+        // Stores a list of dates
         var dateArray = Array();
 
+        // John Hartsock, Wed Mar 14 2018, ScottScott, "Javascript - get array of dates between 2 dates"
+        // Dec 10 '10 at 21:46Dec 10 '10 at 22:47, https://stackoverflow.com/a/4413721
         function getDates(startDate, stopDate) {
             var currentDate = startDate;
 
@@ -109,6 +113,7 @@
             }
         }
 
+        // Loops through each restriction object and calls getDates to convert the date
         {% for restriction in restrictions %}
             var from_date = '{{ restriction.get_from_date }}';
             var to_date = '{{ restriction.get_to_date }}';
@@ -117,22 +122,25 @@
         {% endfor %}
 
 
-
+        // sets default options including disabled dates
         $('#id_from_date').datetimepicker({
             format: 'YYYY-MM-DD',
             disabledDates: dateArray,
             useCurrent: false //Important!
         });
 
+        // Sets default options including disabled dates
         $('#id_to_date').datetimepicker({
             format: 'YYYY-MM-DD',
             disabledDates: dateArray
         });
 
+        // Sets selected 'from date' date picker value as a minimum for 'to date' date picker
         $("#id_from_date").on("dp.change", function (e) {
             $('#id_to_date').data("DateTimePicker").minDate(e.date);
         });
 
+        // Sets selected 'to date' date picker value as a maximum for 'from date' date picker
         $("#id_to_date").on("dp.change", function (e) {
             $('#id_from_date').data("DateTimePicker").maxDate(e.date);
         });

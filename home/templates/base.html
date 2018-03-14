@@ -5,7 +5,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
+        <title>Absence Management System</title>
+        <!-- stylesheets -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +26,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <script src="{% static 'js/home.js' %}"></script>
-        <script src="{% static 'js/update.js' %}"></script>
+        <script src="{% static 'js/authoriser_view_request.js' %}"></script>
 
     </head>
     {% block head %} {% endblock %}
@@ -94,24 +95,25 @@
 <script>
     $(document).ready(function () {
 
-    $(".links").each(function () {
-
-        try {
-            if ($('a', this).attr("href") + {{ template_id }} + '/' === window.location.pathname) {
-                $(this).removeClass('inactive').addClass('active');
+        // Compares each list item's href with current window location and if condition is met
+        // adds an active class to that item - resulting in an 'active' nav bar button
+        $(".links").each(function () {
+            try {
+                if ($('a', this).attr("href") + {{ template_id }} + '/' === window.location.pathname) {
+                    $(this).removeClass('inactive').addClass('active');
+                }
             }
-        }
 
-        catch (err) {
-            if ($('a', this).attr("href") === window.location.pathname) {
-                $(this).removeClass('inactive').addClass('active');
+            catch (err) {
+                if ($('a', this).attr("href") === window.location.pathname) {
+                    $(this).removeClass('inactive').addClass('active');
+                }
             }
-        }
-    });
+        });
 
-    $( "div.notification1" ).delay( 400 ).fadeIn( 400 ).delay(5000).fadeOut( 400 );
-
-    $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
+        // Message notifications
+        $( "div.notification1" ).delay( 400 ).fadeIn( 400 ).delay(5000).fadeOut( 400 );
+        $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
 
 });
 </script>
