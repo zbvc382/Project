@@ -59,8 +59,8 @@ class AuthoriserViewRequest(SuccessMessageMixin, UpdateView):
         request_object = self.get_object()
         decision = form.cleaned_data['status']
         comment = form.cleaned_data['comment']
-        event_link = reverse('home:view', args=(request_object.id,))
-        email_link = 'rhul.herokuapp.com' + reverse('home:view', args=(request_object.id,))
+        event_link = reverse('home:requester_view', args=(request_object.id,))
+        email_link = 'rhul.herokuapp.com' + reverse('home:requester_view', args=(request_object.id,))
 
         if decision == 'Approved':
             event = Event(user=request_object.user,

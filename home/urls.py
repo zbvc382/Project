@@ -17,7 +17,7 @@ urlpatterns = [
 
     url(r'^requester/template=(?P<pk>\d+)/delete/$', requester.RequesterDeleteTemplate.as_view(), name='delete'),
 
-    url(r'^requester/request=(?P<pk>\d+)/view/$', requester.RequesterViewRequest.as_view(), name='view'),
+    url(r'^requester/request=(?P<pk>\d+)/view/$', requester.RequesterViewRequest.as_view(), name='requester_view'),
 
     url(r'^requester/request=(?P<pk>\d+)/reuse$', requester.RequesterReuseRequest.as_view(), name='reuse'),
 
@@ -27,7 +27,7 @@ urlpatterns = [
 
     url(r'^authoriser/$', authoriser.AuthoriserHome.as_view(), name='authoriser'),
 
-    url(r'^authoriser/request=(?P<pk>\d+)/view/$', authoriser.AuthoriserViewRequest.as_view(), name='view'),
+    url(r'^authoriser/request=(?P<pk>\d+)/view/$', authoriser.AuthoriserViewRequest.as_view(), name='authoriser_view'),
 
     url(r'^authoriser/request=(?P<pk>\d+)/send/$', authoriser.AuthoriserSendEmail.as_view(), name='send'),
 

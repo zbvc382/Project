@@ -185,7 +185,7 @@ class RequesterCreateTemplate(View):
         self.create_template()
         messages.add_message(self.request, messages.SUCCESS, 'Template created')
 
-        return redirect(reverse('home:view', args=(pk,)))
+        return redirect(reverse('home:requester_view', args=(pk,)))
 
 
 @method_decorator([login_required, requester_required], name='dispatch')

@@ -214,7 +214,7 @@
                     {{ request.status }}
                     {% endif %}
                 </td>
-                <td><a href="{% url 'home:view' request.pk %}" class="btn btn-sm manage">View</a></td>
+                <td><a href="{% url 'home:requester_view' request.pk %}" class="btn btn-sm manage">View</a></td>
                 {% endfor %}
                 {% endif %}
                 {% if user.is_authoriser %}
@@ -265,7 +265,7 @@
                     {{ request.status }}
                     {% endif %}
                 </td>
-                <td><a href="{% url 'home:view' request.pk %}" class="btn btn-sm manage">View</a>
+                <td><a href="{% url 'home:authoriser_view' request.pk %}" class="btn btn-sm manage">View</a>
                     {% if request.status == 'Approved' or request.status == 'Declined' %}
                     <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
                     {% else %}
