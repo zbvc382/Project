@@ -25,7 +25,6 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <script src="{% static 'js/home.js' %}"></script>
-        <script src="{% static 'js/base.js' %}"></script>
         <script src="{% static 'js/update.js' %}"></script>
 
     </head>
@@ -52,10 +51,10 @@
                         {% endif %}
                         {% if user.is_authoriser %}
                         <li class="inactive links"><a href="{% url 'home:authoriser' %}">Home</a></li>
-                        <li class="inactive links"><a href="{% url 'home:my_requesters' %}">My Requesters</a></li>
+                        <li class="inactive links"><a href="{% url 'home:requesters' %}">My Requesters</a></li>
                         {% endif %}
                         {% if user.is_requester %}
-                            <li id="absence-link" class="inactive links"><a href="{% url 'home:absence' %}">New Absence</a></li>
+                            <li id="absence-link" class="inactive links"><a href="{% url 'home:new' %}">New Absence</a></li>
                         {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -72,7 +71,7 @@
         <div class="container" id="main-container">
             {% block body %}{% endblock %}
             <div class="alerts">
-                        {% for message in messages %}
+                {% for message in messages %}
             {% if message.extra_tags == 'approved' %}
                 <div class="alert {{ message.tags }} alert-dismissible text-center notification1" role="alert">
                     {{ message }}
@@ -96,8 +95,6 @@
     $(document).ready(function () {
 
     $(".links").each(function () {
-        console.log($('a', this).attr("href"));
-        console.log(window.location.pathname);
 
         try {
             if ($('a', this).attr("href") + {{ template_id }} + '/' === window.location.pathname) {
@@ -112,12 +109,7 @@
         }
     });
 
-
-    //console.log(window.location.pathname);
-
-     //$('a', this).attr("href") === window.location.pathname+  + '/')
-
-    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(5000).fadeOut( 400 );
+    $( "div.notification1" ).delay( 1000 ).fadeIn( 400 ).delay(7000).fadeOut( 400 );
 
     $( "div.notification2" ).fadeIn( 400 ).delay(3000).fadeOut( 400 );
 

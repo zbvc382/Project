@@ -5,7 +5,6 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
-from django.core.mail import send_mail
 from django.urls import reverse
 from django.template import loader
 from django.core.mail import EmailMultiAlternatives
@@ -21,13 +20,14 @@ User = get_user_model()
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserHomeView(TemplateView):
+class AuthoriserHome(TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
         user = self.request.user
         authoriser_requests = []
         pending_requests_only = []
+        is_pending = False
 
         authoriser_object = Authoriser.objects.filter(user=user)
         requester_objects = Requester.objects.filter(assigned_authoriser=authoriser_object)
@@ -35,8 +35,6 @@ class AuthoriserHomeView(TemplateView):
         for requester in requester_objects:
             authoriser_requests += Request.objects.filter(user=requester.user)
             pending_requests_only += Request.objects.filter(user=requester.user, status='Pending')
-
-        is_pending = False
 
         if pending_requests_only.__len__() > 0:
             is_pending = True
@@ -50,10 +48,10 @@ class AuthoriserHomeView(TemplateView):
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
+class AuthoriserViewRequest(SuccessMessageMixin, UpdateView):
     model = Request
     fields = ['comment', 'status']
-    template_name = 'Authoriser/update.html'
+    template_name = 'Authoriser/authoriser_view_request.html'
     success_message = 'Absence request status updated'
     success_url = reverse_lazy('home:home')
 
@@ -61,8 +59,8 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         request_object = self.get_object()
         decision = form.cleaned_data['status']
         comment = form.cleaned_data['comment']
-        event_link = reverse('home:check', args=(request_object.id,))
-        email_link = 'rhul.herokuapp.com' + reverse('home:check', args=(request_object.id,))
+        event_link = reverse('home:view', args=(request_object.id,))
+        email_link = 'rhul.herokuapp.com' + reverse('home:view', args=(request_object.id,))
 
         if decision == 'Approved':
             event = Event(user=request_object.user,
@@ -83,7 +81,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         email_to = request_object.user.email
 
         html_content = loader.render_to_string(
-            'Authoriser/update_auto_email_body.html',
+            'Authoriser/authoriser_decision_email_body.html',
             {
                 'name': request_object.user.first_name,
                 'id': str(request_object.id),
@@ -98,7 +96,7 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        context = super(AuthoriserRequestView, self).get_context_data(**kwargs)
+        context = super(AuthoriserViewRequest, self).get_context_data(**kwargs)
         array = ['pdf', 'jpg', 'txt', 'docx']
         request_object = self.get_object()
         attachment = request_object.__str__()
@@ -110,13 +108,13 @@ class AuthoriserRequestView(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
-    template_name = 'Authoriser/contact.html'
+class AuthoriserSendEmail(SuccessMessageMixin, FormView):
+    template_name = 'Authoriser/authoriser_send_email.html'
     form_class = EmailForm
     success_url = reverse_lazy('home:home')
 
     def get_context_data(self, **kwargs):
-        context = super(AuthoriserRequestViewEmail, self).get_context_data(**kwargs)
+        context = super(AuthoriserSendEmail, self).get_context_data(**kwargs)
         pk = self.kwargs['pk']
         context['pk'] = pk
 
@@ -131,7 +129,7 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
             request_object = Request.objects.get(id=pk)
 
             html_content = loader.render_to_string(
-                'Authoriser/email_body.html',
+                'Authoriser/authoriser_send_email_body.html',
                 {
                     'text_content': text_content,
                     'application_number': request_object.id,
@@ -161,8 +159,8 @@ class AuthoriserRequestViewEmail(SuccessMessageMixin, FormView):
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserMyRequestersView(TemplateView):
-    template_name = 'Authoriser/my_requesters.html'
+class AuthoriserViewRequesters(TemplateView):
+    template_name = 'Authoriser/authoriser_view_requestors.html'
 
     def get_context_data(self, **kwargs):
         user = self.request.user
@@ -177,12 +175,12 @@ class AuthoriserMyRequestersView(TemplateView):
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserCreateRestrictionView(FormView):
-    template_name = 'Authoriser/restriction_form.html'
+class AuthoriserCreateRestriction(FormView):
+    template_name = 'Authoriser/authoriser_create_restriction.html'
     form_class = RestricionForm
 
     def get_context_data(self, **kwargs):
-        context = super(AuthoriserCreateRestrictionView, self).get_context_data(**kwargs)
+        context = super(AuthoriserCreateRestriction, self).get_context_data(**kwargs)
         pk = self.kwargs['pk']
         requester = Requester.objects.get(id=pk)
         restrictions = Restriction.objects.filter(user=requester)
@@ -200,11 +198,11 @@ class AuthoriserCreateRestrictionView(FormView):
         o.save()
         messages.add_message(self.request, messages.SUCCESS, 'Calendar constraint created')
 
-        return redirect(reverse('home:create_restriction', args=(form_user.id,)))
+        return redirect(reverse('home:restriction', args=(form_user.id,)))
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserRemoveRestriction(SuccessMessageMixin, View):
+class AuthoriserRenameRestriction(SuccessMessageMixin, View):
     model = Restriction
 
     def delete_restriction(self):
@@ -220,4 +218,4 @@ class AuthoriserRemoveRestriction(SuccessMessageMixin, View):
         messages.add_message(self.request, messages.ERROR,
                              'Calendar constraint removed')
 
-        return redirect(reverse('home:create_restriction', args=(requester_object.id,)))
+        return redirect(reverse('home:restriction', args=(requester_object.id,)))

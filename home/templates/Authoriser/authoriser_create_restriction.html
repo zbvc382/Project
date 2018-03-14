@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block body %}
 {% load widget_tweaks %} {% load staticfiles %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/restriction_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/restriction.css' %}">
 {% endblock %}
 <div class="row header">
     <div class="col-xs-6 col-md-1">ID</div>
@@ -46,7 +46,7 @@
                         <td>{{ restriction.id }}</td>
                         <td>{{ restriction.from_date }}</td>
                         <td>{{ restriction.to_date }}</td>
-                        <td><a href="{% url 'home:remove_restriction' restriction.id %}" class="btn btn-sm remove"><span class="glyphicon glyphicon-trash"></span>&nbsp;Remove</a>
+                        <td><a href="{% url 'home:remove' restriction.id %}" class="btn btn-sm remove"><span class="glyphicon glyphicon-trash"></span>&nbsp;Remove</a>
                         </td>
                     </tr>
                     {% endfor %}

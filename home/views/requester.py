@@ -20,7 +20,7 @@ User = get_user_model()
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequesterHomeView(TemplateView):
+class RequesterHome(TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
@@ -49,16 +49,19 @@ class RequesterHomeView(TemplateView):
                 request.seen = True
                 request.save()
 
-        if template_objects.__len__() > 3:
-            template_objects = None
+        try:
+            if template_objects.__len__() > 3:
+                template_objects = None
 
-        if template_objects.__len__() < 1:
-            no_templates = True
+            if template_objects.__len__() < 1:
+                no_templates = True
 
-        if pending_requests.__len__() > 0:
-            is_pending = True
+            if pending_requests.__len__() > 0:
+                is_pending = True
 
-        # TODO: Might need exception handling
+        except AttributeError:
+            print('error: template objects is none')
+
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
         array = ['pdf', 'jpg', 'txt', 'docx']
@@ -73,8 +76,8 @@ class RequesterHomeView(TemplateView):
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequesterRequestView(FormView):
-    template_name = 'Requester/request.html'
+class RequesterNewRequest(FormView):
+    template_name = 'Requester/requester_new_request.html'
     form_class = RequestForm
 
     def get_initial(self):
@@ -97,7 +100,7 @@ class RequesterRequestView(FormView):
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        context = super(RequesterRequestView, self).get_context_data(**kwargs)
+        context = super(RequesterNewRequest, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=user)\
             .assigned_authoriser.user.get_full_name
         requester_object = Requester.objects.filter(user=user)
@@ -135,15 +138,15 @@ class RequesterRequestView(FormView):
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequesterCheckView(UpdateView):
+class RequesterViewRequest(UpdateView):
     model = Request
     fields = ['status']
-    template_name = 'Requester/check.html'
+    template_name = 'Requester/requester_view_request.html'
     success_url = reverse_lazy('home:home')
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        context = super(RequesterCheckView, self).get_context_data(**kwargs)
+        context = super(RequesterViewRequest, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=user).assigned_authoriser.user.get_full_name()
         number_of_templates = Template.objects.filter(user=user).__len__()
         array = ['pdf', 'jpg', 'txt', 'docx']
@@ -181,8 +184,8 @@ class RequesterCreateTemplate(View):
         pk = self.kwargs['pk']
         self.create_template()
         messages.add_message(self.request, messages.SUCCESS, 'Template created')
-        print(reverse('home:check', args=(pk,)))
-        return redirect(reverse('home:check', args=(pk,)))
+
+        return redirect(reverse('home:view', args=(pk,)))
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
@@ -205,8 +208,8 @@ class RequesterDeleteTemplate(SuccessMessageMixin, View):
 
 
 @method_decorator([login_required, requester_required], name='dispatch')
-class RequesterRedoView(FormView):
-    template_name = 'Requester/request.html'
+class RequesterReuseRequest(FormView):
+    template_name = 'Requester/requester_new_request.html'
     form_class = RequestForm
 
     def get_initial(self):
@@ -227,7 +230,7 @@ class RequesterRedoView(FormView):
             print('Request object does not exist. Reverting back to clean request.')
 
     def get_context_data(self, **kwargs):
-        context = super(RequesterRedoView, self).get_context_data(**kwargs)
+        context = super(RequesterReuseRequest, self).get_context_data(**kwargs)
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
 
@@ -255,7 +258,7 @@ class RequesterRedoView(FormView):
 
 
 @method_decorator([login_required, requester_required], name='__call__')
-class RequesterCalendarEventFeed(ICalFeed):
+class RequesterCalendarFeed(ICalFeed):
     product_id = 'rhul.herokuapp.com'
     timezone = 'UTC'
     file_name = "Absences.ics"
@@ -283,4 +286,4 @@ class RequesterCalendarEventFeed(ICalFeed):
 
     def __call__(self, request, *args, **kwargs):
         self.request = request
-        return super(RequesterCalendarEventFeed, self).__call__(request, *args, **kwargs)
+        return super(RequesterCalendarFeed, self).__call__(request, *args, **kwargs)

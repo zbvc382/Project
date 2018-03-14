@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 {% endblock %} {% block body %}    {% load staticfiles %}{% block style %}
 {% if user.is_requester %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_requester.css' %}">
 {% elif user.is_authoriser %}
-<link rel="stylesheet" href="{% static 'css/home_auth.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_authoriser.css' %}">
 {% endif %}
 {% endblock %}
 {% if user.is_authenticated %}
@@ -74,7 +74,7 @@
                 {% for template in templates %}
                 <li>
                     <div class="saved-item ui-widget-content template_links" id="draggable">
-                        <a id="testing1" href="{% url 'home:absence' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+                        <a id="testing1" href="{% url 'home:new' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
                         <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
                         <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                     </div>
@@ -214,7 +214,7 @@
                     {{ request.status }}
                     {% endif %}
                 </td>
-                <td><a href="{% url 'home:check' request.pk %}" class="btn btn-sm manage">View</a></td>
+                <td><a href="{% url 'home:view' request.pk %}" class="btn btn-sm manage">View</a></td>
                 {% endfor %}
                 {% endif %}
                 {% if user.is_authoriser %}
@@ -265,7 +265,7 @@
                     {{ request.status }}
                     {% endif %}
                 </td>
-                <td><a href="{% url 'home:request' request.pk %}" class="btn btn-sm manage">View</a>
+                <td><a href="{% url 'home:view' request.pk %}" class="btn btn-sm manage">View</a>
                     {% if request.status == 'Approved' or request.status == 'Declined' %}
                     <span><a href="{% url 'home:send' request.pk %}" class="btn btn-sm email-button">Email</a></span>
                     {% else %}

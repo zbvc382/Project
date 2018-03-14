@@ -23,7 +23,7 @@
                 <td class="col-md-3">{{ requester.user.get_full_name }}</td>
                 <td class="col-md-3">{{ requester.user.email }}</td>
                 <td class="col-md-2">{{ requester.user.department }}</td>
-                <td class="col-md-1"><a href="{% url 'home:create_restriction' requester.id %}" class="btn btn-sm manage">Manage</a></td>
+                <td class="col-md-1"><a href="{% url 'home:restriction' requester.id %}" class="btn btn-sm manage">Manage</a></td>
             </tr>
             {% endfor %}
         </tbody>
