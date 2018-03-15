@@ -392,12 +392,12 @@ table.table th i {
 }
 
 .right-list {
-    margin-left: -1.7%;
+    margin-left: -3.5%;
     height: 128px !important;
     margin-top: 15px;
     list-style: none;
     overflow: scroll;
-    width: 97%;
+    width: 100%;
 }
 
 ::-webkit-scrollbar {
