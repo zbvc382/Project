@@ -43,7 +43,6 @@
 <div class="applications">
     <div class="row-appl">
         <div id="calendar-container" class="col-xs-6 col-md-6">
-            <b>Calendar Constraints</b>
             <table id="calendar-table" class="table table-condensed table-hover">
                 <thead>
                     <tr>
@@ -67,24 +66,20 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-xs-6 col-md-6"><span id="template-header-text"><b>Templates</b></span></div>
-        <div id="appl-divider">&nbsp;</div>
-        <div class="right-side">
-            <ul class="right-list" id="sortable">
+        <div class="col-xs-6 col-md-6">
+            <ul class="right-list">
                 {% for template in templates %}
-                <li>
-                    <div class="saved-item ui-widget-content template_links" id="draggable">
-                        <a id="testing1" href="{% url 'home:new' template.id %}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-list-alt"></span> Request</a>
+
+                <li class="saved-item template_links">
+                        <a id="testing1" href="{% url 'home:new' template.id %}" class="btn btn-sm btn-success">Request</a>
                         <span id="template-name-span">&nbsp;&nbsp;{{ template.template_name }}</span>
                         <a href="{% url 'home:delete' template.id %}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                    </div>
                 </li>
                 {% endfor %}
             </ul>
             {% if no_templates %}
-            <div id="no-templates">No templates found.</div>
             {% endif %}
-        </div>
+</div>
     </div>
 </div>
 {% endif %}

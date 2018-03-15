@@ -49,18 +49,8 @@ class RequesterHome(TemplateView):
                 request.seen = True
                 request.save()
 
-        try:
-            if template_objects.__len__() > 3:
-                template_objects = None
-
-            if template_objects.__len__() < 1:
-                no_templates = True
-
-            if pending_requests.__len__() > 0:
-                is_pending = True
-
-        except AttributeError:
-            print('error: template objects is none')
+        if pending_requests.__len__() > 0:
+            is_pending = True
 
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name

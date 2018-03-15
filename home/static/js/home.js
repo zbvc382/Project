@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     // Search box
     $('#searchbox').on('keyup click', function () {
-        $('.table').DataTable().search($('#searchbox').val()).draw();
+        $('#requester_table').DataTable().search($('#searchbox').val()).draw();
     });
 
     $('#button-all:input').on('change', function () {

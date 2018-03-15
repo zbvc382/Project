@@ -380,27 +380,10 @@ table.table th i {
     font-size: 11pt;
 }
 
-#appl-divider {
-    width: 1px;
-    height: 150px;
-    background: #CECECE;
-    position: absolute;
-    top: 0;
-    left: 584px;
-}
 
-.right-side {
-    position: absolute;
-    left: 580px;
-    bottom: 0;
-    top: 30px;
-}
 
-.left-side {
-    position: absolute;
-    left: 0px;
-    bottom: 0;
-    top: 30px;
+#calendar-container{
+    border-right: 1px solid #ddd;
 }
 
 .btn-default {
@@ -409,7 +392,11 @@ table.table th i {
 }
 
 .right-list {
+    margin-left: -7%;
+    height: 125px !important;
+    margin-top: 15px;
     list-style: none;
+    overflow: scroll;
 }
 
 .left-list {
@@ -417,34 +404,42 @@ table.table th i {
 }
 
 .saved-item {
-    position: relative;
-    width: 515px;
-    height: 30px;
     margin-bottom: 10px;
-    background: #367BB6;
+    height: 33px;
+    background: #222931;
     border-radius: 0;
-    border: 1px solid #1766A8;
-    border-right: none;
-    border-left: none;
     cursor: pointer;
-    box-shadow: 3px 2px #888888;
+    line-height: 27px;
+}
+
+#template-header-text {
+    text-align: center;
 }
 
 .saved-item .btn-success {
-    position: relative;
-    bottom: 1px;
+    margin: auto;
+    float: left;
+    padding-bottom: 6px;
     border-radius: 0;
     border-right: none;
+    line-height: 20px;
 }
 
 .saved-item .btn-danger {
-    position: relative;
-    padding-right: 15px;
-    padding-left: 10px;
-    left: 356px;
-    bottom: 1px;
+    margin: auto;
+    float: right;
+    padding-bottom: 6px;
     border-radius: 0;
-    border-left: none;
+    border-right: none;
+    line-height: 20px;
+}
+
+.right-list {
+    list-style: none;
+}
+
+.left-list {
+    list-style: none;
 }
 
 .glyphicon-list-alt {
