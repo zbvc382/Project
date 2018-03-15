@@ -392,12 +392,12 @@ table.table th i {
 }
 
 .right-list {
-    margin-left: -1.5%;
-    height: 125px !important;
+    margin-left: -1.7%;
+    height: 128px !important;
     margin-top: 15px;
     list-style: none;
     overflow: scroll;
-    width: 95%;
+    width: 97%;
 }
 
 .left-list {
