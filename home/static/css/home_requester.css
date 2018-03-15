@@ -392,11 +392,12 @@ table.table th i {
 }
 
 .right-list {
-    margin-left: -7%;
+    margin-left: -1.5%;
     height: 125px !important;
     margin-top: 15px;
     list-style: none;
     overflow: scroll;
+    width: 95%;
 }
 
 .left-list {
@@ -404,7 +405,7 @@ table.table th i {
 }
 
 .saved-item {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     height: 33px;
     background: #222931;
     border-radius: 0;
@@ -453,10 +454,11 @@ table.table th i {
 }
 
 #template-name-span {
-    position: absolute;
-    top: 1px;
+    position: relative;
+    margin: auto;
     color: #ffffff;
     font-size: 12pt;
+    top: 3px;
 }
 
 .col-xs-6.col-md-6 {
