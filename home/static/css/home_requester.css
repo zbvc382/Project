@@ -400,6 +400,10 @@ table.table th i {
     width: 97%;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .left-list {
     list-style: none;
 }
