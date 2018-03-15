@@ -161,3 +161,7 @@ textarea {
     width: 113.8%;
     margin-bottom: 0;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
