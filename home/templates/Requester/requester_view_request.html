@@ -137,7 +137,7 @@
             <div class="modal-body">
                 <div class="input-group margin-bottom-sm">
                     <label for="temp-name" id="temp-name-label">Template Name</label>
-                    <input id="temp-name" type="text" placeholder=" Please enter a template name.">
+                    <input id="temp-name" type="text" placeholder=" Please enter a template name." required>
                     <span class="input-group-addon"><i class="fas fa-tags"></i></span>
                 </div>
             </div>
@@ -152,17 +152,31 @@
 </div>
 <script>
     $(document).ready(function () {
+        $('#save-button').click(function () {
 
+            // Trim possible leftover white space
+            var trimed_value = $.trim(
+                $('#temp-name').val()
+            );
 
-         $('#save-button').click(function () {
+            // If input empty - fill the table back with initial items
+            if (trimed_value == "") {
+                return false;
+            }
 
-    var template_name = $('#temp-name').val();
-    $('#save-template-link').attr('href',function() {
-        this.href = this.href.replace('template_name', template_name);
-    });
+            var template_name = $('#temp-name').val();
+
+            $('#save-template-link').attr('href',function() {
+                this.href = this.href.replace('template_name', template_name);
+            });
          });
 
-         $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').tooltip();
     });
+
+       // Empties the temp-name value once modal is closed
+       $('#myModal').on('hidden.bs.modal', function (e) {
+           $("#temp-name").val(null);
+       });
 </script>
 {% endblock %}
