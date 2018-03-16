@@ -101,6 +101,11 @@
                 if ($('a', this).attr("href") + {{ template_id }} + '/' === window.location.pathname) {
                     $(this).removeClass('inactive').addClass('active');
                 }
+                else {
+                    if ($('a', this).attr("href") === window.location.pathname) {
+                        $(this).removeClass('inactive').addClass('active');
+                    }
+                }
             }
 
             catch (err) {
