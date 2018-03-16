@@ -121,12 +121,12 @@
             getDates(from_date, to_date);
         {% endfor %}
 
-
         // sets default options including disabled dates
         $('#id_from_date').datetimepicker({
             format: 'YYYY-MM-DD',
             disabledDates: dateArray,
-            useCurrent: false //Important!
+            useCurrent: false,
+            minDate: Date()
         });
 
         // Sets default options including disabled dates

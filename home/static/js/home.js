@@ -17,6 +17,7 @@ $(document).ready(function () {
     // Search box
     $('#searchbox').on('keyup click', function () {
         $('#requester_table').DataTable().search($('#searchbox').val()).draw();
+        $('#authoriser_table').DataTable().search($('#searchbox').val()).draw();
     });
 
     $('#button-all:input').on('change', function () {
@@ -74,10 +75,6 @@ $(document).ready(function () {
     $('#myModal').on('hidden.bs.modal', function (e) {
         $('.modal-body').empty();
     });
-
-    // Allows list elements to be draggable
-    $("#sortable").sortable();
-    $("#sortable").disableSelection();
 
     $('[data-toggle="tooltip"]').tooltip();
 });

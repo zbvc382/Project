@@ -14,6 +14,8 @@
 }
 
 #pending-col {
+    width: 18%;
+    margin-left: 8%;
     color: #222931;
     font-weight: bold;
 }
@@ -23,6 +25,8 @@
 }
 
 #login-col {
+    width: 23.5%;
+    margin-left: 15.5%;
     font-weight: bold;
 }
 
@@ -338,7 +342,7 @@ table.table th i {
 #footer-info {
     position: relative;
     width: 30%;
-    top: 390px;
+    top: 398px;
     color: #999;
     left: 2px;
     font-size: 8pt;
