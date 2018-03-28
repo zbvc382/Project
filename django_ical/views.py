@@ -1,3 +1,9 @@
+# Title: django-ical source code
+# Author: Ian Lewis
+# Date: 2012
+# Code version: 1.4
+# Availability: https://github.com/pinkerton/django-ical
+
 from datetime import datetime
 from calendar import timegm
 import django

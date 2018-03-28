@@ -1,33 +1,8 @@
-#:coding=utf-8:
-
-"""
-iCalendar feed generation library -- used for generating
-iCalendar feeds.
-
-Sample usage:
-
->>> from django_ical import feedgenerator
->>> from datetime import datetime
->>> feed = feedgenerator.ICal20Feed(
-...     title=u"My Events",
-...     link=u"http://www.example.com/events.ical",
-...     description=u"A iCalendar feed of my events.",
-...     language=u"en",
-... )
->>> feed.add_item(
-...     title="Hello",
-...     link=u"http://www.example.com/test/",
-...     description="Testing.",
-...     start_datetime=datetime(2012, 5, 6, 10, 00),
-...     end_datetime=datetime(2012, 5, 6, 12, 00),
-... )
->>> fp = open('test.ical', 'w')
->>> feed.write(fp, 'utf-8')
->>> fp.close()
-
-For definitions of the iCalendar format see:
-http://www.ietf.org/rfc/rfc2445.txt
-"""
+# Title: django-ical source code
+# Author: Ian Lewis
+# Date: 2012
+# Code version: 1.4
+# Availability: https://github.com/pinkerton/django-ical
 
 from icalendar import Calendar, Event
 

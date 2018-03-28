@@ -1,4 +1,8 @@
-#:coding=utf-8:
+# Title: django-ical source code
+# Author: Ian Lewis
+# Date: 2012
+# Code version: 1.4
+# Availability: https://github.com/pinkerton/django-ical
 
 import pytz
 import icalendar
