@@ -471,10 +471,10 @@ table.table th i {
 }
 
 #no-templates {
-    position: relative;
-    left: 235px;
-    top: 25px;
+    position: absolute;
     color: #99979B;
+
+
     font-size: 10.5pt;
 }
 
@@ -549,10 +549,10 @@ table.table th i {
 }
 
 #no-restrictions {
-    position: relative;
+    position: absolute;
     color: #99979B;
     top: 67px;
-    right: 360px;
+    right: 225px;
     font-size: 10.5pt;
 }
 

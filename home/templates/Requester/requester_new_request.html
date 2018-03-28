@@ -85,6 +85,14 @@
         $('#control-leave-attachment').addClass('has-error');
         var dateArray = Array();
 
+
+        /********************************************************
+         * Code: function getDates                              *
+         * Author: John Hardstock                               *
+         * Date: 10/12/10                                       *
+         * Availability: https://stackoverflow.com/a/4413721    */
+
+        // Convert dates
         function getDates(startDate, stopDate) {
             var currentDate = startDate;
 
@@ -100,8 +108,6 @@
 
             getDates(from_date, to_date);
         {% endfor %}
-
-
 
         $('#id_start').datetimepicker({
             format: 'YYYY-MM-DD',

@@ -52,6 +52,9 @@ class RequesterHome(TemplateView):
         if pending_requests.__len__() > 0:
             is_pending = True
 
+        if template_objects.__len__() < 1:
+            no_templates = True
+
         assigned_authoriser = Requester.objects.get(user=self.request.user)\
             .assigned_authoriser.user.get_full_name
         array = ['pdf', 'jpg', 'txt', 'docx']

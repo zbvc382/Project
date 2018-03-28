@@ -37,7 +37,7 @@ urlpatterns = [
         authoriser.AuthoriserCreateRestriction.as_view(), name='restriction'),
 
     url(r'^authoriser/restriction=(?P<pk>\d+)/remove/$',
-        authoriser.AuthoriserRenameRestriction.as_view(), name='remove'),
+        authoriser.AuthoriserDeleteRestriction.as_view(), name='remove'),
 
     url(r'^admin/$', home.AdminRedirect.as_view(), name='admin'),
 ]

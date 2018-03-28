@@ -73,7 +73,6 @@ class RequesterManager(models.Manager):
 
 
 class Template(models.Model):
-
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     template_name = models.CharField(max_length=40)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)

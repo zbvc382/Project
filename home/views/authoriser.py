@@ -278,7 +278,7 @@ class AuthoriserCreateRestriction(FormView):
 
 
 @method_decorator([login_required, authoriser_required], name='dispatch')
-class AuthoriserRenameRestriction(SuccessMessageMixin, View):
+class AuthoriserDeleteRestriction(SuccessMessageMixin, View):
     model = Restriction
 
     '''

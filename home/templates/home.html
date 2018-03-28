@@ -11,7 +11,7 @@
     {% if user.is_requester %}
     <div class="row">
         <div class="col-md-3" id="welcome-col">&nbsp;<i class="fas fa-home"></i>&nbsp;&nbsp;Welcome back
-            {{ request.user.first_name }}
+            {{ request.user.first_name }}!
         </div>
         <div class="col-md-3" id="pending-col"><i class="fas fa-exclamation-circle" {% if is_pending == True %}
             style="color: #C42E2A;" {% elif is_pending == False %} style="color: #439B43;" {% endif %}></i>&nbsp;&nbsp;Pending Requests
@@ -27,7 +27,7 @@
     {% elif user.is_authoriser %}
     <div class="row">
         <div class="col-md-4" id="welcome-col">&nbsp;<i class="fas fa-home"></i>&nbsp;&nbsp;Welcome back
-            {{ request.user.first_name }}
+            {{ request.user.first_name }}!
         </div>
         <div class="col-md-4" id="pending-col"><i class="fas fa-exclamation-circle" {% if is_pending == True %}
             style="color: #C42E2A;" {% elif is_pending == False %} style="color: #439B43;" {% endif %}></i>&nbsp;&nbsp;Pending Requests
@@ -42,11 +42,11 @@
 {% if user.is_requester %}
 <div class="applications">
     <div class="row-appl">
-        <div id="calendar-container" class="col-xs-6 col-md-6">
+        <div id="calendar-container" class="col-xs-6 col-md-6"><b>Calendar Constraints</b>
             <table id="calendar-table" class="table table-condensed table-hover">
                 <thead>
                     <tr>
-                        <th class="col-md-2">#</th>
+                        <th class="col-md-2">ID</th>
                         <th class="col-md-5">From</th>
                         <th class="col-md-5">To</th>
                         <th class="col-md-5">Reason</th>
@@ -65,8 +65,11 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% if not calendar_objects %}
+                <div id="no-restrictions">No constraints found.</div>
+            {% endif %}
         </div>
-        <div class="col-xs-6 col-md-6">
+        <div class="col-xs-6 col-md-6"><b>Tempates</b>
             <ul class="right-list">
                 {% for template in templates %}
 
@@ -77,8 +80,6 @@
                 </li>
                 {% endfor %}
             </ul>
-            {% if no_templates %}
-            {% endif %}
 </div>
     </div>
 </div>
@@ -368,10 +369,6 @@ $(document).ready(function () {
         $('.modal-body').append('<p>' + reason + '</p>');
     });
 
-    // Empties modal-body text once modal is closed
-    $('#myModal').on('hidden.bs.modal', function (e) {
-        $('.modal-body').empty();
-    });
 
     $('[data-toggle="tooltip"]').tooltip();
 });
