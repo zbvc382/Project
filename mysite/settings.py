@@ -143,7 +143,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_HOST_USER = 'zbvc382@gmail.com'
 
-EMAIL_HOST_PASSWORD = 'DjangoAMS'
+EMAIL_HOST_PASSWORD = 'Xboxlive91'
 
 EMAIL_PORT = 587
 
