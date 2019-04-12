@@ -1,4 +1,9 @@
-# absence-management-system
-This project is for the fulfilment of my Final Year Project for BSc Computer Science at Royal Holloway.
-
 ![grab-landing-page](/img/ams.gif)
+
+# Departmental Leave-of-Absence Management System
+
+## Tech Stack
+
+* **Programming languages** - Python, JavaScript
+* **Frameworks** - Django
+* **Databases** - PostgreSQL
