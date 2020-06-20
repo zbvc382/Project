@@ -1,4 +1,4 @@
-![grab-landing-page](/img/ams.gif)
+![grab-landing-page](/img/system.gif)
 
 ## Technologies
 
