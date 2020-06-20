@@ -3,4 +3,4 @@
 ## Technologies
 
 * **Front End** - JavaScript, Bootstrap, HTML, CSS
-* **Back End** - Python, Django
+* **Back End** - Python, Django, PostgreSQL
